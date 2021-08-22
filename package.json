@@ -1,0 +1,31 @@
+{
+  "name": "chainer",
+  "version": "0.1.0",
+  "description": "",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "engines": {
+    "node": "^15.x",
+    "npm": "^7.x"
+  },
+  "scripts": {
+    "lint": "npx prettier --write src",
+    "build": "tsc",
+    "prepare": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "typedoc": "typedoc src/index.ts"
+  },
+  "author": "Amatsagu <krzysztof.rapior@protonmail.com>",
+  "license": "Apache-2.0",
+  "private": true,
+  "dependencies": {
+    "ws": "^8.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^16.4.13",
+    "@types/ws": "^7.4.7",
+    "prettier": "^2.3.2",
+    "typedoc": "^0.21.5",
+    "typescript": "^4.3.5"
+  }
+}
