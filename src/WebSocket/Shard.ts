@@ -1,9 +1,9 @@
 import ShardManager from './ShardManager'
 import WebSocket from 'ws'
-import { sleep } from '../functions'
 import { DropCodeList, Endpoint, ErrorCodeList, GatewayEvent, OPCode } from '../constants'
 import { format } from 'util'
 import { GeneralPayload, IdentityPayload, ResumePayload } from '../Interfaces/Payloads'
+import { sleep } from '../functions'
 
 export default class Shard {
     constructor(manager: ShardManager, id: number) {
@@ -19,6 +19,8 @@ export default class Shard {
 
     // WebSocket
     private _ws?: WebSocket
+    private _wsConnectAttempts = 0
+    private _wsConnectTimer?: NodeJS.Timeout
     private _wsHeartbeatInterval?: number
     private _wsHeartbeatTimer?: NodeJS.Timeout
     private _wsLastHeartbeat?: number
@@ -79,10 +81,18 @@ export default class Shard {
     private async _wsConnect(resume?: boolean) {
         this._wsDisconnect()
 
+        this._wsConnectAttempts++
+        if (this._wsConnectAttempts >= 3) {
+            this._manager.emit('shardError', this._id, 'Automatically invalidating session due to excessive resume attempts.')
+            this._wsConnectAttempts = 0
+            await sleep(Math.min(Math.round(30000 * (Math.random() * 2 + 1)), 30000))
+            this._wsConnect()
+            return
+        }
+
         if (!resume) {
             this._sessionId = undefined
             this._lastSequence = 0
-            await sleep(5000) // Just in case..
         }
 
         if (this._ws) return this._manager.emit('shardWarn', this._id, 'Already connected.')
@@ -91,6 +101,12 @@ export default class Shard {
             this._ws = new WebSocket(Endpoint.GATEWAY)
         } catch {
             return this._manager.emit('shardError', this._id, 'Unable to create a socket.')
+        }
+
+        this._ws.onopen = () => {
+            this._wsConnectAttempts = 0
+            this._wsLastHeartbeatAck = true
+            clearTimeout(this._wsConnectTimer)
         }
 
         this._ws.onclose = (event) => {
@@ -105,6 +121,11 @@ export default class Shard {
         this._ws.onmessage = (event) => {
             if (event.data) this._handlePayload(JSON.parse(event.data.toString()))
         }
+
+        this._wsConnectTimer = setTimeout(() => {
+            this._manager.emit('shardError', this._id, 'Connection timeout (30s).')
+            this._wsConnect()
+        }, 30000)
     }
 
     private _wsDisconnect(code = 1012) {
@@ -157,7 +178,8 @@ export default class Shard {
             }
             case OPCode.INVALID_SESSION: {
                 this._manager.emit('shardWarn', this._id, `Invalid session. Resumable: ${payload.d}`)
-                this._wsConnect(payload.d)
+                if (payload.d) this._authenticate()
+                else this._wsConnect()
                 break
             }
             case OPCode.HELLO: {

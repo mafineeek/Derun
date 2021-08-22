@@ -70,4 +70,4 @@ export enum Endpoint {
 }
 
 export const ErrorCodeList = Object.freeze([4004, 4010, 4011, 4012, 4013, 4014])
-export const DropCodeList = Object.freeze([4007, 4009])
+export const DropCodeList = Object.freeze([4007, 4009, 4006])
