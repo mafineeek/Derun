@@ -1,7 +1,7 @@
 const { ShardManager } = require('./lib')
 
 const shards = 64
-const client = new ShardManager('TOKEN', {shardCount: shards})
+const client = new ShardManager('', {shardCount: shards})
 
 client.on('shardReady', (shardId) => console.info(`[Shard Ready] [Shard #${shardId + 1}] Initializing process finished in ${(((shardId + 1) / shards) * 100).toFixed(1)}%`))
 client.on('shardResumed', (shardId) => console.info(`[Shard Resumed] [Shard #${shardId + 1}]`))
@@ -10,4 +10,4 @@ client.on('shardError', (shardId, reason) => console.info(`[Shard Error] [Shard 
 client.once('ready', () => console.info(`[Ready] ===========================================================`))
 
 console.info('[Init] Starting...')
-client.summon()
+client.spawn()

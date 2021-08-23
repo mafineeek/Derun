@@ -69,5 +69,20 @@ export enum Endpoint {
     REST = 'https://discord.com/api/v9'
 }
 
-export const ErrorCodeList = Object.freeze([4004, 4010, 4011, 4012, 4013, 4014])
-export const DropCodeList = Object.freeze([4007, 4009, 4006])
+export enum GatewayCloseError {
+    RECONNECT = 1001,
+    UNKNOWN = 4000,
+    UNKNOWN_OPCODE = 4001,
+    DECODE_ERROR = 4002,
+    NOT_AUTHENTICATED = 4003,
+    AUTHENTICATION_FAILED = 4004,
+    ALREADY_AUTHENTICATED = 4005,
+    INVALID_SEQUENCE = 4007,
+    RATE_LIMITED = 4008,
+    INVALID_SESSION = 4009,
+    INVALID_SHARD = 4010,
+    SHARDING_REQUIRED = 4011,
+    INVALID_API_VERSION = 4012,
+    INVALID_INTENT = 4013,
+    DISSALLOWED_INTENT = 4014
+}

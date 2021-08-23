@@ -1,33 +1,27 @@
-import ShardManager from './ShardManager'
-import WebSocket from 'ws'
-import { DropCodeList, Endpoint, ErrorCodeList, GatewayEvent, OPCode } from '../constants'
 import { format } from 'util'
+import WebSocket from 'ws'
+import { Endpoint, GatewayCloseError, GatewayEvent, OPCode } from '../constants'
+import GatewayError from '../Errors/GatewayError'
 import { GeneralPayload, IdentityPayload, ResumePayload } from '../Interfaces/Payloads'
-import { sleep } from '../functions'
+import ShardManager from './ShardManager'
 
 export default class Shard {
     constructor(manager: ShardManager, id: number) {
         this._manager = manager
         this._id = id
-        this._wsConnect()
+        this._wsConnect(false)
     }
 
-    // Bound (from constructor)
     private readonly _manager
     private readonly _id
     private readonly _createdAt = Date.now()
-
-    // WebSocket
     private _ws?: WebSocket
-    private _wsConnectAttempts = 0
     private _wsConnectTimer?: NodeJS.Timeout
     private _wsHeartbeatInterval?: number
     private _wsHeartbeatTimer?: NodeJS.Timeout
     private _wsLastHeartbeat?: number
-    private _wsLastHeartbeatAck = false
+    private _wsMissedheartbeats = 0
     private _wsPing = 0
-
-    // Gateway core
     private _sessionId?: string
     private _lastSequence = 0
 
@@ -78,42 +72,66 @@ export default class Shard {
         }
     }
 
-    private async _wsConnect(resume?: boolean) {
+    private _wsConnect(resume: boolean) {
         this._wsDisconnect()
-
-        this._wsConnectAttempts++
-        if (this._wsConnectAttempts >= 3) {
-            this._manager.emit('shardError', this._id, 'Automatically invalidating session due to excessive resume attempts.')
-            this._wsConnectAttempts = 0
-            await sleep(Math.min(Math.round(30000 * (Math.random() * 2 + 1)), 30000))
-            this._wsConnect()
-            return
-        }
 
         if (!resume) {
             this._sessionId = undefined
             this._lastSequence = 0
         }
 
+        let connecting = true
+
+        this._wsConnectTimer = setTimeout(() => {
+            if (connecting) {
+                this._manager.emit('shardError', this._id, `Failed to connect with ${Endpoint.GATEWAY} within 30 seconds.`)
+                this._wsConnect(false)
+            }
+        }, 30000)
+
         if (this._ws) return this._manager.emit('shardWarn', this._id, 'Already connected.')
 
         try {
             this._ws = new WebSocket(Endpoint.GATEWAY)
         } catch {
-            return this._manager.emit('shardError', this._id, 'Unable to create a socket.')
+            throw new GatewayError({ shardId: this._id, code: GatewayCloseError.INVALID_API_VERSION, reason: `Failed to open new connection to ${Endpoint.GATEWAY}.` })
         }
 
         this._ws.onopen = () => {
-            this._wsConnectAttempts = 0
-            this._wsLastHeartbeatAck = true
+            connecting = false
             clearTimeout(this._wsConnectTimer)
         }
 
         this._ws.onclose = (event) => {
-            this._wsDisconnect(event.code)
+            let resumable = true
 
-            if (ErrorCodeList.includes(event.code)) this._manager.emit('shardError', this._id, `Closed connection to Discord Gateway with code ${event.code}.`)
-            else this._wsConnect(!DropCodeList.includes(event.code))
+            switch (event.code) {
+                case 1000:
+                case GatewayCloseError.UNKNOWN: {
+                    this._manager.emit('shardWarn', this._id, `Discord Gateway closed connection for unknown reason. Resumable = ${resumable}`)
+                    this._wsConnect(resumable)
+                    break
+                }
+                case GatewayCloseError.RECONNECT: {
+                    this._manager.emit('shardWarn', this._id, `Discord Gatway forced reconnect. Resumable = ${resumable}`)
+                    this._wsConnect(resumable)
+                    break
+                }
+                case GatewayCloseError.INVALID_SEQUENCE: {
+                    resumable = false
+                    this._manager.emit('shardWarn', this._id, `Desynchronization! Stored last sequence value has been invalidated. Shard will try to open new session. Resumable = ${resumable}`)
+                    this._wsConnect(resumable)
+                    break
+                }
+                case GatewayCloseError.INVALID_SESSION: {
+                    resumable = false
+                    this._manager.emit('shardWarn', this._id, `Discord Gateway decided to invalidate current session. Shard will try to open new session. Resumable = ${resumable}`)
+                    this._wsConnect(resumable)
+                    break
+                }
+                default:
+                    throw new GatewayError({ shardId: this._id, code: event.code, reason: event.reason })
+            }
         }
 
         this._ws.onerror = (event) => this._manager.emit('shardWarn', this._id, `Connection error: ${format(event.error)}`)
@@ -121,19 +139,16 @@ export default class Shard {
         this._ws.onmessage = (event) => {
             if (event.data) this._handlePayload(JSON.parse(event.data.toString()))
         }
-
-        this._wsConnectTimer = setTimeout(() => {
-            this._manager.emit('shardError', this._id, 'Connection timeout (30s).')
-            this._wsConnect()
-        }, 30000)
     }
 
     private _wsDisconnect(code = 1012) {
         if (!this._ws) return
 
+        clearTimeout(this._wsConnectTimer)
         clearTimeout(this._wsHeartbeatTimer)
         this._wsHeartbeatTimer = undefined
         this._wsLastHeartbeat = undefined
+        this._wsMissedheartbeats = 0
         this._wsPing = 0
         this._ws.removeAllListeners()
         this._ws.close(code)
@@ -145,17 +160,17 @@ export default class Shard {
     }
 
     private _heartbeat(inLoop: boolean) {
-        if (this._wsLastHeartbeatAck) {
+        if (this._wsMissedheartbeats > 3) {
+            this._manager.emit('shardWarn', this._id, 'Heartbeat timeout.')
+            this._wsConnect(true)
+        } else {
             if (this._ws && this._ws.readyState === 1) {
-                this._wsLastHeartbeatAck = false
+                this._wsMissedheartbeats++
                 this._wsLastHeartbeat = Date.now()
                 this._wsSend({ op: 1, d: this._lastSequence || null })
 
                 if (inLoop) this._wsHeartbeatTimer = setTimeout(() => this._heartbeat(true), this._wsHeartbeatInterval * Math.random())
             }
-        } else {
-            this._manager.emit('shardWarn', this._id, 'Heartbeat timeout.')
-            this._wsConnect(true)
         }
     }
 
@@ -179,19 +194,19 @@ export default class Shard {
             case OPCode.INVALID_SESSION: {
                 this._manager.emit('shardWarn', this._id, `Invalid session. Resumable: ${payload.d}`)
                 if (payload.d) this._authenticate()
-                else this._wsConnect()
+                //else this._wsConnect(false)
+                // I'm ignoring it for now for the testing reasons.
                 break
             }
             case OPCode.HELLO: {
-                this._authenticate()
-                this._wsLastHeartbeatAck = true
                 this._wsHeartbeatInterval = payload.d.heartbeat_interval
                 this._heartbeat(true)
+                this._authenticate()
                 break
             }
             case OPCode.HEARTBEAT_ACK: {
                 this._wsPing = Date.now() - this._wsLastHeartbeat ?? 0
-                this._wsLastHeartbeatAck = true
+                this._wsMissedheartbeats = 0
                 break
             }
             default: {
@@ -206,6 +221,7 @@ export default class Shard {
             case GatewayEvent.READY: {
                 this._sessionId = payload.d.session_id
                 this._manager.emit('shardReady', this._id)
+                if (this._id === this._manager.shardCount) this._manager.emit('ready')
                 break
             }
             case GatewayEvent.RESUMED: {

@@ -30,7 +30,7 @@ export default class ShardManager extends EventEmitter<ShardManagerEvents> {
         return this._intents
     }
 
-    public async summon() {
+    public async spawn() {
         const createShard = async (id: number): Promise<void> => {
             return new Promise(async (resolve) => {
                 this._shards[id] = new Shard(this, id)
@@ -46,5 +46,19 @@ export default class ShardManager extends EventEmitter<ShardManagerEvents> {
             await createShard(i)
             await sleep(5000) // Extra 5s just in case..
         }
+    }
+
+    /** You should avoid using this method until it's really needed. It will force delete existing shard and spawn new one in its place. */
+    public async respawn(id: number): Promise<void> {
+        return new Promise(async (resolve, reject) => {
+            if (id < 0 || id > this._shardCount) return reject('Invalid shard id.')
+
+            this._shards[id] = undefined
+            this._shards[id] = new Shard(this, id)
+
+            this.once('shardReady', (shardId) => {
+                if (shardId === id) return resolve()
+            })
+        })
     }
 }
