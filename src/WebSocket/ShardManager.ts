@@ -35,17 +35,16 @@ export default class ShardManager extends EventEmitter<ShardManagerEvents> {
             return new Promise(async (resolve) => {
                 this._shards[id] = new Shard(this, id)
 
-                this.once('shardReady', (shardId) => {
-                    if (shardId === id) return resolve()
-                    else throw new Error('Failed to launch shards in order! Check your internet connection and try again.')
+                this.once('shardReady', async (shardId) => {
+                    if (shardId === id) {
+                        await sleep(5000)
+                        return resolve()
+                    } else throw new Error('Failed to launch shards in order! Check your internet connection and try again.')
                 })
             })
         }
 
-        for (let i = 0; i < this._shardCount; i++) {
-            await createShard(i)
-            await sleep(5000) // Extra 5s just in case..
-        }
+        for (let i = 0; i < this._shardCount; i++) await createShard(i)
     }
 
     /** You should avoid using this method until it's really needed. It will force delete existing shard and spawn new one in its place. */
