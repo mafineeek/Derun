@@ -17,7 +17,7 @@
     "include": ["src"],
     "exclude": ["node_modules"],
     "typedocOptions": {
-      "name": "Chainer",
+      "name": "Derun",
       "out": "./docs",
       "entryPoints": [
         "./src"

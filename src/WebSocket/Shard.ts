@@ -1,209 +1,236 @@
 import WebSocket from 'ws'
-import { Endpoint, GatewayCloseError, GatewayEvent, OPCode } from '../constants'
-import GatewayError from '../Errors/GatewayError'
+import { Endpoint, OPCode, ShardError, ShardStatus } from '../constants'
+import { GatewayError } from '../Errors/GatewayError'
 import { sleep } from '../functions'
-import { HeartbeatOptions } from '../Interfaces/Options'
-import { GeneralPayload, IdentityPayload, ResumePayload } from '../Interfaces/Payloads'
-import ShardManager from './ShardManager'
+import { ShardManager } from './ShardManager'
 
-export default class Shard {
+export interface Payload {
+    op: number
+    d?: any
+    s?: number
+    t?: string
+}
+
+export interface HeartbeatOptions {
+    interval?: number
+    timer?: NodeJS.Timeout
+    ack: boolean
+    lastHeartbeat?: number
+}
+
+export class Shard {
     constructor(manager: ShardManager, id: number) {
-        this._manager = manager
-        this._id = id
-
-        this._connect()
+        this.#manager = manager
+        this.id = id
+        this.#resetWS(true, false)
     }
 
-    private readonly _manager
-    private readonly _id
+    readonly #manager
+    readonly id
+    ping?: number
+    status: ShardStatus = ShardStatus.UNAVAILABLE
 
-    private _ws: WebSocket
-    private _lastSequence = 0
-    private _sessionId: string
-
-    private _heartbeat: HeartbeatOptions = {
+    #ws?: WebSocket
+    #resetTimer?: NodeJS.Timeout
+    #heartbeat: HeartbeatOptions = {
         interval: null,
         timer: null,
         ack: false,
-        ping: null,
         lastHeartbeat: null
     }
+    #lastSequence?: number
+    #sessionId?: string
 
-    public get connected() {
-        return this._ws && this._ws.readyState === WebSocket.OPEN
-    }
-
-    public send(payload: GeneralPayload) {
-        if (this.connected) this._ws.send(JSON.stringify(payload))
-    }
-
-    private async _connect(resume?: boolean, code = 1000) {
-        if (resume && code < 4000) code = 4000 // Resume can only happen with non-1000 exit code
-
-        await this._destroy(code)
-
-        if (!resume) {
-            this._lastSequence = 0
-            this._sessionId = null
-            this._heartbeat.interval = null
-        }
-        else await sleep(5000)
+    public send(payload: Payload) {
+        if (this.status < ShardStatus.HANDSHAKING) return
 
         try {
-            this._ws = new WebSocket(Endpoint.GATEWAY)
+            this.#ws.send(JSON.stringify(payload))
         } catch {
-            throw new GatewayError({ shardId: this._id, code: GatewayCloseError.INVALID_API_VERSION, reason: `Failed to open new connection to ${Endpoint.GATEWAY}.` })
-        }
-
-        this._heartbeat.ack = true
-
-        this._ws.onerror = (event) => {
-            this._manager.emit('shardWarn', this._id, `Connection error: ${event.message}`)
-            this._connect(true)
-        }
-
-        this._ws.onclose = (event) => {
-            switch (event.code) {
-                case GatewayCloseError.AUTHENTICATION_FAILED:
-                case GatewayCloseError.INVALID_SHARD:
-                case GatewayCloseError.SHARDING_REQUIRED:
-                case GatewayCloseError.INVALID_API_VERSION:
-                case GatewayCloseError.INVALID_INTENT:
-                case GatewayCloseError.DISSALLOWED_INTENT: {
-                    this._destroy(event.code)
-                    throw new GatewayError({ shardId: this._id, code: event.code, reason: event.reason })
-                }
-                default: {
-                    let resumable = true
-
-                    if (event.code === GatewayCloseError.INVALID_SEQUENCE) resumable = false
-                    else if (event.code === GatewayCloseError.INVALID_SESSION) resumable = false
-
-                    this._connect(resumable)
-                }
-            }
-        }
-
-        this._ws.onmessage = (event) => {
-            const payload = JSON.parse(event.data.toString()) as GeneralPayload
-            if (payload.s && payload.s > this._lastSequence) this._lastSequence = payload.s
-
-            this._handlePayload(payload)
+            throw new GatewayError({ shardId: this.id, code: ShardError.DECODE_ERROR, reason: 'Failed to stringify payload. It may hold invalid data.' })
         }
     }
 
-    private async _destroy(code = 1000) {
-        if (this._ws) {
-            this._ws.removeAllListeners()
-            this._ws.onopen = this._ws.onclose = this._ws.onerror = this._ws.onmessage = null
+    async #resetWS(restart: boolean, resume: boolean): Promise<void> {
+        return new Promise(async (resolve) => {
+            this.status = ShardStatus.UNAVAILABLE
+
+            if (this.#ws) {
+                this.#ws.removeAllListeners()
+                this.#ws.onopen = this.#ws.onclose = this.#ws.onerror = this.#ws.onmessage = null
+
+                try {
+                    this.#ws.close(4000)
+                } catch {
+                    /** Do Nothing. */
+                }
+
+                this.#ws = null
+                await sleep(Math.floor(Math.random() * 5000) + 2000) // 2~5s
+            }
+
+            clearTimeout(this.#heartbeat.timer)
+            this.#heartbeat.interval = null
+            this.#heartbeat.ack = false
+            this.#heartbeat.lastHeartbeat = null
+
+            if (!resume) {
+                this.#lastSequence = null
+                this.#sessionId = null
+            }
+
+            if (!restart) return resolve()
+            else this.status = ShardStatus.CONNECTING
+
+            this.#resetTimer = setTimeout(() => {
+                throw new GatewayError({ shardId: this.id, code: ShardError.UNKNOWN, reason: `Connection timeout.` })
+            }, this.#manager.shardOptions.connectionTimeout)
 
             try {
-                this._ws.close(code)
+                this.#ws = new WebSocket(Endpoint.GATEWAY)
             } catch {
-                /** Do Nothing. */
+                throw new GatewayError({ shardId: this.id, code: ShardError.INVALID_API_VERSION, reason: `Failed to open new connection to ${Endpoint.GATEWAY}.` })
             }
 
-            this._ws = null
-            await sleep(2500) // Just in case
-        }
-
-        clearTimeout(this._heartbeat.timer)
-        this._heartbeat.ack = false
-        this._heartbeat.ping = null
-        this._heartbeat.lastHeartbeat = null
-    }
-
-    private _identify() {
-        let payload: ResumePayload | IdentityPayload
-
-        if (this._sessionId) {
-            payload = {
-                op: OPCode.RESUME,
-                d: {
-                    token: this._manager.token,
-                    session_id: this._sessionId,
-                    seq: this._lastSequence
-                }
+            this.#ws.onopen = () => {
+                clearTimeout(this.#resetTimer)
+                this.#heartbeat.ack = true
+                this.status = ShardStatus.HANDSHAKING
+                return resolve()
             }
-        } else {
-            payload = {
-                op: OPCode.IDENTIFY,
-                d: {
-                    token: this._manager.token,
-                    shard: [this._id, this._manager.shardCount as number],
-                    intents: this._manager.intents,
-                    large_threshold: 50,
-                    properties: {
-                        $os: 'linux',
-                        $browser: 'derun',
-                        $device: 'derun'
+
+            this.#ws.onerror = (event) => {
+                this.#manager.emit('shardWarn', this.id, `Connection error: ${event.message}`)
+                this.#resetWS(true, true)
+            }
+
+            this.#ws.onclose = (event) => {
+                switch (event.code) {
+                    case ShardError.AUTHENTICATION_FAILED:
+                    case ShardError.INVALID_SHARD:
+                    case ShardError.SHARDING_REQUIRED:
+                    case ShardError.INVALID_API_VERSION:
+                    case ShardError.INVALID_INTENT:
+                    case ShardError.DISSALLOWED_INTENT: {
+                        this.#resetWS(false, false)
+                        throw new GatewayError({ shardId: this.id, code: event.code, reason: event.reason })
+                    }
+                    default: {
+                        let resumable = true
+
+                        if (event.code === ShardError.INVALID_SEQUENCE) resumable = false
+                        else if (event.code === ShardError.INVALID_SESSION) resumable = false
+
+                        this.#manager.emit('shardWarn', this.id, `Discord Gateway closed connection${resumable ? '. Reconnecting!' : ' and invalidated session. Opening new session!'}`)
+                        this.#resetWS(true, resumable)
                     }
                 }
             }
 
-            // This param is only used if you want to sync multiple shards.
-            if (this._manager.shardCount === 1) delete payload.d.shard
+            this.#ws.onmessage = (event) => {
+                const payload = JSON.parse(event.data.toString()) as Payload
+                if (payload.s) this.#lastSequence = payload.s
 
-            this.send(payload)
-        }
+                this.#handlePayload(payload)
+            }
+        })
     }
 
-    private _sendHeartbeat(inLoop?: boolean) {
-        if (!this._heartbeat.ack) {
-            this._manager.emit('shardWarn', this._id, 'Failed to acknowledge last heartbeat. Assuming zombified connection. Shard will try to resume session.')
-            this._connect(true)
+    #sendHeartbeat(inLoop?: boolean) {
+        if (!this.#heartbeat.ack) {
+            this.#manager.emit('shardWarn', this.id, 'Failed to acknowledge last heartbeat. Assuming zombified connection. Reconnecting!')
+            this.#resetWS(true, true)
             return
         }
 
-        this._heartbeat.ack = false
-        this._heartbeat.lastHeartbeat = Date.now()
+        this.#heartbeat.ack = false
+        this.#heartbeat.lastHeartbeat = Date.now()
 
-        this.send({ op: OPCode.HEARTBEAT, d: this._lastSequence })
-        if (inLoop) this._heartbeat.timer = setTimeout(() => this._sendHeartbeat(true), this._heartbeat.interval)
+        this.send({ op: OPCode.HEARTBEAT, d: this.#lastSequence })
+        if (inLoop) this.#heartbeat.timer = setTimeout(() => this.#sendHeartbeat(true), this.#heartbeat.interval)
     }
 
-    private _handlePayload(payload: GeneralPayload) {
+    #handlePayload(payload: Payload) {
         switch (payload.op) {
             case OPCode.DISPATCH: {
-                switch (payload.t) {
-                    case GatewayEvent.READY: {
-                        this._sessionId = payload.d.session_id
-                        this._manager.emit('shardReady', this._id)
-                        if (this._id + 1 === this._manager.shardCount) this._manager.emit('ready')
-                        break
-                    }
-                    case GatewayEvent.RESUMED: {
-                        this._manager.emit('shardResumed', this._id)
-                        break
-                    }
-                }
+                this.#handleEvent(payload)
+                break
             }
             case OPCode.HEARTBEAT: {
-                this._sendHeartbeat()
+                this.#sendHeartbeat(false)
                 break
             }
             case OPCode.RECONNECT: {
-                this._manager.emit('shardWarn', this._id, 'Discord Gateway forced reconnect.')
-                this._connect(true)
+                this.#manager.emit('shardWarn', this.id, 'Discord Gateway sent reconnect request. Reconnecting!')
+                this.#resetWS(true, true)
                 break
             }
             case OPCode.INVALID_SESSION: {
-                this._manager.emit('shardWarn', this._id, `Discord Gateway invalidated session.`)
-                this._connect(payload.d)
+                this.#manager.emit('shardWarn', this.id, `Discord Gateway invalidated ${payload.d ? 'connection. Reconnecting!' : 'session. Opening new session!'}`)
+                this.#resetWS(true, payload.d)
                 break
             }
             case OPCode.HELLO: {
-                this._identify()
-                this._heartbeat.ack = true
-                this._heartbeat.interval = payload.d.heartbeat_interval
-                this._sendHeartbeat(true)
-            }
-            case OPCode.HEARTBEAT_ACK: {
-                this._heartbeat.ack = true
-                this._heartbeat.ping = Date.now() - this._heartbeat.lastHeartbeat
+                if (this.#sessionId) {
+                    this.send({
+                        op: OPCode.RESUME,
+                        d: {
+                            token: this.#manager.token,
+                            session_id: this.#sessionId,
+                            seq: this.#lastSequence
+                        }
+                    })
+                } else {
+                    const payload = {
+                        op: OPCode.IDENTIFY,
+                        d: {
+                            token: this.#manager.token,
+                            shard: [this.id, this.#manager.shardOptions.shardCount as number],
+                            intents: this.#manager.shardOptions.intents,
+                            large_threshold: this.#manager.shardOptions.largeThreshold,
+                            properties: {
+                                $os: 'linux',
+                                $browser: 'derun',
+                                $device: 'derun'
+                            }
+                        }
+                    }
+
+                    // This param is only used if you want to sync multiple shards.
+                    if (this.#manager.shardOptions.shardCount === 1) delete payload.d.shard
+
+                    this.send(payload)
+                }
+
+                this.#heartbeat.interval = payload.d.heartbeat_interval
+                this.#sendHeartbeat(true)
                 break
             }
-            default: this._manager.emit('shardWarn', this._id, payload)
+            case OPCode.HEARTBEAT_ACK: {
+                this.#heartbeat.ack = true
+                this.ping = Date.now() - this.#heartbeat.lastHeartbeat
+                break
+            }
+            default:
+                this.#manager.emit('shardRawPayload', this.id, payload)
+        }
+    }
+
+    #handleEvent(payload: Payload) {
+        switch (payload.t) {
+            case 'READY': {
+                this.status = ShardStatus.CONNECTED
+                this.#sessionId = payload.d.session_id
+                this.#manager.emit('shardReady', this.id)
+                break
+            }
+            case 'RESUMED': {
+                this.status = ShardStatus.CONNECTED
+                this.#manager.emit('shardResumed', this.id)
+                break
+            }
+            default:
+                this.#manager.emit('shardRawPayload', this.id, payload)
         }
     }
 }

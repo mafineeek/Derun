@@ -1,6 +1,10 @@
-import { GatewayErrorOptions } from '../Interfaces/Errors'
+export interface GatewayErrorOptions {
+    code?: number
+    shardId: number
+    reason: string
+}
 
-export default class GatewayError extends Error {
+export class GatewayError extends Error {
     constructor(options: GatewayErrorOptions) {
         super(`[Shard ${options.shardId}] [${options.code || 4000}] ${options.reason}`)
         this.name = 'GatewayError'
