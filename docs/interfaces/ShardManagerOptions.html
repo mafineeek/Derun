@@ -83,6 +83,8 @@
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="ShardManagerOptions.html#connectionTimeout" class="tsd-kind-icon">connection<wbr>Timeout</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="ShardManagerOptions.html#intents" class="tsd-kind-icon">intents</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="ShardManagerOptions.html#largeThreshold" class="tsd-kind-icon">large<wbr>Threshold</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="ShardManagerOptions.html#requestCleanInterval" class="tsd-kind-icon">request<wbr>Clean<wbr>Interval</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="ShardManagerOptions.html#requestTimeout" class="tsd-kind-icon">request<wbr>Timeout</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="ShardManagerOptions.html#shardCount" class="tsd-kind-icon">shard<wbr>Count</a></li>
 							</ul>
 						</section>
@@ -97,13 +99,18 @@
 					<div class="tsd-signature tsd-kind-icon">connection<wbr>Timeout<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/5bdbdd8/src/WebSocket/ShardManager.ts#L28">WebSocket/ShardManager.ts:28</a></li>
+							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/6355b9b/src/WebSocket/ShardManager.ts#L39">WebSocket/ShardManager.ts:39</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
 							<p>How long <em>(in milliseconds)</em> Shard should wait for establishing connection with Discord Gateway. It will throw GatewayError on timeout.</p>
 						</div>
+						<dl class="tsd-comment-tags">
+							<dt>default</dt>
+							<dd><p>30000</p>
+							</dd>
+						</dl>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
@@ -112,7 +119,7 @@
 					<div class="tsd-signature tsd-kind-icon">intents<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/5bdbdd8/src/WebSocket/ShardManager.ts#L26">WebSocket/ShardManager.ts:26</a></li>
+							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/6355b9b/src/WebSocket/ShardManager.ts#L34">WebSocket/ShardManager.ts:34</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -120,6 +127,11 @@
 							<p>Gateway Intents are a system to help you lower that computational burden.
 							Head to <a href="https://ziad87.net/intents/">this handy calculator</a> and select events you are interested in.</p>
 						</div>
+						<dl class="tsd-comment-tags">
+							<dt>default</dt>
+							<dd><p>1</p>
+							</dd>
+						</dl>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
@@ -128,13 +140,58 @@
 					<div class="tsd-signature tsd-kind-icon">large<wbr>Threshold<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/5bdbdd8/src/WebSocket/ShardManager.ts#L30">WebSocket/ShardManager.ts:30</a></li>
+							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/6355b9b/src/WebSocket/ShardManager.ts#L44">WebSocket/ShardManager.ts:44</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
 							<p>The maximum number of offline users per guild during initial guild data transmission. <em>(between 50 and 250)</em></p>
 						</div>
+						<dl class="tsd-comment-tags">
+							<dt>default</dt>
+							<dd><p>50</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="requestCleanInterval" class="tsd-anchor"></a>
+					<h3>request<wbr>Clean<wbr>Interval</h3>
+					<div class="tsd-signature tsd-kind-icon">request<wbr>Clean<wbr>Interval<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/6355b9b/src/WebSocket/ShardManager.ts#L56">WebSocket/ShardManager.ts:56</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>How commonly <em>(in milliseconds)</em> should rest handler sweep cache from finished requests. Setting this value to low may result using more CPU cause of constantly &quot;mark &amp; sweep&quot; loops.</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>default</dt>
+							<dd><p>300000</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="requestTimeout" class="tsd-anchor"></a>
+					<h3>request<wbr>Timeout</h3>
+					<div class="tsd-signature tsd-kind-icon">request<wbr>Timeout<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/6355b9b/src/WebSocket/ShardManager.ts#L50">WebSocket/ShardManager.ts:50</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>How long <em>(in milliseconds)</em> should rest handler wait for HTTP request to resolve.</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>default</dt>
+							<dd><p>15000</p>
+							</dd>
+						</dl>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
@@ -143,13 +200,18 @@
 					<div class="tsd-signature tsd-kind-icon">shard<wbr>Count<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;auto&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/5bdbdd8/src/WebSocket/ShardManager.ts#L22">WebSocket/ShardManager.ts:22</a></li>
+							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/6355b9b/src/WebSocket/ShardManager.ts#L28">WebSocket/ShardManager.ts:28</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
 							<p>Total number of shards you want to launch. Set to &quot;auto&quot; to let Derun lib fetch it automatically.</p>
 						</div>
+						<dl class="tsd-comment-tags">
+							<dt>default</dt>
+							<dd><p>&#39;auto&#39;</p>
+							</dd>
+						</dl>
 					</div>
 				</section>
 			</section>
@@ -164,6 +226,12 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-class">
+						<a href="../classes/RequestHandler.html" class="tsd-kind-icon">Request<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="../classes/Shard.html" class="tsd-kind-icon">Shard</a>
+					</li>
 					<li class=" tsd-kind-class">
 						<a href="../classes/ShardManager.html" class="tsd-kind-icon">Shard<wbr>Manager</a>
 					</li>
@@ -188,12 +256,21 @@
 								<a href="ShardManagerOptions.html#largeThreshold" class="tsd-kind-icon">large<wbr>Threshold</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="ShardManagerOptions.html#requestCleanInterval" class="tsd-kind-icon">request<wbr>Clean<wbr>Interval</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="ShardManagerOptions.html#requestTimeout" class="tsd-kind-icon">request<wbr>Timeout</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="ShardManagerOptions.html#shardCount" class="tsd-kind-icon">shard<wbr>Count</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
+					<li class=" tsd-kind-type-alias">
+						<a href="../modules.html#requestMethod" class="tsd-kind-icon">request<wbr>Method</a>
+					</li>
 				</ul>
 			</nav>
 		</div>
@@ -204,19 +281,19 @@
 		<h2>Legend</h2>
 		<div class="tsd-legend-group">
 			<ul class="tsd-legend">
-				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
-			</ul>
-			<ul class="tsd-legend">
 				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
 				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
 			</ul>
 			<ul class="tsd-legend">
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
 			</ul>
 		</div>
 	</div>

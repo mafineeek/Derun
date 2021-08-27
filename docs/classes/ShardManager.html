@@ -65,6 +65,13 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Utility class that can hold a bunch of <a href="Shard.html">shards</a>. This core class connects all the caching, rest and gateway elements.</p>
+					</div>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
@@ -82,26 +89,32 @@
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
-						<section class="tsd-index-section ">
+						<section class="tsd-index-section tsd-is-private tsd-is-private-protected">
 							<h3>Constructors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite"><a href="ShardManager.html#constructor" class="tsd-kind-icon">constructor</a></li>
+								<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite tsd-is-private"><a href="ShardManager.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="ShardManager.html#_cache" class="tsd-kind-icon">#cache</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="ShardManager.html#_initialized" class="tsd-kind-icon">#initialized</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="ShardManager.html#shardOptions" class="tsd-kind-icon">shard<wbr>Options</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="ShardManager.html#_maxConcurrency" class="tsd-kind-icon">#max<wbr>Concurrency</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="ShardManager.html#_maxListeners" class="tsd-kind-icon">#max<wbr>Listeners</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="ShardManager.html#coreOptions" class="tsd-kind-icon">core<wbr>Options</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="ShardManager.html#restHandler" class="tsd-kind-icon">rest<wbr>Handler</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="ShardManager.html#shards" class="tsd-kind-icon">shards</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="ShardManager.html#token" class="tsd-kind-icon">token</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="ShardManager.html#token" class="tsd-kind-icon">token</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="ShardManager.html#_toJSON" class="tsd-kind-icon">#toJSON</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="ShardManager.html#_toString" class="tsd-kind-icon">#to<wbr>String</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="ShardManager.html#emit" class="tsd-kind-icon">emit</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="ShardManager.html#init" class="tsd-kind-icon">init</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="ShardManager.html#init" class="tsd-kind-icon">init</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited"><a href="ShardManager.html#off" class="tsd-kind-icon">off</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited"><a href="ShardManager.html#on" class="tsd-kind-icon">on</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited"><a href="ShardManager.html#once" class="tsd-kind-icon">once</a></li>
@@ -110,12 +123,12 @@
 					</div>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group ">
+			<section class="tsd-panel-group tsd-member-group tsd-is-private tsd-is-private-protected">
 				<h2>Constructors</h2>
-				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
+				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite tsd-is-private">
 					<a name="constructor" class="tsd-anchor"></a>
-					<h3>constructor</h3>
-					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> constructor</h3>
+					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite tsd-is-private">
 						<li class="tsd-signature tsd-kind-icon">new <wbr>Shard<wbr>Manager<span class="tsd-signature-symbol">(</span>token<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, options<span class="tsd-signature-symbol">?: </span><a href="../interfaces/ShardManagerOptions.html" class="tsd-signature-type" data-tsd-kind="Interface">ShardManagerOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="ShardManager.html" class="tsd-signature-type" data-tsd-kind="Class">ShardManager</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
@@ -123,9 +136,14 @@
 							<aside class="tsd-sources">
 								<p>Overrides EventEmitter&lt;ShardManagerEvents&gt;.constructor</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/5bdbdd8/src/WebSocket/ShardManager.ts#L34">WebSocket/ShardManager.ts:34</a></li>
+									<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/6355b9b/src/WebSocket/ShardManager.ts#L65">WebSocket/ShardManager.ts:65</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>🚧 <strong>You should never construct this class on your own!</strong></p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
@@ -142,49 +160,147 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+					<a name="_cache" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> <span class="tsd-flag ts-flagReadonly">Readonly</span> #cache</h3>
+					<div class="tsd-signature tsd-kind-icon">#cache<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">keyof </span><a href="../interfaces/ShardManagerEvents.html" class="tsd-signature-type" data-tsd-kind="Interface">ShardManagerEvents</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">EventListener</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/ShardManagerEvents.html" class="tsd-signature-type" data-tsd-kind="Interface">ShardManagerEvents</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = ...</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from EventEmitter.#cache</p>
+						<ul>
+							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/6355b9b/src/Util/EventEmitter.ts#L13">Util/EventEmitter.ts:13</a></li>
+						</ul>
+					</aside>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
 					<a name="_initialized" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> #initialized</h3>
 					<div class="tsd-signature tsd-kind-icon">#initialized<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = false</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/5bdbdd8/src/WebSocket/ShardManager.ts#L52">WebSocket/ShardManager.ts:52</a></li>
+							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/6355b9b/src/WebSocket/ShardManager.ts#L97">WebSocket/ShardManager.ts:97</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="_maxConcurrency" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> #max<wbr>Concurrency</h3>
+					<div class="tsd-signature tsd-kind-icon">#max<wbr>Concurrency<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 1</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/6355b9b/src/WebSocket/ShardManager.ts#L98">WebSocket/ShardManager.ts:98</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+					<a name="_maxListeners" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> <span class="tsd-flag ts-flagReadonly">Readonly</span> #max<wbr>Listeners</h3>
+					<div class="tsd-signature tsd-kind-icon">#max<wbr>Listeners<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from EventEmitter.#maxListeners</p>
+						<ul>
+							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/6355b9b/src/Util/EventEmitter.ts#L12">Util/EventEmitter.ts:12</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="coreOptions" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> <span class="tsd-flag ts-flagPrivate">Private</span> core<wbr>Options</h3>
+					<div class="tsd-signature tsd-kind-icon">core<wbr>Options<span class="tsd-signature-symbol">:</span> <a href="../interfaces/ShardManagerOptions.html" class="tsd-signature-type" data-tsd-kind="Interface">ShardManagerOptions</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/6355b9b/src/WebSocket/ShardManager.ts#L92">WebSocket/ShardManager.ts:92</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="shardOptions" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> shard<wbr>Options</h3>
-					<div class="tsd-signature tsd-kind-icon">shard<wbr>Options<span class="tsd-signature-symbol">:</span> <a href="../interfaces/ShardManagerOptions.html" class="tsd-signature-type" data-tsd-kind="Interface">ShardManagerOptions</a></div>
+					<a name="restHandler" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> rest<wbr>Handler</h3>
+					<div class="tsd-signature tsd-kind-icon">rest<wbr>Handler<span class="tsd-signature-symbol">:</span> <a href="RequestHandler.html" class="tsd-signature-type" data-tsd-kind="Class">RequestHandler</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/5bdbdd8/src/WebSocket/ShardManager.ts#L50">WebSocket/ShardManager.ts:50</a></li>
+							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/6355b9b/src/WebSocket/ShardManager.ts#L96">WebSocket/ShardManager.ts:96</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<dl class="tsd-comment-tags">
+							<dt>readonly</dt>
+							<dd></dd>
+						</dl>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="shards" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> shards</h3>
-					<div class="tsd-signature tsd-kind-icon">shards<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Shard</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = ...</span></div>
+					<div class="tsd-signature tsd-kind-icon">shards<span class="tsd-signature-symbol">:</span> <a href="Shard.html" class="tsd-signature-type" data-tsd-kind="Class">Shard</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = ...</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/5bdbdd8/src/WebSocket/ShardManager.ts#L51">WebSocket/ShardManager.ts:51</a></li>
+							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/6355b9b/src/WebSocket/ShardManager.ts#L94">WebSocket/ShardManager.ts:94</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<dl class="tsd-comment-tags">
+							<dt>readonly</dt>
+							<dd></dd>
+						</dl>
+					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
 					<a name="token" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> token</h3>
+					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> <span class="tsd-flag ts-flagPrivate">Private</span> token</h3>
 					<div class="tsd-signature tsd-kind-icon">token<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/5bdbdd8/src/WebSocket/ShardManager.ts#L49">WebSocket/ShardManager.ts:49</a></li>
+							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/6355b9b/src/WebSocket/ShardManager.ts#L90">WebSocket/ShardManager.ts:90</a></li>
 						</ul>
 					</aside>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+					<a name="_toJSON" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> #toJSON</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">#toJSON<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>events<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">keyof </span><a href="../interfaces/ShardManagerEvents.html" class="tsd-signature-type" data-tsd-kind="Interface">ShardManagerEvents</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>maxListeners<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> }</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from EventEmitter.#toJSON</p>
+								<ul>
+									<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/6355b9b/src/Util/EventEmitter.ts#L71">Util/EventEmitter.ts:71</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">{ </span>events<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">keyof </span><a href="../interfaces/ShardManagerEvents.html" class="tsd-signature-type" data-tsd-kind="Interface">ShardManagerEvents</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>maxListeners<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> }</span></h4>
+							<ul class="tsd-parameters">
+								<li class="tsd-parameter">
+									<h5>events<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">keyof </span><a href="../interfaces/ShardManagerEvents.html" class="tsd-signature-type" data-tsd-kind="Interface">ShardManagerEvents</a><span class="tsd-signature-symbol">[]</span></h5>
+								</li>
+								<li class="tsd-parameter">
+									<h5>max<wbr>Listeners<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+					<a name="_toString" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> #to<wbr>String</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">#to<wbr>String<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from EventEmitter.#toString</p>
+								<ul>
+									<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/6355b9b/src/Util/EventEmitter.ts#L67">Util/EventEmitter.ts:67</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 					<a name="emit" class="tsd-anchor"></a>
 					<h3>emit</h3>
@@ -196,7 +312,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from EventEmitter.emit</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/5bdbdd8/src/Util/EventEmitter.ts#L46">Util/EventEmitter.ts:46</a></li>
+									<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/6355b9b/src/Util/EventEmitter.ts#L46">Util/EventEmitter.ts:46</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -217,19 +333,24 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
 					<a name="init" class="tsd-anchor"></a>
-					<h3>init</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> init</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
 						<li class="tsd-signature tsd-kind-icon">init<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/5bdbdd8/src/WebSocket/ShardManager.ts#L54">WebSocket/ShardManager.ts:54</a></li>
+									<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/6355b9b/src/WebSocket/ShardManager.ts#L104">WebSocket/ShardManager.ts:104</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>🚧 <strong>You should never run this method on your own!</strong></p>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
@@ -245,7 +366,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from EventEmitter.off</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/5bdbdd8/src/Util/EventEmitter.ts#L28">Util/EventEmitter.ts:28</a></li>
+									<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/6355b9b/src/Util/EventEmitter.ts#L28">Util/EventEmitter.ts:28</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -285,7 +406,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from EventEmitter.on</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/5bdbdd8/src/Util/EventEmitter.ts#L15">Util/EventEmitter.ts:15</a></li>
+									<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/6355b9b/src/Util/EventEmitter.ts#L15">Util/EventEmitter.ts:15</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -318,7 +439,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from EventEmitter.once</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/5bdbdd8/src/Util/EventEmitter.ts#L19">Util/EventEmitter.ts:19</a></li>
+									<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/6355b9b/src/Util/EventEmitter.ts#L19">Util/EventEmitter.ts:19</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -352,30 +473,54 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-class">
+						<a href="RequestHandler.html" class="tsd-kind-icon">Request<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="Shard.html" class="tsd-kind-icon">Shard</a>
+					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-class">
 						<a href="ShardManager.html" class="tsd-kind-icon">Shard<wbr>Manager</a>
 						<ul>
-							<li class=" tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
+							<li class=" tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite tsd-is-private">
 								<a href="ShardManager.html#constructor" class="tsd-kind-icon">constructor</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+								<a href="ShardManager.html#_cache" class="tsd-kind-icon">#cache</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
 								<a href="ShardManager.html#_initialized" class="tsd-kind-icon">#initialized</a>
 							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="ShardManager.html#_maxConcurrency" class="tsd-kind-icon">#max<wbr>Concurrency</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+								<a href="ShardManager.html#_maxListeners" class="tsd-kind-icon">#max<wbr>Listeners</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="ShardManager.html#coreOptions" class="tsd-kind-icon">core<wbr>Options</a>
+							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="ShardManager.html#shardOptions" class="tsd-kind-icon">shard<wbr>Options</a>
+								<a href="ShardManager.html#restHandler" class="tsd-kind-icon">rest<wbr>Handler</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="ShardManager.html#shards" class="tsd-kind-icon">shards</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
 								<a href="ShardManager.html#token" class="tsd-kind-icon">token</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+								<a href="ShardManager.html#_toJSON" class="tsd-kind-icon">#toJSON</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+								<a href="ShardManager.html#_toString" class="tsd-kind-icon">#to<wbr>String</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 								<a href="ShardManager.html#emit" class="tsd-kind-icon">emit</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
 								<a href="ShardManager.html#init" class="tsd-kind-icon">init</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-inherited">
@@ -400,6 +545,9 @@
 					<li class=" tsd-kind-interface">
 						<a href="../interfaces/ShardManagerOptions.html" class="tsd-kind-icon">Shard<wbr>Manager<wbr>Options</a>
 					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="../modules.html#requestMethod" class="tsd-kind-icon">request<wbr>Method</a>
+					</li>
 				</ul>
 			</nav>
 		</div>
@@ -410,19 +558,19 @@
 		<h2>Legend</h2>
 		<div class="tsd-legend-group">
 			<ul class="tsd-legend">
-				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
-			</ul>
-			<ul class="tsd-legend">
 				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
 				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
 			</ul>
 			<ul class="tsd-legend">
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
 			</ul>
 		</div>
 	</div>

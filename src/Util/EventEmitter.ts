@@ -3,14 +3,14 @@ interface EventListener<T> {
     callback: T[keyof T]
 }
 
-/** Strictly typed Event Emitter for Deno, copied source from  https://github.com/Amatsagu/EventEmitter*/
+/** Strictly typed Event Emitter for Deno, copied source from  https://github.com/Amatsagu/EventEmitter */
 class EventEmitter<T> {
     constructor(maxListeners?: number) {
-        this.maxListeners = maxListeners ?? 5
+        this.#maxListeners = maxListeners ?? 5
     }
 
-    private readonly maxListeners
-    private readonly cache = new Map<keyof T, EventListener<T>[]>()
+    readonly #maxListeners
+    readonly #cache = new Map<keyof T, EventListener<T>[]>()
 
     public on<Event extends keyof T>(event: Event, callback: T[Event]) {
         this.push(event, { callback })
@@ -26,9 +26,9 @@ class EventEmitter<T> {
      * It gonna return boolean value depending on result.
      */
     public off<Event extends keyof T>(event: Event, callback?: T[Event]): boolean {
-        if (!callback) return this.cache.delete(event)
+        if (!callback) return this.#cache.delete(event)
 
-        let bucket = this.cache.get(event)
+        let bucket = this.#cache.get(event)
         if (!bucket) return false
 
         const listenerCount = bucket.length
@@ -36,7 +36,7 @@ class EventEmitter<T> {
 
         if (bucket.length === listenerCount) return false
         else {
-            this.cache.set(event, bucket)
+            this.#cache.set(event, bucket)
             return true
         }
     }
@@ -44,7 +44,7 @@ class EventEmitter<T> {
     /** Synchronously calls each of the registered listeners (callbacks) in order. */
     // deno-lint-ignore no-explicit-any
     public emit(event: keyof T, ...args: any) {
-        let bucket = this.cache.get(event)
+        let bucket = this.#cache.get(event)
         if (!bucket) return
 
         // deno-lint-ignore ban-types
@@ -53,28 +53,27 @@ class EventEmitter<T> {
         const listenerCount = bucket.length
         bucket = bucket.filter((item) => !item.once)
 
-        if (listenerCount !== bucket.length) this.cache.set(event, bucket)
+        if (listenerCount !== bucket.length) this.#cache.set(event, bucket)
     }
 
     private push(slot: keyof T, item: EventListener<T>) {
-        const bucket = this.cache.get(slot) ?? []
-        if (this.maxListeners && this.maxListeners > 0 && bucket.length >= this.maxListeners) throw new TypeError(`EventEmitter: You cannot assign more than ${this.maxListeners} to "${slot}" event. You can increase this limit by setting custom max limit in constructor.`)
+        const bucket = this.#cache.get(slot) ?? []
+        if (this.#maxListeners && this.#maxListeners > 0 && bucket.length >= this.#maxListeners) throw new TypeError(`EventEmitter: You cannot assign more than ${this.#maxListeners} to "${slot}" event. You can increase this limit by setting custom max limit in constructor.`)
 
         bucket.push(item)
-        this.cache.set(slot, bucket)
+        this.#cache.set(slot, bucket)
     }
 
-    private toString() {
+    #toString() {
         return '[EventEmitter]'
     }
 
-    private toJSON() {
+    #toJSON() {
         return {
-            events: [...this.cache.keys()],
-            maxListeners: this.maxListeners
+            events: [...this.#cache.keys()],
+            maxListeners: this.#maxListeners
         }
     }
 }
 
 export { EventEmitter }
-export type { EventListener }

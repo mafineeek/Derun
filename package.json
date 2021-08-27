@@ -19,10 +19,12 @@
   "license": "Apache-2.0",
   "private": true,
   "dependencies": {
+    "node-fetch": "^2.6.1",
     "ws": "^8.0.0"
   },
   "devDependencies": {
     "@types/node": "^16.4.13",
+    "@types/node-fetch": "^2.5.12",
     "@types/ws": "^7.4.7",
     "prettier": "^2.3.2",
     "typedoc": "^0.21.5",

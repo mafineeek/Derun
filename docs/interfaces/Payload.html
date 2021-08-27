@@ -65,6 +65,13 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>General schema for Discord Payloads. Your custom payloads needs to follow this schema.</p>
+					</div>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
@@ -97,9 +104,14 @@
 					<div class="tsd-signature tsd-kind-icon">d<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/5bdbdd8/src/WebSocket/Shard.ts#L9">WebSocket/Shard.ts:9</a></li>
+							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/6355b9b/src/WebSocket/Shard.ts#L11">WebSocket/Shard.ts:11</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>It may be a boolean, number or any mixed JSON structure.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="op" class="tsd-anchor"></a>
@@ -107,7 +119,7 @@
 					<div class="tsd-signature tsd-kind-icon">op<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/5bdbdd8/src/WebSocket/Shard.ts#L8">WebSocket/Shard.ts:8</a></li>
+							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/6355b9b/src/WebSocket/Shard.ts#L9">WebSocket/Shard.ts:9</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -117,7 +129,7 @@
 					<div class="tsd-signature tsd-kind-icon">s<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/5bdbdd8/src/WebSocket/Shard.ts#L10">WebSocket/Shard.ts:10</a></li>
+							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/6355b9b/src/WebSocket/Shard.ts#L12">WebSocket/Shard.ts:12</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -127,7 +139,7 @@
 					<div class="tsd-signature tsd-kind-icon">t<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/5bdbdd8/src/WebSocket/Shard.ts#L11">WebSocket/Shard.ts:11</a></li>
+							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/6355b9b/src/WebSocket/Shard.ts#L13">WebSocket/Shard.ts:13</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -143,6 +155,12 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-class">
+						<a href="../classes/RequestHandler.html" class="tsd-kind-icon">Request<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="../classes/Shard.html" class="tsd-kind-icon">Shard</a>
+					</li>
 					<li class=" tsd-kind-class">
 						<a href="../classes/ShardManager.html" class="tsd-kind-icon">Shard<wbr>Manager</a>
 					</li>
@@ -173,6 +191,9 @@
 					<li class=" tsd-kind-interface">
 						<a href="ShardManagerOptions.html" class="tsd-kind-icon">Shard<wbr>Manager<wbr>Options</a>
 					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="../modules.html#requestMethod" class="tsd-kind-icon">request<wbr>Method</a>
+					</li>
 				</ul>
 			</nav>
 		</div>
@@ -183,19 +204,19 @@
 		<h2>Legend</h2>
 		<div class="tsd-legend-group">
 			<ul class="tsd-legend">
-				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
-			</ul>
-			<ul class="tsd-legend">
 				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
 				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
 			</ul>
 			<ul class="tsd-legend">
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
 			</ul>
 		</div>
 	</div>

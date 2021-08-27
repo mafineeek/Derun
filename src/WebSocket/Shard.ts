@@ -4,33 +4,47 @@ import { GatewayError } from '../Errors/GatewayError'
 import { sleep } from '../functions'
 import { ShardManager } from './ShardManager'
 
+/** General schema for Discord Payloads. Your custom payloads needs to follow this schema. */
 export interface Payload {
     op: number
+    /** It may be a boolean, number or any mixed JSON structure. */
     d?: any
     s?: number
     t?: string
 }
 
-export interface HeartbeatOptions {
+interface HeartbeatOptions {
     interval?: number
     timer?: NodeJS.Timeout
     ack: boolean
     lastHeartbeat?: number
 }
 
+/** Fully automated class that creates connection with Discord Gateway and keeps it alive. */
 export class Shard {
+    /**
+     * 🚧 **You should never construct this class on your own!**
+     * @private
+     */
     constructor(manager: ShardManager, id: number) {
         this.#manager = manager
         this.id = id
         this.#resetWS(true, false)
     }
 
+    readonly #createdAt = Date.now()
     readonly #manager
     readonly id
-    ping?: number
+
+    /**
+     * Latency in milliseconds.
+     * @readonly
+     * */
+    ping!: number
+    /** @readonly */
     status: ShardStatus = ShardStatus.UNAVAILABLE
 
-    #ws?: WebSocket
+    #ws!: WebSocket
     #resetTimer?: NodeJS.Timeout
     #heartbeat: HeartbeatOptions = {
         interval: null,
@@ -41,6 +55,12 @@ export class Shard {
     #lastSequence?: number
     #sessionId?: string
 
+    /** Returns total shard uptime in milliseconds. */
+    get uptime() {
+        return Date.now() - this.#createdAt
+    }
+
+    /** Sends your payload into discord gateway. It will throw potential error. */
     public send(payload: Payload) {
         if (this.status < ShardStatus.HANDSHAKING) return
 
@@ -73,6 +93,7 @@ export class Shard {
             this.#heartbeat.interval = null
             this.#heartbeat.ack = false
             this.#heartbeat.lastHeartbeat = null
+            this.ping = -1
 
             if (!resume) {
                 this.#lastSequence = null
@@ -84,7 +105,7 @@ export class Shard {
 
             this.#resetTimer = setTimeout(() => {
                 throw new GatewayError({ shardId: this.id, code: ShardError.UNKNOWN, reason: `Connection timeout.` })
-            }, this.#manager.shardOptions.connectionTimeout)
+            }, this.#manager.coreOptions.connectionTimeout)
 
             try {
                 this.#ws = new WebSocket(Endpoint.GATEWAY)
@@ -185,9 +206,9 @@ export class Shard {
                         op: OPCode.IDENTIFY,
                         d: {
                             token: this.#manager.token,
-                            shard: [this.id, this.#manager.shardOptions.shardCount as number],
-                            intents: this.#manager.shardOptions.intents,
-                            large_threshold: this.#manager.shardOptions.largeThreshold,
+                            shard: [this.id, this.#manager.coreOptions.shardCount as number],
+                            intents: this.#manager.coreOptions.intents,
+                            large_threshold: this.#manager.coreOptions.largeThreshold,
                             properties: {
                                 $os: 'linux',
                                 $browser: 'derun',
@@ -197,7 +218,7 @@ export class Shard {
                     }
 
                     // This param is only used if you want to sync multiple shards.
-                    if (this.#manager.shardOptions.shardCount === 1) delete payload.d.shard
+                    if (this.#manager.coreOptions.shardCount === 1) delete payload.d.shard
 
                     this.send(payload)
                 }
@@ -231,6 +252,19 @@ export class Shard {
             }
             default:
                 this.#manager.emit('shardRawPayload', this.id, payload)
+        }
+    }
+
+    #toString() {
+        return `[Shard #${this.id}]`
+    }
+
+    #toJSON() {
+        return {
+            id: this.id,
+            status: this.status,
+            ping: this.ping,
+            uptime: this.uptime
         }
     }
 }
