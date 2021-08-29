@@ -2,23 +2,8 @@ import WebSocket from 'ws'
 import { Endpoint, OPCode, ShardError, ShardStatus } from '../constants'
 import { GatewayError } from '../Errors/GatewayError'
 import { sleep } from '../functions'
+import { HeartbeatOptions, Payload } from '../Typings/gateway'
 import { ShardManager } from './ShardManager'
-
-/** General schema for Discord Payloads. Your custom payloads needs to follow this schema. */
-export interface Payload {
-    op: number
-    /** It may be a boolean, number or any mixed JSON structure. */
-    d?: any
-    s?: number
-    t?: string
-}
-
-interface HeartbeatOptions {
-    interval?: number
-    timer?: NodeJS.Timeout
-    ack: boolean
-    lastHeartbeat?: number
-}
 
 /** Fully automated class that creates connection with Discord Gateway and keeps it alive. */
 export class Shard {
@@ -34,6 +19,7 @@ export class Shard {
 
     readonly #createdAt = Date.now()
     readonly #manager
+    /** @readonly */
     readonly id
 
     /**
@@ -67,7 +53,7 @@ export class Shard {
         try {
             this.#ws.send(JSON.stringify(payload))
         } catch {
-            throw new GatewayError({ shardId: this.id, code: ShardError.DECODE_ERROR, reason: 'Failed to stringify payload. It may hold invalid data.' })
+            throw new GatewayError(this.id, ShardError.DECODE_ERROR, 'Failed to stringify payload. It may hold invalid data')
         }
     }
 
@@ -104,13 +90,13 @@ export class Shard {
             else this.status = ShardStatus.CONNECTING
 
             this.#resetTimer = setTimeout(() => {
-                throw new GatewayError({ shardId: this.id, code: ShardError.UNKNOWN, reason: `Connection timeout.` })
+                throw new GatewayError(this.id, ShardError.UNKNOWN, 'Connection timeout')
             }, this.#manager.coreOptions.connectionTimeout)
 
             try {
                 this.#ws = new WebSocket(Endpoint.GATEWAY)
             } catch {
-                throw new GatewayError({ shardId: this.id, code: ShardError.INVALID_API_VERSION, reason: `Failed to open new connection to ${Endpoint.GATEWAY}.` })
+                throw new GatewayError(this.id, ShardError.INVALID_API_VERSION, `Failed to open new connection to ${Endpoint.GATEWAY}`)
             }
 
             this.#ws.onopen = () => {
@@ -134,7 +120,7 @@ export class Shard {
                     case ShardError.INVALID_INTENT:
                     case ShardError.DISSALLOWED_INTENT: {
                         this.#resetWS(false, false)
-                        throw new GatewayError({ shardId: this.id, code: event.code, reason: event.reason })
+                        throw new GatewayError(this.id, event.code, event.reason)
                     }
                     default: {
                         let resumable = true

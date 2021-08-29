@@ -1,19 +1,19 @@
 {
-  "name": "chainer",
+  "name": "derun",
   "version": "0.1.0",
   "description": "",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "engines": {
-    "node": "^15.x",
+    "node": "^14.x",
     "npm": "^7.x"
   },
   "scripts": {
     "lint": "npx prettier --write src",
-    "build": "tsc",
+    "build": "npm run lint && tsc && npm run build:docs",
+    "build:docs": "typedoc src/index.ts",
     "prepare": "npm run build",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "typedoc": "typedoc src/index.ts"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Amatsagu <krzysztof.rapior@protonmail.com>",
   "license": "Apache-2.0",

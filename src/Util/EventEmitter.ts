@@ -1,16 +1,13 @@
-interface EventListener<T> {
-    once?: boolean
-    callback: T[keyof T]
-}
+import { EventListenerOptions } from '../Typings/options'
 
 /** Strictly typed Event Emitter for Deno, copied source from  https://github.com/Amatsagu/EventEmitter */
-class EventEmitter<T> {
+export class EventEmitter<T> {
     constructor(maxListeners?: number) {
         this.#maxListeners = maxListeners ?? 5
     }
 
     readonly #maxListeners
-    readonly #cache = new Map<keyof T, EventListener<T>[]>()
+    readonly #cache = new Map<keyof T, EventListenerOptions<T>[]>()
 
     public on<Event extends keyof T>(event: Event, callback: T[Event]) {
         this.push(event, { callback })
@@ -56,9 +53,15 @@ class EventEmitter<T> {
         if (listenerCount !== bucket.length) this.#cache.set(event, bucket)
     }
 
-    private push(slot: keyof T, item: EventListener<T>) {
+    private push(slot: keyof T, item: EventListenerOptions<T>) {
         const bucket = this.#cache.get(slot) ?? []
-        if (this.#maxListeners && this.#maxListeners > 0 && bucket.length >= this.#maxListeners) throw new TypeError(`EventEmitter: You cannot assign more than ${this.#maxListeners} to "${slot}" event. You can increase this limit by setting custom max limit in constructor.`)
+        if (this.#maxListeners && this.#maxListeners > 0 && bucket.length >= this.#maxListeners) {
+            const error = new TypeError()
+            error.name = 'EventEmitterError'
+            error.message = `You cannot assign more than ${this.#maxListeners} listeners to "${slot}" event. You can increase this limit by setting custom max limit in constructor.`
+
+            throw error
+        }
 
         bucket.push(item)
         this.#cache.set(slot, bucket)
@@ -75,5 +78,3 @@ class EventEmitter<T> {
         }
     }
 }
-
-export { EventEmitter }

@@ -1,22 +1,8 @@
-import { ShardManager } from '../WebSocket/ShardManager'
 import fetch, { RequestInit } from 'node-fetch'
 import { Endpoint } from '../constants'
 import { sleep } from '../functions'
-
-interface GlobalRateLimits {
-    perSecond: number
-    perSecondLastUpdate: number
-    per10Minutes: number
-    per10MinutesLastUpdate: number
-}
-
-interface RateLimitBucket {
-    remaining: number
-    total: number
-    resetAt: number
-}
-
-export type requestMethod = 'GET' | 'POST' | 'DELETE' | 'PUT'
+import { GlobalRateLimits, RateLimitBucket, RequestMethod } from '../Typings/rest'
+import { ShardManager } from '../WebSocket/ShardManager'
 
 /** Fully automated class to deal with rest calls. It makes HTTP requests to Discord API as easy as possible. Automatically handling global & local rate limits. */
 export class RequestHandler {
@@ -48,7 +34,7 @@ export class RequestHandler {
      * const [result, error] = await restHandler.request('GET', '/gateway/bot', true)
      * ```
      */
-    public async request(method: requestMethod, route: string, requireAuthentication: boolean, content?: Object): Promise<[any, any]> {
+    public async request(method: RequestMethod, route: string, requireAuthentication: boolean, content?: Object): Promise<[any, any]> {
         return new Promise(async (resolve) => {
             const options: RequestInit = {
                 method: method,
@@ -69,7 +55,7 @@ export class RequestHandler {
             let cdr = 0
 
             if (bucket) {
-                if (bucket.remaining === 0) cdr = bucket.resetAt - Date.now()
+                if (bucket.remaining === 0) cdr = bucket.resetAt - Date.now() + this.#manager.coreOptions.restTimeOffset
                 else bucket.remaining--
             }
 
@@ -111,7 +97,7 @@ export class RequestHandler {
             if (this.#globalRateLimits.perSecond <= 0) {
                 let remaining = this.#globalRateLimits.perSecondLastUpdate + 1000 - now
 
-                if (remaining > 0) await sleep(remaining)
+                if (remaining > 0) await sleep(remaining + this.#manager.coreOptions.restTimeOffset)
                 else remaining = 0
 
                 this.#globalRateLimits.perSecond = 50
@@ -121,7 +107,7 @@ export class RequestHandler {
             if (this.#globalRateLimits.per10Minutes <= 0) {
                 let remaining = this.#globalRateLimits.per10MinutesLastUpdate + 600000 - now
 
-                if (remaining > 0) await sleep(remaining)
+                if (remaining > 0) await sleep(remaining + this.#manager.coreOptions.restTimeOffset)
                 else remaining = 0
 
                 this.#globalRateLimits.per10Minutes = 10000

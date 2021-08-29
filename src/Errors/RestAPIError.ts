@@ -1,6 +1,6 @@
-export class GatewayError extends Error {
-    constructor(shardId: number, code: string | number, reason: string) {
-        super(`[Shard ${shardId}] [${code ?? 4000}] ${reason}${reason.endsWith('.') ? '' : '.'}`)
+export class RestAPIError extends Error {
+    constructor(code: number | string, reason: string) {
+        super(`[${code ?? 0}] ${reason}${reason.endsWith('.') ? '' : '.'}`)
         this.name = this.constructor.name
         // Error.captureStackTrace(this, this.constructor)
     }
