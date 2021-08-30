@@ -1,3 +1,7 @@
+import { Intent } from '../BitFields/Intent'
+
+export type BitFieldResolvable = number | bigint | string | string[]
+
 export interface ShardManagerOptions {
     /**
      * Total number of shards you want to launch. Set to "auto" to let Derun lib fetch it automatically.
@@ -9,7 +13,7 @@ export interface ShardManagerOptions {
      * Head to [this handy calculator](https://ziad87.net/intents/) and select events you are interested in.
      * @default 1
      */
-    intents: number
+    intents: number | (keyof typeof Intent.FLAGS)[]
     /**
      * How long *(in milliseconds)* Shard should wait for establishing connection with Discord Gateway. It will throw GatewayError on timeout.
      * @default 30000

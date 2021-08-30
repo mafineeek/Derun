@@ -6,7 +6,7 @@ import centra from 'centra'
 
 /** Fully automated class to deal with rest calls. It makes HTTP requests to Discord API as easy as possible. Automatically handling global & local rate limits. */
 export class RequestHandler {
-    /** @hideconstructor @hidden */
+    /** @hideconstructor @hidden @private */
     constructor(manager: ShardManager) {
         this.#manager = manager
         this.#clean()

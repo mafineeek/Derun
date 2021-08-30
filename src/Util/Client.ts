@@ -13,7 +13,7 @@ export class Client extends ShardManager {
     readonly #commands = new Collection<SlashCommand>()
     readonly #nameRegex = /^[\w-]{1,32}$/
 
-    registerCommand(cmd: SlashCommand) {
+    addCommand(cmd: SlashCommand) {
         if (this.#commands.size >= 100) throw new Error("You cannot register more than 100 slash commands. You've reached Discord's limit.")
 
         if (!cmd.name || typeof cmd.name !== 'string' || !this.#nameRegex.test(cmd.name)) throw new TypeError('Command name needs to be a lowercase string, no longer than 32 characters. It also cannot use any special characters neither spaces.')
@@ -87,5 +87,10 @@ export class Client extends ShardManager {
             else if (data.message && data.code) throw new RestAPIError(data.code, data.message)
             else resolve(data.id)
         })
+    }
+
+    async connect() {
+        // Will do more later
+        await this.launch()
     }
 }

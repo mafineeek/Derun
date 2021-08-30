@@ -7,7 +7,7 @@ import { ShardManager } from './ShardManager'
 
 /** Fully automated class that creates connection with Discord Gateway and keeps it alive. */
 export class Shard {
-    /** @hideconstructor @hidden */
+    /** @hideconstructor @hidden @private */
     constructor(manager: ShardManager, id: number) {
         this.#manager = manager
         this.#expose = manager.coreOptions.emitRawPayloads
@@ -227,6 +227,8 @@ export class Shard {
                 this.status = ShardStatus.CONNECTED
                 this.#manager.emit('shardResumed', this.id)
                 break
+            }
+            case 'INTERACTION_CREATE': {
             }
         }
     }

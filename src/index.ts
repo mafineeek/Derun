@@ -3,6 +3,8 @@ export * from './Util/Client'
 export * from './Util/RequestHandler'
 export * from './WebSocket/Shard'
 export * from './Util/Collection'
+export * from './BitFields/Intent'
+export * from './BitFields/Permission'
 
 // All mentioned to be visible Interfaces & Types
 export * from './Typings/events'

@@ -1,22 +1,26 @@
+import { Intent } from '../BitFields/Intent'
 import { RestAPIError } from '../Errors/RestAPIError'
 import { sleep } from '../functions'
 import { ClientEvents } from '../Typings/events'
 import { ClientOptions } from '../Typings/options'
+import { Collection } from '../Util/Collection'
 import { EventEmitter } from '../Util/EventEmitter'
 import { RequestHandler } from '../Util/RequestHandler'
 import { Shard } from './Shard'
 
 /** Utility class that can hold a bunch of {@link Shard shards}. This core class connects all the caching, rest and gateway elements. */
 export class ShardManager extends EventEmitter<ClientEvents> {
-    /** @hideconstructor */
-    constructor(token: string, options: ClientOptions = { shardCount: 'auto', intents: 1, connectionTimeout: 30000, largeThreshold: 50, requestTimeout: 15000, requestCleanInterval: 300000, restTimeOffset: 750, emitRawPayloads: false }) {
+    /** @hideconstructor @hidden @private */
+    constructor(token: string, options: ClientOptions = { shardCount: 'auto', intents: ['GUILDS'], connectionTimeout: 30000, largeThreshold: 50, requestTimeout: 15000, requestCleanInterval: 300000, restTimeOffset: 750, emitRawPayloads: false }) {
         super()
 
         if (!options.shardCount) options.shardCount = 'auto'
         else if (options.shardCount < 1) options.shardCount = 1
 
-        if (!options.intents) options.intents = 1
+        if (!options.intents) options.intents = ['GUILDS']
         if (!options.connectionTimeout) options.connectionTimeout = 30000
+
+        options.intents = new Intent(options.intents).valueOf()
 
         if (!options.largeThreshold) options.largeThreshold = 50
         else if (options.largeThreshold > 250) options.largeThreshold = 250
@@ -38,15 +42,15 @@ export class ShardManager extends EventEmitter<ClientEvents> {
         this.restHandler = new RequestHandler(this)
     }
 
-    /** @hidden @protected */
+    /** @hidden @private */
     readonly token
     /**
      * Objects with all options used to control ShardManager & RestHandler.
-     * @hidden @protected
+     * @hidden @private
      */
     readonly coreOptions
-    protected readonly restHandler
-    readonly shards = new Array<Shard>()
+    readonly restHandler
+    readonly shards = new Collection<Shard>()
     #initialized = false
     #maxConcurrency = 1 // It will be used later if Derun will ever support big sharding (for bots with over 150k guilds).
 
@@ -67,7 +71,7 @@ export class ShardManager extends EventEmitter<ClientEvents> {
 
             const createShard = async (id: number): Promise<void> => {
                 return new Promise(async (resolve) => {
-                    this.shards[id] = new Shard(this, id)
+                    this.shards.set(id.toString(), new Shard(this, id))
 
                     this.once('shardReady', async (shardId) => {
                         if (shardId === id) {

@@ -58,6 +58,25 @@
 	<div class="row">
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
+				<p>Usage example:</p>
+				<pre><code class="language-ts"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">Client</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;derun&#039;</span>
+
+<span style="color: #008000">// Showing all the options (+ their default values)</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">client</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">Client</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;&lt;BOT TOKEN&gt;&#039;</span><span style="color: #000000">, {</span>
+<span style="color: #000000">    </span><span style="color: #001080">shardCount:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;auto&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">    </span><span style="color: #001080">intents:</span><span style="color: #000000"> [</span><span style="color: #A31515">&#039;GUILDS&#039;</span><span style="color: #000000">],</span>
+<span style="color: #000000">    </span><span style="color: #001080">connectionTimeout:</span><span style="color: #000000"> </span><span style="color: #098658">30000</span><span style="color: #000000">,</span>
+<span style="color: #000000">    </span><span style="color: #001080">largeThreshold:</span><span style="color: #000000"> </span><span style="color: #098658">50</span><span style="color: #000000">,</span>
+<span style="color: #000000">    </span><span style="color: #001080">requestTimeout:</span><span style="color: #000000"> </span><span style="color: #098658">15000</span><span style="color: #000000">,</span>
+<span style="color: #000000">    </span><span style="color: #001080">requestCleanInterval:</span><span style="color: #000000"> </span><span style="color: #098658">300000</span><span style="color: #000000">, </span><span style="color: #008000">// 5m</span>
+<span style="color: #000000">    </span><span style="color: #001080">restTimeOffset:</span><span style="color: #000000"> </span><span style="color: #098658">750</span><span style="color: #000000">,</span>
+<span style="color: #000000">    </span><span style="color: #001080">emitRawPayloads:</span><span style="color: #000000"> </span><span style="color: #0000FF">false</span>
+<span style="color: #000000">})</span>
+
+<span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">once</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;ready&#039;</span><span style="color: #000000">, () </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">info</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;Successfully logged! Bot is ready.&#039;</span><span style="color: #000000">))</span>
+
+<span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">connect</span><span style="color: #000000">()</span>
+</code></pre>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
@@ -87,6 +106,12 @@
 					</li>
 					<li class=" tsd-kind-class tsd-has-type-parameter">
 						<a href="classes/Collection.html" class="tsd-kind-icon">Collection</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/Intent.html" class="tsd-kind-icon">Intent</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/Permission.html" class="tsd-kind-icon">Permission</a>
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="classes/RequestHandler.html" class="tsd-kind-icon">Request<wbr>Handler</a>
@@ -157,16 +182,20 @@
 				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
 			</ul>
 			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
-			</ul>
-			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
 				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
 				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
 			</ul>
 			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
 				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
 				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
 			</ul>
 		</div>
 	</div>
