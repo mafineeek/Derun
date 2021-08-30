@@ -1,4 +1,4 @@
-export interface ClientOptions {
+export interface ShardManagerOptions {
     /**
      * Total number of shards you want to launch. Set to "auto" to let Derun lib fetch it automatically.
      * @default 'auto'
@@ -38,7 +38,15 @@ export interface ClientOptions {
      * @default 750
      */
     restTimeOffset: number
+
+    /**
+     * Whether to force Shards to emit event **shardRawPayload** or not. Recommended to leave it as `false` until you require it to extend client functionality.
+     * @default false
+     */
+    emitRawPayloads: boolean
 }
+
+export interface ClientOptions extends ShardManagerOptions {}
 
 export interface ErrorOptionsBase {
     code?: number

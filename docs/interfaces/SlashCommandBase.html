@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>EventListenerOptions | Derun</title>
+	<title>SlashCommandBase | Derun</title>
 	<meta name="description" content="Documentation for Derun">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -55,29 +55,26 @@
 					<a href="../modules.html">Derun</a>
 				</li>
 				<li>
-					<a href="EventListenerOptions.html">EventListenerOptions</a>
+					<a href="SlashCommandBase.html">SlashCommandBase</a>
 				</li>
 			</ul>
-			<h1>Interface EventListenerOptions&lt;T&gt;</h1>
+			<h1>Interface SlashCommandBase</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<section class="tsd-panel tsd-type-parameters">
-				<h3>Type parameters</h3>
-				<ul class="tsd-type-parameters">
-					<li>
-						<h4>T</h4>
-					</li>
-				</ul>
-			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">EventListenerOptions</span>
+						<span class="target">SlashCommandBase</span>
+						<ul class="tsd-hierarchy">
+							<li>
+								<a href="SlashCommand.html" class="tsd-signature-type" data-tsd-kind="Interface">SlashCommand</a>
+							</li>
+						</ul>
 					</li>
 				</ul>
 			</section>
@@ -88,8 +85,11 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="EventListenerOptions.html#callback" class="tsd-kind-icon">callback</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="EventListenerOptions.html#once" class="tsd-kind-icon">once</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="SlashCommandBase.html#default_permission" class="tsd-kind-icon">default_<wbr>permission</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="SlashCommandBase.html#description" class="tsd-kind-icon">description</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="SlashCommandBase.html#name" class="tsd-kind-icon">name</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="SlashCommandBase.html#options" class="tsd-kind-icon">options</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="SlashCommandBase.html#type" class="tsd-kind-icon">type</a></li>
 							</ul>
 						</section>
 					</div>
@@ -98,22 +98,52 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="callback" class="tsd-anchor"></a>
-					<h3>callback</h3>
-					<div class="tsd-signature tsd-kind-icon">callback<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-symbol">keyof </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">]</span></div>
+					<a name="default_permission" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> default_<wbr>permission</h3>
+					<div class="tsd-signature tsd-kind-icon">default_<wbr>permission<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in Typings/options.ts:54</li>
+							<li>Defined in src/Typings/command.ts:21</li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="once" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> once</h3>
-					<div class="tsd-signature tsd-kind-icon">once<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<a name="description" class="tsd-anchor"></a>
+					<h3>description</h3>
+					<div class="tsd-signature tsd-kind-icon">description<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in Typings/options.ts:53</li>
+							<li>Defined in src/Typings/command.ts:19</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="name" class="tsd-anchor"></a>
+					<h3>name</h3>
+					<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/Typings/command.ts:18</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="options" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> options</h3>
+					<div class="tsd-signature tsd-kind-icon">options<span class="tsd-signature-symbol">:</span> <a href="SlashCommandOptions.html" class="tsd-signature-type" data-tsd-kind="Interface">SlashCommandOptions</a><span class="tsd-signature-symbol">[]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/Typings/command.ts:20</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="type" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> type</h3>
+					<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <a href="../enums/SlashCommandType.html" class="tsd-signature-type" data-tsd-kind="Enumeration">SlashCommandType</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/Typings/command.ts:22</li>
 						</ul>
 					</aside>
 				</section>
@@ -129,11 +159,23 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-enum">
+						<a href="../enums/ComponentTypes.html" class="tsd-kind-icon">Component<wbr>Types</a>
+					</li>
+					<li class=" tsd-kind-enum">
+						<a href="../enums/ShardError.html" class="tsd-kind-icon">Shard<wbr>Error</a>
+					</li>
+					<li class=" tsd-kind-enum">
+						<a href="../enums/ShardStatus.html" class="tsd-kind-icon">Shard<wbr>Status</a>
+					</li>
+					<li class=" tsd-kind-enum">
+						<a href="../enums/SlashCommandType.html" class="tsd-kind-icon">Slash<wbr>Command<wbr>Type</a>
+					</li>
 					<li class=" tsd-kind-class">
 						<a href="../classes/Client.html" class="tsd-kind-icon">Client</a>
 					</li>
-					<li class=" tsd-kind-class">
-						<a href="../classes/Message.html" class="tsd-kind-icon">Message</a>
+					<li class=" tsd-kind-class tsd-has-type-parameter">
+						<a href="../classes/Collection.html" class="tsd-kind-icon">Collection</a>
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="../classes/RequestHandler.html" class="tsd-kind-icon">Request<wbr>Handler</a>
@@ -145,7 +187,7 @@
 						<a href="AdvancedMessageContent.html" class="tsd-kind-icon">Advanced<wbr>Message<wbr>Content</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="AllowedMentionsOptions.html" class="tsd-kind-icon">Allowed<wbr>Mentions<wbr>Options</a>
+						<a href="AllowedMentions.html" class="tsd-kind-icon">Allowed<wbr>Mentions</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="ClientEvents.html" class="tsd-kind-icon">Client<wbr>Events</a>
@@ -154,37 +196,55 @@
 						<a href="ClientOptions.html" class="tsd-kind-icon">Client<wbr>Options</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="EmbedFieldOptions.html" class="tsd-kind-icon">Embed<wbr>Field<wbr>Options</a>
+						<a href="Embed.html" class="tsd-kind-icon">Embed</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="EmbedOptions.html" class="tsd-kind-icon">Embed<wbr>Options</a>
+						<a href="EmbedField.html" class="tsd-kind-icon">Embed<wbr>Field</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="ErrorOptionsBase.html" class="tsd-kind-icon">Error<wbr>Options<wbr>Base</a>
+						<a href="MessageReferenceReply.html" class="tsd-kind-icon">Message<wbr>Reference<wbr>Reply</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="PartialUser.html" class="tsd-kind-icon">Partial<wbr>User</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="Payload.html" class="tsd-kind-icon">Payload</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="SlashCommand.html" class="tsd-kind-icon">Slash<wbr>Command</a>
 					</li>
 				</ul>
 				<ul class="current">
-					<li class="current tsd-kind-interface tsd-has-type-parameter">
-						<a href="EventListenerOptions.html" class="tsd-kind-icon">Event<wbr>Listener<wbr>Options</a>
+					<li class="current tsd-kind-interface">
+						<a href="SlashCommandBase.html" class="tsd-kind-icon">Slash<wbr>Command<wbr>Base</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="EventListenerOptions.html#callback" class="tsd-kind-icon">callback</a>
+								<a href="SlashCommandBase.html#default_permission" class="tsd-kind-icon">default_<wbr>permission</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="EventListenerOptions.html#once" class="tsd-kind-icon">once</a>
+								<a href="SlashCommandBase.html#description" class="tsd-kind-icon">description</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="SlashCommandBase.html#name" class="tsd-kind-icon">name</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="SlashCommandBase.html#options" class="tsd-kind-icon">options</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="SlashCommandBase.html#type" class="tsd-kind-icon">type</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
 					<li class=" tsd-kind-interface">
-						<a href="GatewayErrorOptions.html" class="tsd-kind-icon">Gateway<wbr>Error<wbr>Options</a>
+						<a href="SlashCommandChoices.html" class="tsd-kind-icon">Slash<wbr>Command<wbr>Choices</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="MessageReferenceReply.html" class="tsd-kind-icon">Message<wbr>Reference<wbr>Reply</a>
+						<a href="SlashCommandOptions.html" class="tsd-kind-icon">Slash<wbr>Command<wbr>Options</a>
 					</li>
-					<li class=" tsd-kind-interface">
-						<a href="Payload.html" class="tsd-kind-icon">Payload</a>
+					<li class=" tsd-kind-type-alias">
+						<a href="../modules.html#ActionRowComponents" class="tsd-kind-icon">Action<wbr>Row<wbr>Components</a>
 					</li>
 					<li class=" tsd-kind-type-alias">
 						<a href="../modules.html#MessageContent" class="tsd-kind-icon">Message<wbr>Content</a>

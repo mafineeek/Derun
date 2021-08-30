@@ -69,7 +69,12 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">ClientOptions</span>
+						<span class="tsd-signature-type">ShardManagerOptions</span>
+						<ul class="tsd-hierarchy">
+							<li>
+								<span class="target">ClientOptions</span>
+							</li>
+						</ul>
 					</li>
 				</ul>
 			</section>
@@ -77,30 +82,32 @@
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
-						<section class="tsd-index-section ">
+						<section class="tsd-index-section tsd-is-inherited">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="ClientOptions.html#connectionTimeout" class="tsd-kind-icon">connection<wbr>Timeout</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="ClientOptions.html#intents" class="tsd-kind-icon">intents</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="ClientOptions.html#largeThreshold" class="tsd-kind-icon">large<wbr>Threshold</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="ClientOptions.html#requestCleanInterval" class="tsd-kind-icon">request<wbr>Clean<wbr>Interval</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="ClientOptions.html#requestTimeout" class="tsd-kind-icon">request<wbr>Timeout</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="ClientOptions.html#restTimeOffset" class="tsd-kind-icon">rest<wbr>Time<wbr>Offset</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="ClientOptions.html#shardCount" class="tsd-kind-icon">shard<wbr>Count</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="ClientOptions.html#connectionTimeout" class="tsd-kind-icon">connection<wbr>Timeout</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="ClientOptions.html#emitRawPayloads" class="tsd-kind-icon">emit<wbr>Raw<wbr>Payloads</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="ClientOptions.html#intents" class="tsd-kind-icon">intents</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="ClientOptions.html#largeThreshold" class="tsd-kind-icon">large<wbr>Threshold</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="ClientOptions.html#requestCleanInterval" class="tsd-kind-icon">request<wbr>Clean<wbr>Interval</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="ClientOptions.html#requestTimeout" class="tsd-kind-icon">request<wbr>Timeout</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="ClientOptions.html#restTimeOffset" class="tsd-kind-icon">rest<wbr>Time<wbr>Offset</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="ClientOptions.html#shardCount" class="tsd-kind-icon">shard<wbr>Count</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group ">
+			<section class="tsd-panel-group tsd-member-group tsd-is-inherited">
 				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="connectionTimeout" class="tsd-anchor"></a>
 					<h3>connection<wbr>Timeout</h3>
 					<div class="tsd-signature tsd-kind-icon">connection<wbr>Timeout<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
+						<p>Inherited from ShardManagerOptions.connectionTimeout</p>
 						<ul>
-							<li>Defined in Typings/options.ts:17</li>
+							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/3aa5024/src/Typings/options.ts#L17">src/Typings/options.ts:17</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -114,13 +121,35 @@
 						</dl>
 					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="emitRawPayloads" class="tsd-anchor"></a>
+					<h3>emit<wbr>Raw<wbr>Payloads</h3>
+					<div class="tsd-signature tsd-kind-icon">emit<wbr>Raw<wbr>Payloads<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from ShardManagerOptions.emitRawPayloads</p>
+						<ul>
+							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/3aa5024/src/Typings/options.ts#L46">src/Typings/options.ts:46</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Whether to force Shards to emit event <strong>shardRawPayload</strong> or not. Recommended to leave it as <code>false</code> until you require it to extend client functionality.</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>default</dt>
+							<dd><p>false</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="intents" class="tsd-anchor"></a>
 					<h3>intents</h3>
 					<div class="tsd-signature tsd-kind-icon">intents<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
+						<p>Inherited from ShardManagerOptions.intents</p>
 						<ul>
-							<li>Defined in Typings/options.ts:12</li>
+							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/3aa5024/src/Typings/options.ts#L12">src/Typings/options.ts:12</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -135,13 +164,14 @@
 						</dl>
 					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="largeThreshold" class="tsd-anchor"></a>
 					<h3>large<wbr>Threshold</h3>
 					<div class="tsd-signature tsd-kind-icon">large<wbr>Threshold<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
+						<p>Inherited from ShardManagerOptions.largeThreshold</p>
 						<ul>
-							<li>Defined in Typings/options.ts:22</li>
+							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/3aa5024/src/Typings/options.ts#L22">src/Typings/options.ts:22</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -155,13 +185,14 @@
 						</dl>
 					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="requestCleanInterval" class="tsd-anchor"></a>
 					<h3>request<wbr>Clean<wbr>Interval</h3>
 					<div class="tsd-signature tsd-kind-icon">request<wbr>Clean<wbr>Interval<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
+						<p>Inherited from ShardManagerOptions.requestCleanInterval</p>
 						<ul>
-							<li>Defined in Typings/options.ts:34</li>
+							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/3aa5024/src/Typings/options.ts#L34">src/Typings/options.ts:34</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -175,13 +206,14 @@
 						</dl>
 					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="requestTimeout" class="tsd-anchor"></a>
 					<h3>request<wbr>Timeout</h3>
 					<div class="tsd-signature tsd-kind-icon">request<wbr>Timeout<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
+						<p>Inherited from ShardManagerOptions.requestTimeout</p>
 						<ul>
-							<li>Defined in Typings/options.ts:28</li>
+							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/3aa5024/src/Typings/options.ts#L28">src/Typings/options.ts:28</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -195,13 +227,14 @@
 						</dl>
 					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="restTimeOffset" class="tsd-anchor"></a>
 					<h3>rest<wbr>Time<wbr>Offset</h3>
 					<div class="tsd-signature tsd-kind-icon">rest<wbr>Time<wbr>Offset<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
+						<p>Inherited from ShardManagerOptions.restTimeOffset</p>
 						<ul>
-							<li>Defined in Typings/options.ts:40</li>
+							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/3aa5024/src/Typings/options.ts#L40">src/Typings/options.ts:40</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -215,13 +248,14 @@
 						</dl>
 					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="shardCount" class="tsd-anchor"></a>
 					<h3>shard<wbr>Count</h3>
 					<div class="tsd-signature tsd-kind-icon">shard<wbr>Count<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;auto&quot;</span></div>
 					<aside class="tsd-sources">
+						<p>Inherited from ShardManagerOptions.shardCount</p>
 						<ul>
-							<li>Defined in Typings/options.ts:6</li>
+							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/3aa5024/src/Typings/options.ts#L6">src/Typings/options.ts:6</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -247,11 +281,23 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-enum">
+						<a href="../enums/ComponentTypes.html" class="tsd-kind-icon">Component<wbr>Types</a>
+					</li>
+					<li class=" tsd-kind-enum">
+						<a href="../enums/ShardError.html" class="tsd-kind-icon">Shard<wbr>Error</a>
+					</li>
+					<li class=" tsd-kind-enum">
+						<a href="../enums/ShardStatus.html" class="tsd-kind-icon">Shard<wbr>Status</a>
+					</li>
+					<li class=" tsd-kind-enum">
+						<a href="../enums/SlashCommandType.html" class="tsd-kind-icon">Slash<wbr>Command<wbr>Type</a>
+					</li>
 					<li class=" tsd-kind-class">
 						<a href="../classes/Client.html" class="tsd-kind-icon">Client</a>
 					</li>
-					<li class=" tsd-kind-class">
-						<a href="../classes/Message.html" class="tsd-kind-icon">Message</a>
+					<li class=" tsd-kind-class tsd-has-type-parameter">
+						<a href="../classes/Collection.html" class="tsd-kind-icon">Collection</a>
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="../classes/RequestHandler.html" class="tsd-kind-icon">Request<wbr>Handler</a>
@@ -263,7 +309,7 @@
 						<a href="AdvancedMessageContent.html" class="tsd-kind-icon">Advanced<wbr>Message<wbr>Content</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="AllowedMentionsOptions.html" class="tsd-kind-icon">Allowed<wbr>Mentions<wbr>Options</a>
+						<a href="AllowedMentions.html" class="tsd-kind-icon">Allowed<wbr>Mentions</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="ClientEvents.html" class="tsd-kind-icon">Client<wbr>Events</a>
@@ -273,25 +319,28 @@
 					<li class="current tsd-kind-interface">
 						<a href="ClientOptions.html" class="tsd-kind-icon">Client<wbr>Options</a>
 						<ul>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 								<a href="ClientOptions.html#connectionTimeout" class="tsd-kind-icon">connection<wbr>Timeout</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="ClientOptions.html#emitRawPayloads" class="tsd-kind-icon">emit<wbr>Raw<wbr>Payloads</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 								<a href="ClientOptions.html#intents" class="tsd-kind-icon">intents</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 								<a href="ClientOptions.html#largeThreshold" class="tsd-kind-icon">large<wbr>Threshold</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 								<a href="ClientOptions.html#requestCleanInterval" class="tsd-kind-icon">request<wbr>Clean<wbr>Interval</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 								<a href="ClientOptions.html#requestTimeout" class="tsd-kind-icon">request<wbr>Timeout</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 								<a href="ClientOptions.html#restTimeOffset" class="tsd-kind-icon">rest<wbr>Time<wbr>Offset</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 								<a href="ClientOptions.html#shardCount" class="tsd-kind-icon">shard<wbr>Count</a>
 							</li>
 						</ul>
@@ -299,25 +348,34 @@
 				</ul>
 				<ul class="after-current">
 					<li class=" tsd-kind-interface">
-						<a href="EmbedFieldOptions.html" class="tsd-kind-icon">Embed<wbr>Field<wbr>Options</a>
+						<a href="Embed.html" class="tsd-kind-icon">Embed</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="EmbedOptions.html" class="tsd-kind-icon">Embed<wbr>Options</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="ErrorOptionsBase.html" class="tsd-kind-icon">Error<wbr>Options<wbr>Base</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-has-type-parameter">
-						<a href="EventListenerOptions.html" class="tsd-kind-icon">Event<wbr>Listener<wbr>Options</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="GatewayErrorOptions.html" class="tsd-kind-icon">Gateway<wbr>Error<wbr>Options</a>
+						<a href="EmbedField.html" class="tsd-kind-icon">Embed<wbr>Field</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="MessageReferenceReply.html" class="tsd-kind-icon">Message<wbr>Reference<wbr>Reply</a>
 					</li>
 					<li class=" tsd-kind-interface">
+						<a href="PartialUser.html" class="tsd-kind-icon">Partial<wbr>User</a>
+					</li>
+					<li class=" tsd-kind-interface">
 						<a href="Payload.html" class="tsd-kind-icon">Payload</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="SlashCommand.html" class="tsd-kind-icon">Slash<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="SlashCommandBase.html" class="tsd-kind-icon">Slash<wbr>Command<wbr>Base</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="SlashCommandChoices.html" class="tsd-kind-icon">Slash<wbr>Command<wbr>Choices</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="SlashCommandOptions.html" class="tsd-kind-icon">Slash<wbr>Command<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="../modules.html#ActionRowComponents" class="tsd-kind-icon">Action<wbr>Row<wbr>Components</a>
 					</li>
 					<li class=" tsd-kind-type-alias">
 						<a href="../modules.html#MessageContent" class="tsd-kind-icon">Message<wbr>Content</a>

@@ -62,10 +62,19 @@
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
+							<h3>Enumerations</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-enum"><a href="enums/ComponentTypes.html" class="tsd-kind-icon">Component<wbr>Types</a></li>
+								<li class="tsd-kind-enum"><a href="enums/ShardError.html" class="tsd-kind-icon">Shard<wbr>Error</a></li>
+								<li class="tsd-kind-enum"><a href="enums/ShardStatus.html" class="tsd-kind-icon">Shard<wbr>Status</a></li>
+								<li class="tsd-kind-enum"><a href="enums/SlashCommandType.html" class="tsd-kind-icon">Slash<wbr>Command<wbr>Type</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
 							<h3>Classes</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-class"><a href="classes/Client.html" class="tsd-kind-icon">Client</a></li>
-								<li class="tsd-kind-class"><a href="classes/Message.html" class="tsd-kind-icon">Message</a></li>
+								<li class="tsd-kind-class tsd-has-type-parameter"><a href="classes/Collection.html" class="tsd-kind-icon">Collection</a></li>
 								<li class="tsd-kind-class"><a href="classes/RequestHandler.html" class="tsd-kind-icon">Request<wbr>Handler</a></li>
 								<li class="tsd-kind-class"><a href="classes/Shard.html" class="tsd-kind-icon">Shard</a></li>
 							</ul>
@@ -74,21 +83,24 @@
 							<h3>Interfaces</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-interface"><a href="interfaces/AdvancedMessageContent.html" class="tsd-kind-icon">Advanced<wbr>Message<wbr>Content</a></li>
-								<li class="tsd-kind-interface"><a href="interfaces/AllowedMentionsOptions.html" class="tsd-kind-icon">Allowed<wbr>Mentions<wbr>Options</a></li>
+								<li class="tsd-kind-interface"><a href="interfaces/AllowedMentions.html" class="tsd-kind-icon">Allowed<wbr>Mentions</a></li>
 								<li class="tsd-kind-interface"><a href="interfaces/ClientEvents.html" class="tsd-kind-icon">Client<wbr>Events</a></li>
 								<li class="tsd-kind-interface"><a href="interfaces/ClientOptions.html" class="tsd-kind-icon">Client<wbr>Options</a></li>
-								<li class="tsd-kind-interface"><a href="interfaces/EmbedFieldOptions.html" class="tsd-kind-icon">Embed<wbr>Field<wbr>Options</a></li>
-								<li class="tsd-kind-interface"><a href="interfaces/EmbedOptions.html" class="tsd-kind-icon">Embed<wbr>Options</a></li>
-								<li class="tsd-kind-interface"><a href="interfaces/ErrorOptionsBase.html" class="tsd-kind-icon">Error<wbr>Options<wbr>Base</a></li>
-								<li class="tsd-kind-interface tsd-has-type-parameter"><a href="interfaces/EventListenerOptions.html" class="tsd-kind-icon">Event<wbr>Listener<wbr>Options</a></li>
-								<li class="tsd-kind-interface"><a href="interfaces/GatewayErrorOptions.html" class="tsd-kind-icon">Gateway<wbr>Error<wbr>Options</a></li>
+								<li class="tsd-kind-interface"><a href="interfaces/Embed.html" class="tsd-kind-icon">Embed</a></li>
+								<li class="tsd-kind-interface"><a href="interfaces/EmbedField.html" class="tsd-kind-icon">Embed<wbr>Field</a></li>
 								<li class="tsd-kind-interface"><a href="interfaces/MessageReferenceReply.html" class="tsd-kind-icon">Message<wbr>Reference<wbr>Reply</a></li>
+								<li class="tsd-kind-interface"><a href="interfaces/PartialUser.html" class="tsd-kind-icon">Partial<wbr>User</a></li>
 								<li class="tsd-kind-interface"><a href="interfaces/Payload.html" class="tsd-kind-icon">Payload</a></li>
+								<li class="tsd-kind-interface"><a href="interfaces/SlashCommand.html" class="tsd-kind-icon">Slash<wbr>Command</a></li>
+								<li class="tsd-kind-interface"><a href="interfaces/SlashCommandBase.html" class="tsd-kind-icon">Slash<wbr>Command<wbr>Base</a></li>
+								<li class="tsd-kind-interface"><a href="interfaces/SlashCommandChoices.html" class="tsd-kind-icon">Slash<wbr>Command<wbr>Choices</a></li>
+								<li class="tsd-kind-interface"><a href="interfaces/SlashCommandOptions.html" class="tsd-kind-icon">Slash<wbr>Command<wbr>Options</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Type aliases</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-type-alias"><a href="modules.html#ActionRowComponents" class="tsd-kind-icon">Action<wbr>Row<wbr>Components</a></li>
 								<li class="tsd-kind-type-alias"><a href="modules.html#MessageContent" class="tsd-kind-icon">Message<wbr>Content</a></li>
 								<li class="tsd-kind-type-alias"><a href="modules.html#RequestMethod" class="tsd-kind-icon">Request<wbr>Method</a></li>
 							</ul>
@@ -99,12 +111,22 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Type aliases</h2>
 				<section class="tsd-panel tsd-member tsd-kind-type-alias">
+					<a name="ActionRowComponents" class="tsd-anchor"></a>
+					<h3>Action<wbr>Row<wbr>Components</h3>
+					<div class="tsd-signature tsd-kind-icon">Action<wbr>Row<wbr>Components<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Button</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">SelectMenu</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/3aa5024/src/Typings/rest.ts#L4">src/Typings/rest.ts:4</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias">
 					<a name="MessageContent" class="tsd-anchor"></a>
 					<h3>Message<wbr>Content</h3>
 					<div class="tsd-signature tsd-kind-icon">Message<wbr>Content<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> | </span><a href="interfaces/AdvancedMessageContent.html" class="tsd-signature-type" data-tsd-kind="Interface">AdvancedMessageContent</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in Typings/message.ts:67</li>
+							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/3aa5024/src/Typings/message.ts#L40">src/Typings/message.ts:40</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -114,7 +136,7 @@
 					<div class="tsd-signature tsd-kind-icon">Request<wbr>Method<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">&quot;GET&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;POST&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;DELETE&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;PUT&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;PATCH&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in Typings/rest.ts:1</li>
+							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/3aa5024/src/Typings/rest.ts#L3">src/Typings/rest.ts:3</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -130,11 +152,23 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-enum">
+						<a href="enums/ComponentTypes.html" class="tsd-kind-icon">Component<wbr>Types</a>
+					</li>
+					<li class=" tsd-kind-enum">
+						<a href="enums/ShardError.html" class="tsd-kind-icon">Shard<wbr>Error</a>
+					</li>
+					<li class=" tsd-kind-enum">
+						<a href="enums/ShardStatus.html" class="tsd-kind-icon">Shard<wbr>Status</a>
+					</li>
+					<li class=" tsd-kind-enum">
+						<a href="enums/SlashCommandType.html" class="tsd-kind-icon">Slash<wbr>Command<wbr>Type</a>
+					</li>
 					<li class=" tsd-kind-class">
 						<a href="classes/Client.html" class="tsd-kind-icon">Client</a>
 					</li>
-					<li class=" tsd-kind-class">
-						<a href="classes/Message.html" class="tsd-kind-icon">Message</a>
+					<li class=" tsd-kind-class tsd-has-type-parameter">
+						<a href="classes/Collection.html" class="tsd-kind-icon">Collection</a>
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="classes/RequestHandler.html" class="tsd-kind-icon">Request<wbr>Handler</a>
@@ -146,7 +180,7 @@
 						<a href="interfaces/AdvancedMessageContent.html" class="tsd-kind-icon">Advanced<wbr>Message<wbr>Content</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="interfaces/AllowedMentionsOptions.html" class="tsd-kind-icon">Allowed<wbr>Mentions<wbr>Options</a>
+						<a href="interfaces/AllowedMentions.html" class="tsd-kind-icon">Allowed<wbr>Mentions</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/ClientEvents.html" class="tsd-kind-icon">Client<wbr>Events</a>
@@ -155,25 +189,34 @@
 						<a href="interfaces/ClientOptions.html" class="tsd-kind-icon">Client<wbr>Options</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="interfaces/EmbedFieldOptions.html" class="tsd-kind-icon">Embed<wbr>Field<wbr>Options</a>
+						<a href="interfaces/Embed.html" class="tsd-kind-icon">Embed</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="interfaces/EmbedOptions.html" class="tsd-kind-icon">Embed<wbr>Options</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/ErrorOptionsBase.html" class="tsd-kind-icon">Error<wbr>Options<wbr>Base</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-has-type-parameter">
-						<a href="interfaces/EventListenerOptions.html" class="tsd-kind-icon">Event<wbr>Listener<wbr>Options</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/GatewayErrorOptions.html" class="tsd-kind-icon">Gateway<wbr>Error<wbr>Options</a>
+						<a href="interfaces/EmbedField.html" class="tsd-kind-icon">Embed<wbr>Field</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/MessageReferenceReply.html" class="tsd-kind-icon">Message<wbr>Reference<wbr>Reply</a>
 					</li>
 					<li class=" tsd-kind-interface">
+						<a href="interfaces/PartialUser.html" class="tsd-kind-icon">Partial<wbr>User</a>
+					</li>
+					<li class=" tsd-kind-interface">
 						<a href="interfaces/Payload.html" class="tsd-kind-icon">Payload</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/SlashCommand.html" class="tsd-kind-icon">Slash<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/SlashCommandBase.html" class="tsd-kind-icon">Slash<wbr>Command<wbr>Base</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/SlashCommandChoices.html" class="tsd-kind-icon">Slash<wbr>Command<wbr>Choices</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/SlashCommandOptions.html" class="tsd-kind-icon">Slash<wbr>Command<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="modules.html#ActionRowComponents" class="tsd-kind-icon">Action<wbr>Row<wbr>Components</a>
 					</li>
 					<li class=" tsd-kind-type-alias">
 						<a href="modules.html#MessageContent" class="tsd-kind-icon">Message<wbr>Content</a>

@@ -1,4 +1,3 @@
-import { ShardError } from '../constants'
 import { RestAPIError } from '../Errors/RestAPIError'
 import { sleep } from '../functions'
 import { ClientEvents } from '../Typings/events'
@@ -9,11 +8,8 @@ import { Shard } from './Shard'
 
 /** Utility class that can hold a bunch of {@link Shard shards}. This core class connects all the caching, rest and gateway elements. */
 export class ShardManager extends EventEmitter<ClientEvents> {
-    /**
-     * 🚧 **You should never construct this class on your own!**
-     * @private
-     */
-    constructor(token: string, options: ClientOptions = { shardCount: 'auto', intents: 1, connectionTimeout: 30000, largeThreshold: 50, requestTimeout: 15000, requestCleanInterval: 300000, restTimeOffset: 750 }) {
+    /** @hideconstructor */
+    constructor(token: string, options: ClientOptions = { shardCount: 'auto', intents: 1, connectionTimeout: 30000, largeThreshold: 50, requestTimeout: 15000, requestCleanInterval: 300000, restTimeOffset: 750, emitRawPayloads: false }) {
         super()
 
         if (!options.shardCount) options.shardCount = 'auto'
@@ -35,21 +31,27 @@ export class ShardManager extends EventEmitter<ClientEvents> {
         if (!options.restTimeOffset) options.restTimeOffset = 750
         else if (options.restTimeOffset < 300) options.restTimeOffset = 300
 
+        if (!options.emitRawPayloads) options.emitRawPayloads = false
+
         this.token = token
         this.coreOptions = options
         this.restHandler = new RequestHandler(this)
     }
 
+    /** @hidden @protected */
     readonly token
-    /** Objects with all options provided while constructing new Client. */
+    /**
+     * Objects with all options used to control ShardManager & RestHandler.
+     * @hidden @protected
+     */
     readonly coreOptions
+    protected readonly restHandler
     readonly shards = new Array<Shard>()
-    readonly restHandler
     #initialized = false
     #maxConcurrency = 1 // It will be used later if Derun will ever support big sharding (for bots with over 150k guilds).
 
     /** Tells all shards to connect. Your bot will be marked as working once last shard will connect to the network. Listen to "ready" event to acknowledge this moment. */
-    async connect(): Promise<void> {
+    protected async launch(): Promise<void> {
         if (this.#initialized) return
         this.#initialized = true
 

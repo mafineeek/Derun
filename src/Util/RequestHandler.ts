@@ -1,15 +1,12 @@
-import fetch, { RequestInit } from 'node-fetch'
 import { Endpoint } from '../constants'
 import { sleep } from '../functions'
 import { GlobalRateLimits, RateLimitBucket, RequestMethod } from '../Typings/rest'
 import { ShardManager } from '../WebSocket/ShardManager'
+import centra from 'centra'
 
 /** Fully automated class to deal with rest calls. It makes HTTP requests to Discord API as easy as possible. Automatically handling global & local rate limits. */
 export class RequestHandler {
-    /**
-     * 🚧 **You should never construct this class on your own!**
-     * @private
-     */
+    /** @hideconstructor @hidden */
     constructor(manager: ShardManager) {
         this.#manager = manager
         this.#clean()
@@ -36,18 +33,13 @@ export class RequestHandler {
      */
     public async request(method: RequestMethod, route: string, requireAuthentication: boolean, content?: Object): Promise<[any, any]> {
         return new Promise(async (resolve) => {
-            const options: RequestInit = {
-                method: method,
-                headers: {
-                    'User-Agent': this.#userAgent,
-                    'Content-Type': `application/json`
-                },
-                timeout: this.#manager.coreOptions.requestTimeout
+            const headers: { [key: string]: string } = {
+                'User-Agent': this.#userAgent,
+                'Content-Type': `application/json`,
+                Authorization: `Bot ${this.#manager.token}`
             }
 
-            // @ts-ignore
-            if (requireAuthentication) options.headers['Authorization'] = `Bot ${this.#manager.token}`
-            if (content) options.body = JSON.stringify(content)
+            if (!requireAuthentication) delete headers['Authorization']
 
             await this.#syncGlobalRateLimits()
 
@@ -60,12 +52,18 @@ export class RequestHandler {
             }
 
             setTimeout(async () => {
-                await fetch(Endpoint.REST + route, options)
+                await centra(Endpoint.REST + route, method)
+                    .timeout(this.#manager.coreOptions.requestTimeout)
+                    .header(headers)
+                    .body(content, 'json')
+                    .send()
                     .then((res) => {
-                        if (res.headers.has('x-ratelimit-limit')) {
-                            const total = parseInt(res.headers.get('x-ratelimit-limit'))
-                            const remaining = parseInt(res.headers.get('x-ratelimit-remaining'))
-                            const resetAt = Date.now() + parseInt(res.headers.get('x-ratelimit-reset-after')) * 1000
+                        const headers = res.headers as unknown as { [key: string]: string }
+
+                        if (headers['x-ratelimit-limit']) {
+                            const total = parseInt(headers['x-ratelimit-limit'])
+                            const remaining = parseInt(headers['x-ratelimit-remaining'])
+                            const resetAt = Date.now() + parseInt(headers['x-ratelimit-reset-after']) * 1000
 
                             this.#rateLimits.set(route, { total, remaining, resetAt })
                         }
@@ -116,20 +114,5 @@ export class RequestHandler {
 
             resolve()
         })
-    }
-
-    #toString() {
-        return '[RequestHandler]'
-    }
-
-    #toJSON() {
-        return {
-            userAgent: this.#userAgent,
-            domain: this.#domain,
-            apiEndpoint: Endpoint.REST,
-            requestTimeout: this.#manager.coreOptions.requestTimeout,
-            requestCleanInterval: this.#manager.coreOptions.requestCleanInterval,
-            globalRatelimits: this.#globalRateLimits
-        }
     }
 }

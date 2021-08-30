@@ -41,3 +41,35 @@ export enum ShardError {
     INVALID_INTENT = 4013,
     DISSALLOWED_INTENT = 4014
 }
+
+export enum SlashCommandType {
+    SUB_COMMAND = 1,
+    SUB_COMMAND_GROUP = 2,
+    STRING = 3,
+    INTEGER = 4,
+    BOOLEAN = 5,
+    USER = 6,
+    CHANNEL = 7,
+    ROLE = 8,
+    MENTIONABLE = 9,
+    NUMBER = 10
+}
+
+export enum ComponentTypes {
+    ACTION_ROW = 1,
+    BUTTON = 2,
+    SELECT_MENU = 3
+}
+
+export enum ButtonStyle {
+    /** Color: Blurple (Discord theme) */
+    PRIMARY = 1,
+    /** Color: Grey */
+    SECONDARY = 2,
+    /** Color: Green */
+    SUCCESS = 3,
+    /** Color: Red */
+    DANGER = 4,
+    /** Color: Grey | Navigates to specified URL. Required url field to be set. */
+    LINK = 5
+}

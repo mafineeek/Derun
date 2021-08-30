@@ -81,10 +81,12 @@
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="AdvancedMessageContent.html#allowed_mentions" class="tsd-kind-icon">allowed_<wbr>mentions</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="AdvancedMessageContent.html#components" class="tsd-kind-icon">components</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="AdvancedMessageContent.html#content" class="tsd-kind-icon">content</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="AdvancedMessageContent.html#embed" class="tsd-kind-icon">embed</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="AdvancedMessageContent.html#embeds" class="tsd-kind-icon">embeds</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="AdvancedMessageContent.html#flags" class="tsd-kind-icon">flags</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="AdvancedMessageContent.html#message_reference" class="tsd-kind-icon">message_<wbr>reference</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="AdvancedMessageContent.html#sticker_ids" class="tsd-kind-icon">sticker_<wbr>ids</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="AdvancedMessageContent.html#tts" class="tsd-kind-icon">tts</a></li>
 							</ul>
 						</section>
@@ -96,10 +98,20 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="allowed_mentions" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> allowed_<wbr>mentions</h3>
-					<div class="tsd-signature tsd-kind-icon">allowed_<wbr>mentions<span class="tsd-signature-symbol">:</span> <a href="AllowedMentionsOptions.html" class="tsd-signature-type" data-tsd-kind="Interface">AllowedMentionsOptions</a></div>
+					<div class="tsd-signature tsd-kind-icon">allowed_<wbr>mentions<span class="tsd-signature-symbol">:</span> <a href="AllowedMentions.html" class="tsd-signature-type" data-tsd-kind="Interface">AllowedMentions</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in Typings/message.ts:59</li>
+							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/3aa5024/src/Typings/message.ts#L30">src/Typings/message.ts:30</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="components" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> components</h3>
+					<div class="tsd-signature tsd-kind-icon">components<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ActionRow</span><span class="tsd-signature-symbol">[]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/3aa5024/src/Typings/message.ts#L36">src/Typings/message.ts:36</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -109,17 +121,17 @@
 					<div class="tsd-signature tsd-kind-icon">content<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in Typings/message.ts:60</li>
+							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/3aa5024/src/Typings/message.ts#L31">src/Typings/message.ts:31</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="embed" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> embed</h3>
-					<div class="tsd-signature tsd-kind-icon">embed<span class="tsd-signature-symbol">:</span> <a href="EmbedOptions.html" class="tsd-signature-type" data-tsd-kind="Interface">EmbedOptions</a></div>
+					<a name="embeds" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> embeds</h3>
+					<div class="tsd-signature tsd-kind-icon">embeds<span class="tsd-signature-symbol">:</span> <a href="Embed.html" class="tsd-signature-type" data-tsd-kind="Interface">Embed</a><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in Typings/message.ts:61</li>
+							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/3aa5024/src/Typings/message.ts#L32">src/Typings/message.ts:32</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -129,7 +141,7 @@
 					<div class="tsd-signature tsd-kind-icon">flags<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in Typings/message.ts:62</li>
+							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/3aa5024/src/Typings/message.ts#L33">src/Typings/message.ts:33</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -139,7 +151,17 @@
 					<div class="tsd-signature tsd-kind-icon">message_<wbr>reference<span class="tsd-signature-symbol">:</span> <a href="MessageReferenceReply.html" class="tsd-signature-type" data-tsd-kind="Interface">MessageReferenceReply</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in Typings/message.ts:63</li>
+							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/3aa5024/src/Typings/message.ts#L34">src/Typings/message.ts:34</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="sticker_ids" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> sticker_<wbr>ids</h3>
+					<div class="tsd-signature tsd-kind-icon">sticker_<wbr>ids<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/3aa5024/src/Typings/message.ts#L37">src/Typings/message.ts:37</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -149,7 +171,7 @@
 					<div class="tsd-signature tsd-kind-icon">tts<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in Typings/message.ts:64</li>
+							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/3aa5024/src/Typings/message.ts#L35">src/Typings/message.ts:35</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -165,11 +187,23 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-enum">
+						<a href="../enums/ComponentTypes.html" class="tsd-kind-icon">Component<wbr>Types</a>
+					</li>
+					<li class=" tsd-kind-enum">
+						<a href="../enums/ShardError.html" class="tsd-kind-icon">Shard<wbr>Error</a>
+					</li>
+					<li class=" tsd-kind-enum">
+						<a href="../enums/ShardStatus.html" class="tsd-kind-icon">Shard<wbr>Status</a>
+					</li>
+					<li class=" tsd-kind-enum">
+						<a href="../enums/SlashCommandType.html" class="tsd-kind-icon">Slash<wbr>Command<wbr>Type</a>
+					</li>
 					<li class=" tsd-kind-class">
 						<a href="../classes/Client.html" class="tsd-kind-icon">Client</a>
 					</li>
-					<li class=" tsd-kind-class">
-						<a href="../classes/Message.html" class="tsd-kind-icon">Message</a>
+					<li class=" tsd-kind-class tsd-has-type-parameter">
+						<a href="../classes/Collection.html" class="tsd-kind-icon">Collection</a>
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="../classes/RequestHandler.html" class="tsd-kind-icon">Request<wbr>Handler</a>
@@ -186,16 +220,22 @@
 								<a href="AdvancedMessageContent.html#allowed_mentions" class="tsd-kind-icon">allowed_<wbr>mentions</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="AdvancedMessageContent.html#components" class="tsd-kind-icon">components</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="AdvancedMessageContent.html#content" class="tsd-kind-icon">content</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="AdvancedMessageContent.html#embed" class="tsd-kind-icon">embed</a>
+								<a href="AdvancedMessageContent.html#embeds" class="tsd-kind-icon">embeds</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="AdvancedMessageContent.html#flags" class="tsd-kind-icon">flags</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="AdvancedMessageContent.html#message_reference" class="tsd-kind-icon">message_<wbr>reference</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="AdvancedMessageContent.html#sticker_ids" class="tsd-kind-icon">sticker_<wbr>ids</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="AdvancedMessageContent.html#tts" class="tsd-kind-icon">tts</a>
@@ -205,7 +245,7 @@
 				</ul>
 				<ul class="after-current">
 					<li class=" tsd-kind-interface">
-						<a href="AllowedMentionsOptions.html" class="tsd-kind-icon">Allowed<wbr>Mentions<wbr>Options</a>
+						<a href="AllowedMentions.html" class="tsd-kind-icon">Allowed<wbr>Mentions</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="ClientEvents.html" class="tsd-kind-icon">Client<wbr>Events</a>
@@ -214,25 +254,34 @@
 						<a href="ClientOptions.html" class="tsd-kind-icon">Client<wbr>Options</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="EmbedFieldOptions.html" class="tsd-kind-icon">Embed<wbr>Field<wbr>Options</a>
+						<a href="Embed.html" class="tsd-kind-icon">Embed</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="EmbedOptions.html" class="tsd-kind-icon">Embed<wbr>Options</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="ErrorOptionsBase.html" class="tsd-kind-icon">Error<wbr>Options<wbr>Base</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-has-type-parameter">
-						<a href="EventListenerOptions.html" class="tsd-kind-icon">Event<wbr>Listener<wbr>Options</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="GatewayErrorOptions.html" class="tsd-kind-icon">Gateway<wbr>Error<wbr>Options</a>
+						<a href="EmbedField.html" class="tsd-kind-icon">Embed<wbr>Field</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="MessageReferenceReply.html" class="tsd-kind-icon">Message<wbr>Reference<wbr>Reply</a>
 					</li>
 					<li class=" tsd-kind-interface">
+						<a href="PartialUser.html" class="tsd-kind-icon">Partial<wbr>User</a>
+					</li>
+					<li class=" tsd-kind-interface">
 						<a href="Payload.html" class="tsd-kind-icon">Payload</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="SlashCommand.html" class="tsd-kind-icon">Slash<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="SlashCommandBase.html" class="tsd-kind-icon">Slash<wbr>Command<wbr>Base</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="SlashCommandChoices.html" class="tsd-kind-icon">Slash<wbr>Command<wbr>Choices</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="SlashCommandOptions.html" class="tsd-kind-icon">Slash<wbr>Command<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="../modules.html#ActionRowComponents" class="tsd-kind-icon">Action<wbr>Row<wbr>Components</a>
 					</li>
 					<li class=" tsd-kind-type-alias">
 						<a href="../modules.html#MessageContent" class="tsd-kind-icon">Message<wbr>Content</a>

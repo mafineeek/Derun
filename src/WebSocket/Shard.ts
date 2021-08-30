@@ -7,20 +7,18 @@ import { ShardManager } from './ShardManager'
 
 /** Fully automated class that creates connection with Discord Gateway and keeps it alive. */
 export class Shard {
-    /**
-     * 🚧 **You should never construct this class on your own!**
-     * @private
-     */
+    /** @hideconstructor @hidden */
     constructor(manager: ShardManager, id: number) {
         this.#manager = manager
+        this.#expose = manager.coreOptions.emitRawPayloads
         this.id = id
         this.#resetWS(true, false)
     }
 
-    readonly #createdAt = Date.now()
     readonly #manager
-    /** @readonly */
+    readonly #expose
     readonly id
+    readonly createdAt = Date.now()
 
     /**
      * Latency in milliseconds.
@@ -40,11 +38,6 @@ export class Shard {
     }
     #lastSequence?: number
     #sessionId?: string
-
-    /** Returns total shard uptime in milliseconds. */
-    get uptime() {
-        return Date.now() - this.#createdAt
-    }
 
     /** Sends your payload into discord gateway. It will throw potential error. */
     public send(payload: Payload) {
@@ -139,6 +132,7 @@ export class Shard {
                 if (payload.s) this.#lastSequence = payload.s
 
                 this.#handlePayload(payload)
+                if (this.#expose) this.#manager.emit('shardRawPayload', this.id, payload)
             }
         })
     }
@@ -218,8 +212,6 @@ export class Shard {
                 this.ping = Date.now() - this.#heartbeat.lastHeartbeat
                 break
             }
-            default:
-                this.#manager.emit('shardRawPayload', this.id, payload)
         }
     }
 
@@ -236,21 +228,6 @@ export class Shard {
                 this.#manager.emit('shardResumed', this.id)
                 break
             }
-            default:
-                this.#manager.emit('shardRawPayload', this.id, payload)
-        }
-    }
-
-    #toString() {
-        return `[Shard #${this.id}]`
-    }
-
-    #toJSON() {
-        return {
-            id: this.id,
-            status: this.status,
-            ping: this.ping,
-            uptime: this.uptime
         }
     }
 }

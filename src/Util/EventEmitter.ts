@@ -66,15 +66,4 @@ export class EventEmitter<T> {
         bucket.push(item)
         this.#cache.set(slot, bucket)
     }
-
-    #toString() {
-        return '[EventEmitter]'
-    }
-
-    #toJSON() {
-        return {
-            events: [...this.#cache.keys()],
-            maxListeners: this.#maxListeners
-        }
-    }
 }

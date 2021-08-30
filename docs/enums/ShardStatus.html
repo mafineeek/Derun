@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Message | Derun</title>
+	<title>ShardStatus | Derun</title>
 	<meta name="description" content="Documentation for Derun">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -55,52 +55,73 @@
 					<a href="../modules.html">Derun</a>
 				</li>
 				<li>
-					<a href="Message.html">Message</a>
+					<a href="ShardStatus.html">ShardStatus</a>
 				</li>
 			</ul>
-			<h1>Class Message</h1>
+			<h1>Enumeration ShardStatus</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<section class="tsd-panel tsd-hierarchy">
-				<h3>Hierarchy</h3>
-				<ul class="tsd-hierarchy">
-					<li>
-						<span class="target">Message</span>
-					</li>
-				</ul>
-			</section>
 			<section class="tsd-panel-group tsd-index-group">
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
-							<h3>Constructors</h3>
+							<h3>Enumeration members</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="Message.html#constructor" class="tsd-kind-icon">constructor</a></li>
+								<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="ShardStatus.html#CONNECTED" class="tsd-kind-icon">CONNECTED</a></li>
+								<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="ShardStatus.html#CONNECTING" class="tsd-kind-icon">CONNECTING</a></li>
+								<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="ShardStatus.html#HANDSHAKING" class="tsd-kind-icon">HANDSHAKING</a></li>
+								<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="ShardStatus.html#UNAVAILABLE" class="tsd-kind-icon">UNAVAILABLE</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Constructors</h2>
-				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class">
-					<a name="constructor" class="tsd-anchor"></a>
-					<h3>constructor</h3>
-					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Message<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="Message.html" class="tsd-signature-type" data-tsd-kind="Class">Message</a></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-							</aside>
-							<h4 class="tsd-returns-title">Returns <a href="Message.html" class="tsd-signature-type" data-tsd-kind="Class">Message</a></h4>
-						</li>
-					</ul>
+				<h2>Enumeration members</h2>
+				<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
+					<a name="CONNECTED" class="tsd-anchor"></a>
+					<h3>CONNECTED</h3>
+					<div class="tsd-signature tsd-kind-icon">CONNECTED<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> = 3</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/3aa5024/src/constants.ts#L24">src/constants.ts:24</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
+					<a name="CONNECTING" class="tsd-anchor"></a>
+					<h3>CONNECTING</h3>
+					<div class="tsd-signature tsd-kind-icon">CONNECTING<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> = 1</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/3aa5024/src/constants.ts#L22">src/constants.ts:22</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
+					<a name="HANDSHAKING" class="tsd-anchor"></a>
+					<h3>HANDSHAKING</h3>
+					<div class="tsd-signature tsd-kind-icon">HANDSHAKING<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> = 2</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/3aa5024/src/constants.ts#L23">src/constants.ts:23</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
+					<a name="UNAVAILABLE" class="tsd-anchor"></a>
+					<h3>UNAVAILABLE</h3>
+					<div class="tsd-signature tsd-kind-icon">UNAVAILABLE<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> = 0</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/3aa5024/src/constants.ts#L21">src/constants.ts:21</a></li>
+						</ul>
+					</aside>
 				</section>
 			</section>
 		</div>
@@ -114,32 +135,53 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-class">
-						<a href="Client.html" class="tsd-kind-icon">Client</a>
+					<li class=" tsd-kind-enum">
+						<a href="ComponentTypes.html" class="tsd-kind-icon">Component<wbr>Types</a>
+					</li>
+					<li class=" tsd-kind-enum">
+						<a href="ShardError.html" class="tsd-kind-icon">Shard<wbr>Error</a>
 					</li>
 				</ul>
 				<ul class="current">
-					<li class="current tsd-kind-class">
-						<a href="Message.html" class="tsd-kind-icon">Message</a>
+					<li class="current tsd-kind-enum">
+						<a href="ShardStatus.html" class="tsd-kind-icon">Shard<wbr>Status</a>
 						<ul>
-							<li class=" tsd-kind-constructor tsd-parent-kind-class">
-								<a href="Message.html#constructor" class="tsd-kind-icon">constructor</a>
+							<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
+								<a href="ShardStatus.html#CONNECTED" class="tsd-kind-icon">CONNECTED</a>
+							</li>
+							<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
+								<a href="ShardStatus.html#CONNECTING" class="tsd-kind-icon">CONNECTING</a>
+							</li>
+							<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
+								<a href="ShardStatus.html#HANDSHAKING" class="tsd-kind-icon">HANDSHAKING</a>
+							</li>
+							<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
+								<a href="ShardStatus.html#UNAVAILABLE" class="tsd-kind-icon">UNAVAILABLE</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-class">
-						<a href="RequestHandler.html" class="tsd-kind-icon">Request<wbr>Handler</a>
+					<li class=" tsd-kind-enum">
+						<a href="SlashCommandType.html" class="tsd-kind-icon">Slash<wbr>Command<wbr>Type</a>
 					</li>
 					<li class=" tsd-kind-class">
-						<a href="Shard.html" class="tsd-kind-icon">Shard</a>
+						<a href="../classes/Client.html" class="tsd-kind-icon">Client</a>
+					</li>
+					<li class=" tsd-kind-class tsd-has-type-parameter">
+						<a href="../classes/Collection.html" class="tsd-kind-icon">Collection</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="../classes/RequestHandler.html" class="tsd-kind-icon">Request<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="../classes/Shard.html" class="tsd-kind-icon">Shard</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="../interfaces/AdvancedMessageContent.html" class="tsd-kind-icon">Advanced<wbr>Message<wbr>Content</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="../interfaces/AllowedMentionsOptions.html" class="tsd-kind-icon">Allowed<wbr>Mentions<wbr>Options</a>
+						<a href="../interfaces/AllowedMentions.html" class="tsd-kind-icon">Allowed<wbr>Mentions</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="../interfaces/ClientEvents.html" class="tsd-kind-icon">Client<wbr>Events</a>
@@ -148,25 +190,34 @@
 						<a href="../interfaces/ClientOptions.html" class="tsd-kind-icon">Client<wbr>Options</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="../interfaces/EmbedFieldOptions.html" class="tsd-kind-icon">Embed<wbr>Field<wbr>Options</a>
+						<a href="../interfaces/Embed.html" class="tsd-kind-icon">Embed</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="../interfaces/EmbedOptions.html" class="tsd-kind-icon">Embed<wbr>Options</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/ErrorOptionsBase.html" class="tsd-kind-icon">Error<wbr>Options<wbr>Base</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-has-type-parameter">
-						<a href="../interfaces/EventListenerOptions.html" class="tsd-kind-icon">Event<wbr>Listener<wbr>Options</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/GatewayErrorOptions.html" class="tsd-kind-icon">Gateway<wbr>Error<wbr>Options</a>
+						<a href="../interfaces/EmbedField.html" class="tsd-kind-icon">Embed<wbr>Field</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="../interfaces/MessageReferenceReply.html" class="tsd-kind-icon">Message<wbr>Reference<wbr>Reply</a>
 					</li>
 					<li class=" tsd-kind-interface">
+						<a href="../interfaces/PartialUser.html" class="tsd-kind-icon">Partial<wbr>User</a>
+					</li>
+					<li class=" tsd-kind-interface">
 						<a href="../interfaces/Payload.html" class="tsd-kind-icon">Payload</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/SlashCommand.html" class="tsd-kind-icon">Slash<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/SlashCommandBase.html" class="tsd-kind-icon">Slash<wbr>Command<wbr>Base</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/SlashCommandChoices.html" class="tsd-kind-icon">Slash<wbr>Command<wbr>Choices</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/SlashCommandOptions.html" class="tsd-kind-icon">Slash<wbr>Command<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="../modules.html#ActionRowComponents" class="tsd-kind-icon">Action<wbr>Row<wbr>Components</a>
 					</li>
 					<li class=" tsd-kind-type-alias">
 						<a href="../modules.html#MessageContent" class="tsd-kind-icon">Message<wbr>Content</a>
