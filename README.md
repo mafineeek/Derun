@@ -1,6 +1,6 @@
 Usage example:
 ```ts
-import { Client } from 'derun'
+import { Client, SlashCommandType } from 'derun'
 
 // Showing all the options (+ their default values)
 const client = new Client('<BOT TOKEN>', {
