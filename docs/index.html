@@ -73,8 +73,35 @@
 <span style="color: #000000">    </span><span style="color: #001080">emitRawPayloads:</span><span style="color: #000000"> </span><span style="color: #0000FF">false</span>
 <span style="color: #000000">})</span>
 
-<span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">once</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;ready&#039;</span><span style="color: #000000">, () </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">info</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;Successfully logged! Bot is ready.&#039;</span><span style="color: #000000">))</span>
+<span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">once</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;ready&#039;</span><span style="color: #000000">, </span><span style="color: #0000FF">async</span><span style="color: #000000"> () </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
+<span style="color: #000000">    </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">info</span><span style="color: #000000">(</span><span style="color: #A31515">`[Ready] Successfully connected as </span><span style="color: #0000FF">${</span><span style="color: #001080">client</span><span style="color: #000000FF">.</span><span style="color: #001080">user</span><span style="color: #000000FF">.</span><span style="color: #001080">tag</span><span style="color: #0000FF">}</span><span style="color: #A31515">`</span><span style="color: #000000">)</span>
 
+<span style="color: #000000">    </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">addCommand</span><span style="color: #000000">({</span>
+<span style="color: #000000">        </span><span style="color: #001080">name:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;calc&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">        </span><span style="color: #001080">description:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;Calculates simple math tasks.&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">        </span><span style="color: #001080">type:</span><span style="color: #000000"> </span><span style="color: #098658">1</span><span style="color: #000000">,</span>
+<span style="color: #000000">        </span><span style="color: #001080">options:</span><span style="color: #000000"> [</span>
+<span style="color: #000000">            {</span>
+<span style="color: #000000">                </span><span style="color: #001080">name:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;input&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">                </span><span style="color: #001080">description:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;Put there whatever you want to process.&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">                </span><span style="color: #001080">type:</span><span style="color: #000000"> </span><span style="color: #001080">SlashCommandType</span><span style="color: #000000">.</span><span style="color: #0070C1">STRING</span>
+<span style="color: #000000">            }</span>
+<span style="color: #000000">        ],</span>
+<span style="color: #000000">        </span><span style="color: #001080">extended:</span><span style="color: #000000"> {</span>
+<span style="color: #000000">            </span><span style="color: #001080">adminOnly:</span><span style="color: #000000"> </span><span style="color: #0000FF">false</span>
+<span style="color: #000000">        },</span>
+<span style="color: #000000">        </span><span style="color: #795E26">run</span><span style="color: #001080">:</span><span style="color: #000000"> (</span><span style="color: #001080">interaction</span><span style="color: #000000">, </span><span style="color: #001080">shardId</span><span style="color: #000000">) </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {}</span>
+<span style="color: #000000">    })</span>
+
+<span style="color: #000000">    </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">updateCommands</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;853386288710156320&#039;</span><span style="color: #000000">) </span><span style="color: #008000">// Promise</span>
+<span style="color: #000000">})</span>
+
+<span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">on</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;interaction&#039;</span><span style="color: #000000">, (</span><span style="color: #001080">interaction</span><span style="color: #000000">, </span><span style="color: #001080">shardId</span><span style="color: #000000">) </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
+<span style="color: #000000">    </span><span style="color: #AF00DB">if</span><span style="color: #000000"> (</span><span style="color: #001080">interaction</span><span style="color: #000000">.</span><span style="color: #001080">command</span><span style="color: #000000">) </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">interaction</span><span style="color: #000000">)</span>
+<span style="color: #000000">})</span>
+
+
+<span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">info</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;[Init] Connecting...&#039;</span><span style="color: #000000">)</span>
 <span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">connect</span><span style="color: #000000">()</span>
 </code></pre>
 			</div>
@@ -90,7 +117,7 @@
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-enum">
-						<a href="enums/ComponentTypes.html" class="tsd-kind-icon">Component<wbr>Types</a>
+						<a href="enums/ComponentType.html" class="tsd-kind-icon">Component<wbr>Type</a>
 					</li>
 					<li class=" tsd-kind-enum">
 						<a href="enums/ShardError.html" class="tsd-kind-icon">Shard<wbr>Error</a>
@@ -111,13 +138,25 @@
 						<a href="classes/Intent.html" class="tsd-kind-icon">Intent</a>
 					</li>
 					<li class=" tsd-kind-class">
+						<a href="classes/Interaction.html" class="tsd-kind-icon">Interaction</a>
+					</li>
+					<li class=" tsd-kind-class">
 						<a href="classes/Permission.html" class="tsd-kind-icon">Permission</a>
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="classes/RequestHandler.html" class="tsd-kind-icon">Request<wbr>Handler</a>
 					</li>
 					<li class=" tsd-kind-class">
+						<a href="classes/ResolvedMember.html" class="tsd-kind-icon">Resolved<wbr>Member</a>
+					</li>
+					<li class=" tsd-kind-class">
 						<a href="classes/Shard.html" class="tsd-kind-icon">Shard</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/User.html" class="tsd-kind-icon">User</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/UserFlags.html" class="tsd-kind-icon">User<wbr>Flags</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/AdvancedMessageContent.html" class="tsd-kind-icon">Advanced<wbr>Message<wbr>Content</a>
@@ -139,9 +178,6 @@
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/MessageReferenceReply.html" class="tsd-kind-icon">Message<wbr>Reference<wbr>Reply</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/PartialUser.html" class="tsd-kind-icon">Partial<wbr>User</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/Payload.html" class="tsd-kind-icon">Payload</a>

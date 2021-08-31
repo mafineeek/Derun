@@ -3,19 +3,21 @@ import { Endpoint, OPCode, ShardError, ShardStatus } from '../constants'
 import { GatewayError } from '../Errors/GatewayError'
 import { sleep } from '../functions'
 import { HeartbeatOptions, Payload } from '../Typings/gateway'
-import { ShardManager } from './ShardManager'
+import { Client } from '../Client'
+import { User } from '../Structures/User'
+import { Interaction } from '../Structures/Interaction'
 
 /** Fully automated class that creates connection with Discord Gateway and keeps it alive. */
 export class Shard {
     /** @hideconstructor @hidden @private */
-    constructor(manager: ShardManager, id: number) {
-        this.#manager = manager
-        this.#expose = manager.coreOptions.emitRawPayloads
+    constructor(client: Client, id: number) {
+        this.#client = client
+        this.#expose = client.coreOptions.emitRawPayloads
         this.id = id
         this.#resetWS(true, false)
     }
 
-    readonly #manager
+    readonly #client
     readonly #expose
     readonly id
     readonly createdAt = Date.now()
@@ -84,7 +86,7 @@ export class Shard {
 
             this.#resetTimer = setTimeout(() => {
                 throw new GatewayError(this.id, ShardError.UNKNOWN, 'Connection timeout')
-            }, this.#manager.coreOptions.connectionTimeout)
+            }, this.#client.coreOptions.connectionTimeout)
 
             try {
                 this.#ws = new WebSocket(Endpoint.GATEWAY)
@@ -100,7 +102,7 @@ export class Shard {
             }
 
             this.#ws.onerror = (event) => {
-                this.#manager.emit('shardWarn', this.id, `Connection error: ${event.message}`)
+                this.#client.emit('shardWarn', this.id, `Connection error: ${event.message}`)
                 this.#resetWS(true, true)
             }
 
@@ -121,7 +123,7 @@ export class Shard {
                         if (event.code === ShardError.INVALID_SEQUENCE) resumable = false
                         else if (event.code === ShardError.INVALID_SESSION) resumable = false
 
-                        this.#manager.emit('shardWarn', this.id, `Discord Gateway closed connection${resumable ? '. Reconnecting!' : ' and invalidated session. Opening new session!'}`)
+                        this.#client.emit('shardWarn', this.id, `Discord Gateway closed connection${resumable ? '. Reconnecting!' : ' and invalidated session. Opening new session!'}`)
                         this.#resetWS(true, resumable)
                     }
                 }
@@ -132,14 +134,14 @@ export class Shard {
                 if (payload.s) this.#lastSequence = payload.s
 
                 this.#handlePayload(payload)
-                if (this.#expose) this.#manager.emit('shardRawPayload', this.id, payload)
+                if (this.#expose) this.#client.emit('shardRawPayload', this.id, payload)
             }
         })
     }
 
     #sendHeartbeat(inLoop?: boolean) {
         if (!this.#heartbeat.ack) {
-            this.#manager.emit('shardWarn', this.id, 'Failed to acknowledge last heartbeat. Assuming zombified connection. Reconnecting!')
+            this.#client.emit('shardWarn', this.id, 'Failed to acknowledge last heartbeat. Assuming zombified connection. Reconnecting!')
             this.#resetWS(true, true)
             return
         }
@@ -162,12 +164,12 @@ export class Shard {
                 break
             }
             case OPCode.RECONNECT: {
-                this.#manager.emit('shardWarn', this.id, 'Discord Gateway sent reconnect request. Reconnecting!')
+                this.#client.emit('shardWarn', this.id, 'Discord Gateway sent reconnect request. Reconnecting!')
                 this.#resetWS(true, true)
                 break
             }
             case OPCode.INVALID_SESSION: {
-                this.#manager.emit('shardWarn', this.id, `Discord Gateway invalidated ${payload.d ? 'connection. Reconnecting!' : 'session. Opening new session!'}`)
+                this.#client.emit('shardWarn', this.id, `Discord Gateway invalidated ${payload.d ? 'connection. Reconnecting!' : 'session. Opening new session!'}`)
                 this.#resetWS(true, payload.d)
                 break
             }
@@ -176,7 +178,7 @@ export class Shard {
                     this.send({
                         op: OPCode.RESUME,
                         d: {
-                            token: this.#manager.token,
+                            token: this.#client.token,
                             session_id: this.#sessionId,
                             seq: this.#lastSequence
                         }
@@ -185,10 +187,10 @@ export class Shard {
                     const payload = {
                         op: OPCode.IDENTIFY,
                         d: {
-                            token: this.#manager.token,
-                            shard: [this.id, this.#manager.coreOptions.shardCount as number],
-                            intents: this.#manager.coreOptions.intents,
-                            large_threshold: this.#manager.coreOptions.largeThreshold,
+                            token: this.#client.token,
+                            shard: [this.id, this.#client.coreOptions.shardCount as number],
+                            intents: this.#client.coreOptions.intents,
+                            large_threshold: this.#client.coreOptions.largeThreshold,
                             properties: {
                                 $os: 'linux',
                                 $browser: 'derun',
@@ -198,7 +200,7 @@ export class Shard {
                     }
 
                     // This param is only used if you want to sync multiple shards.
-                    if (this.#manager.coreOptions.shardCount === 1) delete payload.d.shard
+                    if (this.#client.coreOptions.shardCount === 1) delete payload.d.shard
 
                     this.send(payload)
                 }
@@ -220,15 +222,18 @@ export class Shard {
             case 'READY': {
                 this.status = ShardStatus.CONNECTED
                 this.#sessionId = payload.d.session_id
-                this.#manager.emit('shardReady', this.id)
+                if (!this.#client.user) this.#client.user = Object.freeze(new User(payload.d.user))
+                this.#client.emit('shardReady', this.id)
                 break
             }
             case 'RESUMED': {
                 this.status = ShardStatus.CONNECTED
-                this.#manager.emit('shardResumed', this.id)
+                this.#client.emit('shardResumed', this.id)
                 break
             }
             case 'INTERACTION_CREATE': {
+                this.#client.emit('interaction', new Interaction(payload.d, this.#client), this.id)
+                break
             }
         }
     }

@@ -37,7 +37,7 @@ export class BitField<F> {
     }
 
     /** Gets a raw value for this bitfield. */
-    valueOf(): number {
+    valueOf(): number | bigint {
         return this.#bitfield
     }
 
@@ -61,7 +61,7 @@ export class BitField<F> {
 
                     for (const bit of bits) {
                         const flagValue = this.constructor.FLAGS[bit]
-                        typeof flagValue === 'number' ? (bitmask |= BigInt(flagValue)) : (bitmask |= flagValue)
+                        bitmask |= typeof flagValue === 'number' ? BigInt(flagValue) : flagValue
                     }
 
                     return bitmask

@@ -14,7 +14,34 @@ const client = new Client('<BOT TOKEN>', {
     emitRawPayloads: false
 })
 
-client.once('ready', () => console.info('Successfully logged! Bot is ready.'))
+client.once('ready', async () => {
+    console.info(`[Ready] Successfully connected as ${client.user.tag}`)
 
+    client.addCommand({
+        name: 'calc',
+        description: 'Calculates simple math tasks.',
+        type: 1,
+        options: [
+            {
+                name: 'input',
+                description: 'Put there whatever you want to process.',
+                type: SlashCommandType.STRING
+            }
+        ],
+        extended: {
+            adminOnly: false
+        },
+        run: (interaction, shardId) => {}
+    })
+
+    client.updateCommands('853386288710156320') // Promise
+})
+
+client.on('interaction', (interaction, shardId) => {
+    if (interaction.command) console.log(interaction)
+})
+
+
+console.info('[Init] Connecting...')
 client.connect()
 ```

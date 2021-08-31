@@ -93,9 +93,9 @@
 						<section class="tsd-index-section tsd-is-private tsd-is-private-protected">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="RequestHandler.html#_client" class="tsd-kind-icon">#client</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="RequestHandler.html#_domain" class="tsd-kind-icon">#domain</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="RequestHandler.html#_globalRateLimits" class="tsd-kind-icon">#global<wbr>Rate<wbr>Limits</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="RequestHandler.html#_manager" class="tsd-kind-icon">#manager</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="RequestHandler.html#_rateLimits" class="tsd-kind-icon">#rate<wbr>Limits</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="RequestHandler.html#_userAgent" class="tsd-kind-icon">#user<wbr>Agent</a></li>
 							</ul>
@@ -117,13 +117,13 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Request<wbr>Handler<span class="tsd-signature-symbol">(</span>manager<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ShardManager</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="RequestHandler.html" class="tsd-signature-type" data-tsd-kind="Class">RequestHandler</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Request<wbr>Handler<span class="tsd-signature-symbol">(</span>client<span class="tsd-signature-symbol">: </span><a href="Client.html" class="tsd-signature-type" data-tsd-kind="Class">Client</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="RequestHandler.html" class="tsd-signature-type" data-tsd-kind="Class">RequestHandler</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/34679c5/src/Util/RequestHandler.ts#L10">src/Util/RequestHandler.ts:10</a></li>
+									<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/9da4e32/src/Util/RequestHandler.ts#L10">src/Util/RequestHandler.ts:10</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -136,7 +136,7 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>manager: <span class="tsd-signature-type">ShardManager</span></h5>
+									<h5>client: <a href="Client.html" class="tsd-signature-type" data-tsd-kind="Class">Client</a></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="RequestHandler.html" class="tsd-signature-type" data-tsd-kind="Class">RequestHandler</a></h4>
@@ -147,12 +147,22 @@
 			<section class="tsd-panel-group tsd-member-group tsd-is-private tsd-is-private-protected">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="_client" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> <span class="tsd-flag ts-flagReadonly">Readonly</span> #client</h3>
+					<div class="tsd-signature tsd-kind-icon">#client<span class="tsd-signature-symbol">:</span> <a href="Client.html" class="tsd-signature-type" data-tsd-kind="Class">Client</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/9da4e32/src/Util/RequestHandler.ts#L15">src/Util/RequestHandler.ts:15</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
 					<a name="_domain" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> <span class="tsd-flag ts-flagReadonly">Readonly</span> #domain</h3>
 					<div class="tsd-signature tsd-kind-icon">#domain<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">&quot;discord.com&quot;</span><span class="tsd-signature-symbol"> = &#x27;discord.com&#x27;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/34679c5/src/Util/RequestHandler.ts#L17">src/Util/RequestHandler.ts:17</a></li>
+							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/9da4e32/src/Util/RequestHandler.ts#L17">src/Util/RequestHandler.ts:17</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -162,17 +172,7 @@
 					<div class="tsd-signature tsd-kind-icon">#global<wbr>Rate<wbr>Limits<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">GlobalRateLimits</span><span class="tsd-signature-symbol"> = ...</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/34679c5/src/Util/RequestHandler.ts#L18">src/Util/RequestHandler.ts:18</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
-					<a name="_manager" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> <span class="tsd-flag ts-flagReadonly">Readonly</span> #manager</h3>
-					<div class="tsd-signature tsd-kind-icon">#manager<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ShardManager</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/34679c5/src/Util/RequestHandler.ts#L15">src/Util/RequestHandler.ts:15</a></li>
+							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/9da4e32/src/Util/RequestHandler.ts#L18">src/Util/RequestHandler.ts:18</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -182,7 +182,7 @@
 					<div class="tsd-signature tsd-kind-icon">#rate<wbr>Limits<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">RateLimitBucket</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = ...</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/34679c5/src/Util/RequestHandler.ts#L24">src/Util/RequestHandler.ts:24</a></li>
+							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/9da4e32/src/Util/RequestHandler.ts#L24">src/Util/RequestHandler.ts:24</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -192,7 +192,7 @@
 					<div class="tsd-signature tsd-kind-icon">#user<wbr>Agent<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">&quot;DiscordBot https://github.com/Amatsagu/Derun&quot;</span><span class="tsd-signature-symbol"> = &#x27;DiscordBot https://github.com/Amatsagu/Derun&#x27;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/34679c5/src/Util/RequestHandler.ts#L16">src/Util/RequestHandler.ts:16</a></li>
+							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/9da4e32/src/Util/RequestHandler.ts#L16">src/Util/RequestHandler.ts:16</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -209,7 +209,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/34679c5/src/Util/RequestHandler.ts#L79">src/Util/RequestHandler.ts:79</a></li>
+									<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/9da4e32/src/Util/RequestHandler.ts#L80">src/Util/RequestHandler.ts:80</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -226,7 +226,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/34679c5/src/Util/RequestHandler.ts#L91">src/Util/RequestHandler.ts:91</a></li>
+									<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/9da4e32/src/Util/RequestHandler.ts#L92">src/Util/RequestHandler.ts:92</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -237,13 +237,13 @@
 					<a name="request" class="tsd-anchor"></a>
 					<h3>request</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">request<span class="tsd-signature-symbol">(</span>method<span class="tsd-signature-symbol">: </span><a href="../modules.html#RequestMethod" class="tsd-signature-type" data-tsd-kind="Type alias">RequestMethod</a>, route<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, requireAuthentication<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span>, content<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Object</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">request<span class="tsd-signature-symbol">(</span>method<span class="tsd-signature-symbol">: </span><a href="../modules.html#RequestMethod" class="tsd-signature-type" data-tsd-kind="Type alias">RequestMethod</a>, route<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, requireAuthentication<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span>, content<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Object</span>, customToken<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/34679c5/src/Util/RequestHandler.ts#L34">src/Util/RequestHandler.ts:34</a></li>
+									<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/9da4e32/src/Util/RequestHandler.ts#L34">src/Util/RequestHandler.ts:34</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -272,6 +272,9 @@
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> content: <span class="tsd-signature-type">Object</span></h5>
 								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> customToken: <span class="tsd-signature-type">string</span></h5>
+								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
@@ -290,7 +293,7 @@
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-enum">
-						<a href="../enums/ComponentTypes.html" class="tsd-kind-icon">Component<wbr>Types</a>
+						<a href="../enums/ComponentType.html" class="tsd-kind-icon">Component<wbr>Type</a>
 					</li>
 					<li class=" tsd-kind-enum">
 						<a href="../enums/ShardError.html" class="tsd-kind-icon">Shard<wbr>Error</a>
@@ -311,6 +314,9 @@
 						<a href="Intent.html" class="tsd-kind-icon">Intent</a>
 					</li>
 					<li class=" tsd-kind-class">
+						<a href="Interaction.html" class="tsd-kind-icon">Interaction</a>
+					</li>
+					<li class=" tsd-kind-class">
 						<a href="Permission.html" class="tsd-kind-icon">Permission</a>
 					</li>
 				</ul>
@@ -322,13 +328,13 @@
 								<a href="RequestHandler.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="RequestHandler.html#_client" class="tsd-kind-icon">#client</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
 								<a href="RequestHandler.html#_domain" class="tsd-kind-icon">#domain</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
 								<a href="RequestHandler.html#_globalRateLimits" class="tsd-kind-icon">#global<wbr>Rate<wbr>Limits</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
-								<a href="RequestHandler.html#_manager" class="tsd-kind-icon">#manager</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
 								<a href="RequestHandler.html#_rateLimits" class="tsd-kind-icon">#rate<wbr>Limits</a>
@@ -350,7 +356,16 @@
 				</ul>
 				<ul class="after-current">
 					<li class=" tsd-kind-class">
+						<a href="ResolvedMember.html" class="tsd-kind-icon">Resolved<wbr>Member</a>
+					</li>
+					<li class=" tsd-kind-class">
 						<a href="Shard.html" class="tsd-kind-icon">Shard</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="User.html" class="tsd-kind-icon">User</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="UserFlags.html" class="tsd-kind-icon">User<wbr>Flags</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="../interfaces/AdvancedMessageContent.html" class="tsd-kind-icon">Advanced<wbr>Message<wbr>Content</a>
@@ -372,9 +387,6 @@
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="../interfaces/MessageReferenceReply.html" class="tsd-kind-icon">Message<wbr>Reference<wbr>Reply</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/PartialUser.html" class="tsd-kind-icon">Partial<wbr>User</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="../interfaces/Payload.html" class="tsd-kind-icon">Payload</a>

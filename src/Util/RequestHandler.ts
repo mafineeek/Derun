@@ -1,18 +1,18 @@
 import { Endpoint } from '../constants'
 import { sleep } from '../functions'
 import { GlobalRateLimits, RateLimitBucket, RequestMethod } from '../Typings/rest'
-import { ShardManager } from '../WebSocket/ShardManager'
+import { Client } from '../Client'
 import centra from 'centra'
 
 /** Fully automated class to deal with rest calls. It makes HTTP requests to Discord API as easy as possible. Automatically handling global & local rate limits. */
 export class RequestHandler {
     /** @hideconstructor @hidden @private */
-    constructor(manager: ShardManager) {
-        this.#manager = manager
+    constructor(client: Client) {
+        this.#client = client
         this.#clean()
     }
 
-    readonly #manager
+    readonly #client
     readonly #userAgent = 'DiscordBot https://github.com/Amatsagu/Derun'
     readonly #domain = 'discord.com'
     #globalRateLimits: GlobalRateLimits = {
@@ -31,15 +31,16 @@ export class RequestHandler {
      * const [result, error] = await restHandler.request('GET', '/gateway/bot', true)
      * ```
      */
-    public async request(method: RequestMethod, route: string, requireAuthentication: boolean, content?: Object): Promise<[any, any]> {
+    public async request(method: RequestMethod, route: string, requireAuthentication: boolean, content?: Object, customToken?: string): Promise<[any, any]> {
         return new Promise(async (resolve) => {
             const headers: { [key: string]: string } = {
                 'User-Agent': this.#userAgent,
                 'Content-Type': `application/json`,
-                Authorization: `Bot ${this.#manager.token}`
+                Authorization: `Bot ${this.#client.token}`
             }
 
             if (!requireAuthentication) delete headers['Authorization']
+            if (customToken) headers['Authorization'] = `Bot ${customToken}`
 
             await this.#syncGlobalRateLimits()
 
@@ -47,13 +48,13 @@ export class RequestHandler {
             let cdr = 0
 
             if (bucket) {
-                if (bucket.remaining === 0) cdr = bucket.resetAt - Date.now() + this.#manager.coreOptions.restTimeOffset
+                if (bucket.remaining === 0) cdr = bucket.resetAt - Date.now() + this.#client.coreOptions.restTimeOffset
                 else bucket.remaining--
             }
 
             setTimeout(async () => {
                 await centra(Endpoint.REST + route, method)
-                    .timeout(this.#manager.coreOptions.requestTimeout)
+                    .timeout(this.#client.coreOptions.requestTimeout)
                     .header(headers)
                     .body(content, 'json')
                     .send()
@@ -81,11 +82,11 @@ export class RequestHandler {
 
         if (this.#rateLimits.size !== 0) {
             for (const [route, bucket] of this.#rateLimits.entries()) {
-                if (now > bucket.resetAt + this.#manager.coreOptions.requestCleanInterval) this.#rateLimits.delete(route)
+                if (now > bucket.resetAt + this.#client.coreOptions.requestCleanInterval) this.#rateLimits.delete(route)
             }
         }
 
-        setTimeout(() => this.#clean(), this.#manager.coreOptions.requestCleanInterval)
+        setTimeout(() => this.#clean(), this.#client.coreOptions.requestCleanInterval)
     }
 
     async #syncGlobalRateLimits(): Promise<void> {
@@ -95,7 +96,7 @@ export class RequestHandler {
             if (this.#globalRateLimits.perSecond <= 0) {
                 let remaining = this.#globalRateLimits.perSecondLastUpdate + 1000 - now
 
-                if (remaining > 0) await sleep(remaining + this.#manager.coreOptions.restTimeOffset)
+                if (remaining > 0) await sleep(remaining + this.#client.coreOptions.restTimeOffset)
                 else remaining = 0
 
                 this.#globalRateLimits.perSecond = 50
@@ -105,7 +106,7 @@ export class RequestHandler {
             if (this.#globalRateLimits.per10Minutes <= 0) {
                 let remaining = this.#globalRateLimits.per10MinutesLastUpdate + 600000 - now
 
-                if (remaining > 0) await sleep(remaining + this.#manager.coreOptions.restTimeOffset)
+                if (remaining > 0) await sleep(remaining + this.#client.coreOptions.restTimeOffset)
                 else remaining = 0
 
                 this.#globalRateLimits.per10Minutes = 10000

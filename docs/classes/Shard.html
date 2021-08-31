@@ -93,10 +93,10 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="Shard.html#_client" class="tsd-kind-icon">#client</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="Shard.html#_expose" class="tsd-kind-icon">#expose</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="Shard.html#_heartbeat" class="tsd-kind-icon">#heartbeat</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="Shard.html#_lastSequence" class="tsd-kind-icon">#last<wbr>Sequence</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="Shard.html#_manager" class="tsd-kind-icon">#manager</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="Shard.html#_resetTimer" class="tsd-kind-icon">#reset<wbr>Timer</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="Shard.html#_sessionId" class="tsd-kind-icon">#session<wbr>Id</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="Shard.html#_ws" class="tsd-kind-icon">#ws</a></li>
@@ -125,13 +125,13 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Shard<span class="tsd-signature-symbol">(</span>manager<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ShardManager</span>, id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="Shard.html" class="tsd-signature-type" data-tsd-kind="Class">Shard</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Shard<span class="tsd-signature-symbol">(</span>client<span class="tsd-signature-symbol">: </span><a href="Client.html" class="tsd-signature-type" data-tsd-kind="Class">Client</a>, id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="Shard.html" class="tsd-signature-type" data-tsd-kind="Class">Shard</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/34679c5/src/WebSocket/Shard.ts#L11">src/WebSocket/Shard.ts:11</a></li>
+									<li>Defined in src/Util/Shard.ts:13</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -144,7 +144,7 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>manager: <span class="tsd-signature-type">ShardManager</span></h5>
+									<h5>client: <a href="Client.html" class="tsd-signature-type" data-tsd-kind="Class">Client</a></h5>
 								</li>
 								<li>
 									<h5>id: <span class="tsd-signature-type">number</span></h5>
@@ -158,12 +158,22 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="_client" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> <span class="tsd-flag ts-flagReadonly">Readonly</span> #client</h3>
+					<div class="tsd-signature tsd-kind-icon">#client<span class="tsd-signature-symbol">:</span> <a href="Client.html" class="tsd-signature-type" data-tsd-kind="Class">Client</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in src/Util/Shard.ts:20</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
 					<a name="_expose" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> <span class="tsd-flag ts-flagReadonly">Readonly</span> #expose</h3>
 					<div class="tsd-signature tsd-kind-icon">#expose<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/34679c5/src/WebSocket/Shard.ts#L19">src/WebSocket/Shard.ts:19</a></li>
+							<li>Defined in src/Util/Shard.ts:21</li>
 						</ul>
 					</aside>
 				</section>
@@ -173,7 +183,7 @@
 					<div class="tsd-signature tsd-kind-icon">#heartbeat<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">HeartbeatOptions</span><span class="tsd-signature-symbol"> = ...</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/34679c5/src/WebSocket/Shard.ts#L33">src/WebSocket/Shard.ts:33</a></li>
+							<li>Defined in src/Util/Shard.ts:35</li>
 						</ul>
 					</aside>
 				</section>
@@ -183,17 +193,7 @@
 					<div class="tsd-signature tsd-kind-icon">#last<wbr>Sequence<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/34679c5/src/WebSocket/Shard.ts#L39">src/WebSocket/Shard.ts:39</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
-					<a name="_manager" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> <span class="tsd-flag ts-flagReadonly">Readonly</span> #manager</h3>
-					<div class="tsd-signature tsd-kind-icon">#manager<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ShardManager</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/34679c5/src/WebSocket/Shard.ts#L18">src/WebSocket/Shard.ts:18</a></li>
+							<li>Defined in src/Util/Shard.ts:41</li>
 						</ul>
 					</aside>
 				</section>
@@ -203,7 +203,7 @@
 					<div class="tsd-signature tsd-kind-icon">#reset<wbr>Timer<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Timeout</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/34679c5/src/WebSocket/Shard.ts#L32">src/WebSocket/Shard.ts:32</a></li>
+							<li>Defined in src/Util/Shard.ts:34</li>
 						</ul>
 					</aside>
 				</section>
@@ -213,7 +213,7 @@
 					<div class="tsd-signature tsd-kind-icon">#session<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/34679c5/src/WebSocket/Shard.ts#L40">src/WebSocket/Shard.ts:40</a></li>
+							<li>Defined in src/Util/Shard.ts:42</li>
 						</ul>
 					</aside>
 				</section>
@@ -223,7 +223,7 @@
 					<div class="tsd-signature tsd-kind-icon">#ws<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">WebSocket</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/34679c5/src/WebSocket/Shard.ts#L31">src/WebSocket/Shard.ts:31</a></li>
+							<li>Defined in src/Util/Shard.ts:33</li>
 						</ul>
 					</aside>
 				</section>
@@ -233,7 +233,7 @@
 					<div class="tsd-signature tsd-kind-icon">created<wbr>At<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = ...</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/34679c5/src/WebSocket/Shard.ts#L21">src/WebSocket/Shard.ts:21</a></li>
+							<li>Defined in src/Util/Shard.ts:23</li>
 						</ul>
 					</aside>
 				</section>
@@ -243,7 +243,7 @@
 					<div class="tsd-signature tsd-kind-icon">id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/34679c5/src/WebSocket/Shard.ts#L20">src/WebSocket/Shard.ts:20</a></li>
+							<li>Defined in src/Util/Shard.ts:22</li>
 						</ul>
 					</aside>
 				</section>
@@ -253,7 +253,7 @@
 					<div class="tsd-signature tsd-kind-icon">ping<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/34679c5/src/WebSocket/Shard.ts#L27">src/WebSocket/Shard.ts:27</a></li>
+							<li>Defined in src/Util/Shard.ts:29</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -272,7 +272,7 @@
 					<div class="tsd-signature tsd-kind-icon">status<span class="tsd-signature-symbol">:</span> <a href="../enums/ShardStatus.html" class="tsd-signature-type" data-tsd-kind="Enumeration">ShardStatus</a><span class="tsd-signature-symbol"> = ...</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/34679c5/src/WebSocket/Shard.ts#L29">src/WebSocket/Shard.ts:29</a></li>
+							<li>Defined in src/Util/Shard.ts:31</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -295,7 +295,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/34679c5/src/WebSocket/Shard.ts#L218">src/WebSocket/Shard.ts:218</a></li>
+									<li>Defined in src/Util/Shard.ts:220</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -318,7 +318,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/34679c5/src/WebSocket/Shard.ts#L154">src/WebSocket/Shard.ts:154</a></li>
+									<li>Defined in src/Util/Shard.ts:156</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -341,7 +341,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/34679c5/src/WebSocket/Shard.ts#L53">src/WebSocket/Shard.ts:53</a></li>
+									<li>Defined in src/Util/Shard.ts:55</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -367,7 +367,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/34679c5/src/WebSocket/Shard.ts#L140">src/WebSocket/Shard.ts:140</a></li>
+									<li>Defined in src/Util/Shard.ts:142</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -390,7 +390,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/34679c5/src/WebSocket/Shard.ts#L43">src/WebSocket/Shard.ts:43</a></li>
+									<li>Defined in src/Util/Shard.ts:45</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -421,7 +421,7 @@
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-enum">
-						<a href="../enums/ComponentTypes.html" class="tsd-kind-icon">Component<wbr>Types</a>
+						<a href="../enums/ComponentType.html" class="tsd-kind-icon">Component<wbr>Type</a>
 					</li>
 					<li class=" tsd-kind-enum">
 						<a href="../enums/ShardError.html" class="tsd-kind-icon">Shard<wbr>Error</a>
@@ -442,10 +442,16 @@
 						<a href="Intent.html" class="tsd-kind-icon">Intent</a>
 					</li>
 					<li class=" tsd-kind-class">
+						<a href="Interaction.html" class="tsd-kind-icon">Interaction</a>
+					</li>
+					<li class=" tsd-kind-class">
 						<a href="Permission.html" class="tsd-kind-icon">Permission</a>
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="RequestHandler.html" class="tsd-kind-icon">Request<wbr>Handler</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="ResolvedMember.html" class="tsd-kind-icon">Resolved<wbr>Member</a>
 					</li>
 				</ul>
 				<ul class="current">
@@ -456,6 +462,9 @@
 								<a href="Shard.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="Shard.html#_client" class="tsd-kind-icon">#client</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
 								<a href="Shard.html#_expose" class="tsd-kind-icon">#expose</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
@@ -463,9 +472,6 @@
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
 								<a href="Shard.html#_lastSequence" class="tsd-kind-icon">#last<wbr>Sequence</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
-								<a href="Shard.html#_manager" class="tsd-kind-icon">#manager</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
 								<a href="Shard.html#_resetTimer" class="tsd-kind-icon">#reset<wbr>Timer</a>
@@ -507,6 +513,12 @@
 					</li>
 				</ul>
 				<ul class="after-current">
+					<li class=" tsd-kind-class">
+						<a href="User.html" class="tsd-kind-icon">User</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="UserFlags.html" class="tsd-kind-icon">User<wbr>Flags</a>
+					</li>
 					<li class=" tsd-kind-interface">
 						<a href="../interfaces/AdvancedMessageContent.html" class="tsd-kind-icon">Advanced<wbr>Message<wbr>Content</a>
 					</li>
@@ -527,9 +539,6 @@
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="../interfaces/MessageReferenceReply.html" class="tsd-kind-icon">Message<wbr>Reference<wbr>Reply</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="../interfaces/PartialUser.html" class="tsd-kind-icon">Partial<wbr>User</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="../interfaces/Payload.html" class="tsd-kind-icon">Payload</a>

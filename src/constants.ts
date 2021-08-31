@@ -1,6 +1,12 @@
 export enum Endpoint {
     GATEWAY = 'wss://gateway.discord.gg/?v=9&encoding=json',
-    REST = 'https://discord.com/api/v9'
+    REST = 'https://discord.com/api/v9',
+    CDN = 'https://cdn.discordapp.com'
+}
+
+export const CDNEndpoint = {
+    Avatar: (userId: string, avatarHash: string) => `${Endpoint.CDN}/avatars/${userId}/${avatarHash}`,
+    DefaultAvatar: (userDiscriminator: string) => `${Endpoint.CDN}/embed/avatars/${userDiscriminator}`
 }
 
 export enum OPCode {
@@ -55,7 +61,7 @@ export enum SlashCommandType {
     NUMBER = 10
 }
 
-export enum ComponentTypes {
+export enum ComponentType {
     ACTION_ROW = 1,
     BUTTON = 2,
     SELECT_MENU = 3
@@ -72,4 +78,16 @@ export enum ButtonStyle {
     DANGER = 4,
     /** Color: Grey | Navigates to specified URL. Required url field to be set. */
     LINK = 5
+}
+
+export enum InteractionType {
+    PING = 1,
+    APPLICATION_COMMAND = 2,
+    MESSAGE_COMPONENT = 3
+}
+
+export enum InteractionCommandType {
+    CHAT_INPUT = 1,
+    USER = 2,
+    MESSAGE = 3
 }

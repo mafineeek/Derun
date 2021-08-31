@@ -1,4 +1,4 @@
-import { ButtonStyle, ComponentTypes } from '../constants'
+import { ButtonStyle, ComponentType, InteractionCommandType, InteractionType, SlashCommandType } from '../constants'
 
 export type RequestMethod = 'GET' | 'POST' | 'DELETE' | 'PUT' | 'PATCH'
 export type ActionRowComponents = Button | SelectMenu
@@ -26,7 +26,7 @@ export interface Button {
     disabled?: boolean
     emoji?: PartialEmojiObject
     label?: string
-    type: ComponentTypes.BUTTON
+    type: ComponentType.BUTTON
     style: ButtonStyle
     /** Set your own, unique string that you will catch later in code. */
     custom_id?: string
@@ -41,7 +41,7 @@ export interface SelectMenu {
     min_values?: number
     options: SelectMenuOptions[]
     placeholder?: string
-    type: ComponentTypes.SELECT_MENU
+    type: ComponentType.SELECT_MENU
 }
 
 export interface SelectMenuOptions {
@@ -54,7 +54,7 @@ export interface SelectMenuOptions {
 
 export interface ActionRow {
     components: ActionRowComponents[]
-    type: ComponentTypes.ACTION_ROW
+    type: ComponentType.ACTION_ROW
 }
 
 export interface EmbedField {
@@ -86,16 +86,4 @@ export interface Embed {
     timestamp?: Date | string
     title?: string
     url?: string
-}
-
-export interface PartialUser {
-    id: number
-    username: string
-    avatar: string // Hash
-    discriminator: number
-    public_flags: number
-    bot: boolean
-    banner?: string // Hash
-    flags?: number
-    premium_type?: number
 }

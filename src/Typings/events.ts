@@ -1,8 +1,11 @@
+import { Interaction } from '../Structures/Interaction'
 import { Payload } from './gateway'
 
 export interface ClientEvents {
     /** Emitted when all shards finishes initialization process. It's basically a signal that bot is ready to work. */
     ready: () => void
+    /** Emitted on slash command, button, select menu or other component. */
+    interaction: (interaction: Interaction, shardId: number) => void
     /** Emitted when shard successfully finished handshake with Discord Gateway. */
     shardReady: (shardId: number) => void
     /** Emitted after shard had problems with connection/session but successfully connected back. */
