@@ -1,3 +1,12 @@
+import { ActivityType } from '../constants'
+
+export type Activity = {
+    status: 'online' | 'idle' | 'dnd' | 'invisible'
+    name?: string
+    type?: keyof typeof ActivityType
+    url?: string
+}
+
 /** General schema for Discord Payloads. Your custom payloads needs to follow this schema. */
 export interface Payload {
     op: number

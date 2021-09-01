@@ -9,6 +9,8 @@ export * from './BitFields/UserFlags'
 export * from './Structures/Interaction'
 export * from './Structures/ResolvedMember'
 export * from './Structures/User'
+export * from './Structures/Interaction'
+export * from './Structures/CommandInteraction'
 
 // All mentioned to be visible Interfaces & Types
 export * from './Typings/events'
@@ -18,3 +20,4 @@ export * from './Typings/message'
 export { ClientOptions } from './Typings/options'
 export * from './Typings/command'
 export { ShardStatus, ShardError, SlashCommandType, ComponentType } from './constants'
+export * from './Typings/command'

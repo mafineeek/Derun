@@ -1,5 +1,5 @@
 import { SlashCommandType } from '../constants'
-import { Interaction } from '../Structures/Interaction'
+import { CommandInteraction } from '../Structures/CommandInteraction'
 
 export interface SlashCommandOptions {
     type: SlashCommandType
@@ -25,5 +25,5 @@ export interface SlashCommandBase {
 
 export interface SlashCommand extends SlashCommandBase {
     extended: { [key: string]: any }
-    run: (interaction: Interaction, shardId: number) => Promise<any>
+    run: (interaction: CommandInteraction, shardId: number) => Promise<any>
 }

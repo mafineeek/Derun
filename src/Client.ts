@@ -1,10 +1,11 @@
 import { Intent } from './BitFields/Intent'
-import { SlashCommandType } from './constants'
+import { ActivityType, OPCode, SlashCommandType } from './constants'
 import { RestAPIError } from './Errors/RestAPIError'
 import { sleep } from './functions'
 import { User } from './Structures/User'
 import { SlashCommand, SlashCommandBase } from './Typings/command'
 import { ClientEvents } from './Typings/events'
+import { Activity, Payload } from './Typings/gateway'
 import { ClientOptions } from './Typings/options'
 import { Collection } from './Util/Collection'
 import { EventEmitter } from './Util/EventEmitter'
@@ -130,6 +131,32 @@ export class Client extends EventEmitter<ClientEvents> {
         if (err) throw err
 
         // Assume at this point that everything went nicely.
+        // It should get back array with all commands we just sent.
+    }
+
+    /** Sends raw payload across all shards. */
+    broadcast(payload: Payload) {
+        for (const shard of this.shards.values()) shard.send(payload)
+    }
+
+    /** Sets custom status for bot user. You can add shard id in second param to enable it only there. */
+    editStatus(activity: Activity, shardId?: number) {
+        const payload = {
+            op: OPCode.PRESENCE_UPDATE,
+            d: {
+                game: {
+                    name: activity.name && typeof activity.name === 'string' ? activity.name : null,
+                    type: activity.type && typeof activity.type === 'number' ? ActivityType[activity.type] : 0,
+                    url: activity.url && typeof activity.url === 'string' && activity.type === 'Streaming' ? activity.url : null
+                },
+                status: activity?.status ?? 'online',
+                since: Date.now(),
+                afk: false
+            }
+        }
+
+        if (shardId) this.shards.get(shardId.toString())?.send(payload)
+        else this.broadcast(payload)
     }
 
     /** Tells all shards to connect. Your bot will be marked as working once last shard will connect to the network. Listen to "ready" event to acknowledge this moment. */

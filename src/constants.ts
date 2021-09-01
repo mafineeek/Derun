@@ -91,3 +91,18 @@ export enum InteractionCommandType {
     USER = 2,
     MESSAGE = 3
 }
+
+export const ActivityType = {
+    Playing: 0,
+    Streaming: 1,
+    Listening: 2,
+    Watching: 3
+}
+
+export enum InteractionCallbackType {
+    PONG = 1,
+    CHANNEL_MESSAGE_WITH_SOURCE = 4,
+    DEFERRED_CHANNEL_MESSAGE_WITH_SOURCE = 5,
+    DEFERRED_UPDATE_MESSAGE = 6,
+    UPDATE_MESSAGE = 7
+}

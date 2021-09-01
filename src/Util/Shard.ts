@@ -1,11 +1,12 @@
 import WebSocket from 'ws'
-import { Endpoint, OPCode, ShardError, ShardStatus } from '../constants'
+import { Endpoint, InteractionType, OPCode, ShardError, ShardStatus } from '../constants'
 import { GatewayError } from '../Errors/GatewayError'
 import { sleep } from '../functions'
 import { HeartbeatOptions, Payload } from '../Typings/gateway'
 import { Client } from '../Client'
 import { User } from '../Structures/User'
 import { Interaction } from '../Structures/Interaction'
+import { CommandInteraction } from '../Structures/CommandInteraction'
 
 /** Fully automated class that creates connection with Discord Gateway and keeps it alive. */
 export class Shard {
@@ -232,7 +233,8 @@ export class Shard {
                 break
             }
             case 'INTERACTION_CREATE': {
-                this.#client.emit('interaction', new Interaction(payload.d, this.#client), this.id)
+                if (payload.d.type === InteractionType.APPLICATION_COMMAND) this.#client.emit('interaction', new CommandInteraction(payload.d, this.#client), this.id)
+                else this.#client.emit('interaction', new Interaction(payload.d), this.id)
                 break
             }
         }
