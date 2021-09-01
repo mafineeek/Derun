@@ -7,9 +7,10 @@ import { User } from './User'
 export class Interaction {
     /** @hideconstructor @hidden @private */
     constructor(raw: any) {
-        if (!raw || !raw.id || !raw.token || !raw.channel_id || (!raw.member && !raw.user) || !raw.data) throw new TypeError('Invalid params. Failed to construct new Interaction instance.')
+        if (!raw || !raw.id || !raw.application_id || !raw.token || !raw.channel_id || (!raw.member && !raw.user) || !raw.data) throw new TypeError('Invalid params. Failed to construct new Interaction instance.')
 
         this.id = raw.id
+        this.applicationId = raw.application_id
         this.token = raw.token
         this.channelId = raw.channel_id
         this.guildId = raw.guild_id
@@ -21,6 +22,7 @@ export class Interaction {
     }
 
     readonly id: string
+    readonly applicationId: string
     readonly token: string
     readonly channelId: string
     readonly guildId?: string
