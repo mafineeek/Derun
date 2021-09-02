@@ -91,10 +91,10 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="CommandInteraction.html#_client" class="tsd-kind-icon">#client</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="CommandInteraction.html#acknowledged" class="tsd-kind-icon">acknowledged</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="CommandInteraction.html#applicationId" class="tsd-kind-icon">application<wbr>Id</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="CommandInteraction.html#channelId" class="tsd-kind-icon">channel<wbr>Id</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="CommandInteraction.html#client" class="tsd-kind-icon">client</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="CommandInteraction.html#command" class="tsd-kind-icon">command</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="CommandInteraction.html#guildId" class="tsd-kind-icon">guild<wbr>Id</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="CommandInteraction.html#id" class="tsd-kind-icon">id</a></li>
@@ -118,6 +118,7 @@
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="CommandInteraction.html#defer" class="tsd-kind-icon">defer</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="CommandInteraction.html#deleteReply" class="tsd-kind-icon">delete<wbr>Reply</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="CommandInteraction.html#editReply" class="tsd-kind-icon">edit<wbr>Reply</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="CommandInteraction.html#sendFollowUp" class="tsd-kind-icon">send<wbr>Follow<wbr>Up</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="CommandInteraction.html#sendReply" class="tsd-kind-icon">send<wbr>Reply</a></li>
@@ -139,7 +140,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides <a href="Interaction.html">Interaction</a>.<a href="Interaction.html#constructor">constructor</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/43429eb/src/Structures/CommandInteraction.ts#L8">src/Structures/CommandInteraction.ts:8</a></li>
+									<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/6551634/src/Structures/CommandInteraction.ts#L8">src/Structures/CommandInteraction.ts:8</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -158,16 +159,6 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
-					<a name="_client" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> <span class="tsd-flag ts-flagReadonly">Readonly</span> #client</h3>
-					<div class="tsd-signature tsd-kind-icon">#client<span class="tsd-signature-symbol">:</span> <a href="Client.html" class="tsd-signature-type" data-tsd-kind="Class">Client</a></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/43429eb/src/Structures/CommandInteraction.ts#L21">src/Structures/CommandInteraction.ts:21</a></li>
-						</ul>
-					</aside>
-				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
 					<a name="acknowledged" class="tsd-anchor"></a>
 					<h3>acknowledged</h3>
@@ -175,7 +166,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="Interaction.html">Interaction</a>.<a href="Interaction.html#acknowledged">acknowledged</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/43429eb/src/Structures/Interaction.ts#L35">src/Structures/Interaction.ts:35</a></li>
+							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/6551634/src/Structures/Interaction.ts#L35">src/Structures/Interaction.ts:35</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -186,7 +177,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="Interaction.html">Interaction</a>.<a href="Interaction.html#applicationId">applicationId</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/43429eb/src/Structures/Interaction.ts#L25">src/Structures/Interaction.ts:25</a></li>
+							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/6551634/src/Structures/Interaction.ts#L25">src/Structures/Interaction.ts:25</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -197,7 +188,17 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="Interaction.html">Interaction</a>.<a href="Interaction.html#channelId">channelId</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/43429eb/src/Structures/Interaction.ts#L27">src/Structures/Interaction.ts:27</a></li>
+							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/6551634/src/Structures/Interaction.ts#L27">src/Structures/Interaction.ts:27</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="client" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> client</h3>
+					<div class="tsd-signature tsd-kind-icon">client<span class="tsd-signature-symbol">:</span> <a href="Client.html" class="tsd-signature-type" data-tsd-kind="Class">Client</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/6551634/src/Structures/CommandInteraction.ts#L21">src/Structures/CommandInteraction.ts:21</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -207,7 +208,7 @@
 					<div class="tsd-signature tsd-kind-icon">command<span class="tsd-signature-symbol">:</span> <a href="../interfaces/SlashCommand.html" class="tsd-signature-type" data-tsd-kind="Interface">SlashCommand</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/43429eb/src/Structures/CommandInteraction.ts#L19">src/Structures/CommandInteraction.ts:19</a></li>
+							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/6551634/src/Structures/CommandInteraction.ts#L19">src/Structures/CommandInteraction.ts:19</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -218,7 +219,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="Interaction.html">Interaction</a>.<a href="Interaction.html#guildId">guildId</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/43429eb/src/Structures/Interaction.ts#L28">src/Structures/Interaction.ts:28</a></li>
+							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/6551634/src/Structures/Interaction.ts#L28">src/Structures/Interaction.ts:28</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -229,7 +230,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="Interaction.html">Interaction</a>.<a href="Interaction.html#id">id</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/43429eb/src/Structures/Interaction.ts#L24">src/Structures/Interaction.ts:24</a></li>
+							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/6551634/src/Structures/Interaction.ts#L24">src/Structures/Interaction.ts:24</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -240,7 +241,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="Interaction.html">Interaction</a>.<a href="Interaction.html#member">member</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/43429eb/src/Structures/Interaction.ts#L30">src/Structures/Interaction.ts:30</a></li>
+							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/6551634/src/Structures/Interaction.ts#L30">src/Structures/Interaction.ts:30</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -255,7 +256,7 @@
 					<div class="tsd-signature tsd-kind-icon">options<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{}</span><span class="tsd-signature-symbol"> = {}</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/43429eb/src/Structures/CommandInteraction.ts#L20">src/Structures/CommandInteraction.ts:20</a></li>
+							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/6551634/src/Structures/CommandInteraction.ts#L20">src/Structures/CommandInteraction.ts:20</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -274,7 +275,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="Interaction.html">Interaction</a>.<a href="Interaction.html#receivedAt">receivedAt</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/43429eb/src/Structures/Interaction.ts#L32">src/Structures/Interaction.ts:32</a></li>
+							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/6551634/src/Structures/Interaction.ts#L32">src/Structures/Interaction.ts:32</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -285,7 +286,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="Interaction.html">Interaction</a>.<a href="Interaction.html#token">token</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/43429eb/src/Structures/Interaction.ts#L26">src/Structures/Interaction.ts:26</a></li>
+							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/6551634/src/Structures/Interaction.ts#L26">src/Structures/Interaction.ts:26</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -296,7 +297,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="Interaction.html">Interaction</a>.<a href="Interaction.html#type">type</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/43429eb/src/Structures/Interaction.ts#L33">src/Structures/Interaction.ts:33</a></li>
+							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/6551634/src/Structures/Interaction.ts#L33">src/Structures/Interaction.ts:33</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -307,7 +308,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="Interaction.html">Interaction</a>.<a href="Interaction.html#user">user</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/43429eb/src/Structures/Interaction.ts#L31">src/Structures/Interaction.ts:31</a></li>
+							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/6551634/src/Structures/Interaction.ts#L31">src/Structures/Interaction.ts:31</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -318,7 +319,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="Interaction.html">Interaction</a>.<a href="Interaction.html#version">version</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/43429eb/src/Structures/Interaction.ts#L34">src/Structures/Interaction.ts:34</a></li>
+							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/6551634/src/Structures/Interaction.ts#L34">src/Structures/Interaction.ts:34</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -335,7 +336,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/43429eb/src/Structures/Interaction.ts#L43">src/Structures/Interaction.ts:43</a></li>
+									<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/6551634/src/Structures/Interaction.ts#L43">src/Structures/Interaction.ts:43</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -357,7 +358,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/43429eb/src/Structures/Interaction.ts#L38">src/Structures/Interaction.ts:38</a></li>
+									<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/6551634/src/Structures/Interaction.ts#L38">src/Structures/Interaction.ts:38</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -382,7 +383,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/43429eb/src/Structures/CommandInteraction.ts#L126">src/Structures/CommandInteraction.ts:126</a></li>
+									<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/6551634/src/Structures/CommandInteraction.ts#L99">src/Structures/CommandInteraction.ts:99</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -405,6 +406,23 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="deleteReply" class="tsd-anchor"></a>
+					<h3>delete<wbr>Reply</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">delete<wbr>Reply<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/6551634/src/Structures/CommandInteraction.ts#L62">src/Structures/CommandInteraction.ts:62</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="editReply" class="tsd-anchor"></a>
 					<h3>edit<wbr>Reply</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
@@ -414,7 +432,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/43429eb/src/Structures/CommandInteraction.ts#L57">src/Structures/CommandInteraction.ts:57</a></li>
+									<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/6551634/src/Structures/CommandInteraction.ts#L47">src/Structures/CommandInteraction.ts:47</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -434,13 +452,13 @@
 					<a name="sendFollowUp" class="tsd-anchor"></a>
 					<h3>send<wbr>Follow<wbr>Up</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">send<wbr>Follow<wbr>Up<span class="tsd-signature-symbol">(</span>content<span class="tsd-signature-symbol">: </span><a href="../modules.html#MessageContent" class="tsd-signature-type" data-tsd-kind="Type alias">MessageContent</a>, ephemeral<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">send<wbr>Follow<wbr>Up<span class="tsd-signature-symbol">(</span>content<span class="tsd-signature-symbol">: </span><a href="../modules.html#MessageContent" class="tsd-signature-type" data-tsd-kind="Type alias">MessageContent</a>, ephemeral<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/43429eb/src/Structures/CommandInteraction.ts#L87">src/Structures/CommandInteraction.ts:87</a></li>
+									<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/6551634/src/Structures/CommandInteraction.ts#L76">src/Structures/CommandInteraction.ts:76</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -458,7 +476,7 @@
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> ephemeral: <span class="tsd-signature-type">boolean</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -472,7 +490,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/43429eb/src/Structures/CommandInteraction.ts#L28">src/Structures/CommandInteraction.ts:28</a></li>
+									<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/6551634/src/Structures/CommandInteraction.ts#L28">src/Structures/CommandInteraction.ts:28</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -533,9 +551,6 @@
 							<li class=" tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
 								<a href="CommandInteraction.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
-								<a href="CommandInteraction.html#_client" class="tsd-kind-icon">#client</a>
-							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
 								<a href="CommandInteraction.html#acknowledged" class="tsd-kind-icon">acknowledged</a>
 							</li>
@@ -544,6 +559,9 @@
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
 								<a href="CommandInteraction.html#channelId" class="tsd-kind-icon">channel<wbr>Id</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="CommandInteraction.html#client" class="tsd-kind-icon">client</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="CommandInteraction.html#command" class="tsd-kind-icon">command</a>
@@ -583,6 +601,9 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="CommandInteraction.html#defer" class="tsd-kind-icon">defer</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="CommandInteraction.html#deleteReply" class="tsd-kind-icon">delete<wbr>Reply</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="CommandInteraction.html#editReply" class="tsd-kind-icon">edit<wbr>Reply</a>
@@ -640,7 +661,7 @@
 						<a href="../interfaces/EmbedField.html" class="tsd-kind-icon">Embed<wbr>Field</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="../interfaces/MessageReferenceReply.html" class="tsd-kind-icon">Message<wbr>Reference<wbr>Reply</a>
+						<a href="../interfaces/MessageReference.html" class="tsd-kind-icon">Message<wbr>Reference</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="../interfaces/Payload.html" class="tsd-kind-icon">Payload</a>

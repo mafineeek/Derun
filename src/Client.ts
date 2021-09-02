@@ -1,11 +1,13 @@
 import { Intent } from './BitFields/Intent'
-import { ActivityType, OPCode, SlashCommandType } from './constants'
+import { ActivityType, OPCode } from './constants'
 import { RestAPIError } from './Errors/RestAPIError'
 import { sleep } from './functions'
+import { Message } from './Structures/Message'
 import { User } from './Structures/User'
-import { SlashCommand, SlashCommandBase } from './Typings/command'
+import { SlashCommand } from './Typings/command'
 import { ClientEvents } from './Typings/events'
 import { Activity, Payload } from './Typings/gateway'
+import { MessageContent } from './Typings/message'
 import { ClientOptions } from './Typings/options'
 import { Collection } from './Util/Collection'
 import { EventEmitter } from './Util/EventEmitter'
@@ -92,8 +94,6 @@ export class Client extends EventEmitter<ClientEvents> {
             } else delete cmd.options
         }
 
-        if (!cmd.type) cmd.type = SlashCommandType.SUB_COMMAND
-
         if (!cmd.extended) cmd.extended = {}
         if (typeof cmd.extended !== 'object') throw new TypeError('Command extended needs to be an object.')
 
@@ -116,14 +116,7 @@ export class Client extends EventEmitter<ClientEvents> {
     async updateCommands(guildId?: string) {
         if (!this.user) throw new Error('You cannot modify commands without having bot ready.')
 
-        const payload = new Array<SlashCommandBase>()
-
-        for (const command of this.#commands.values()) {
-            delete command.extended
-            delete command.run
-            payload.push(command)
-        }
-
+        const payload = [...this.#commands.values()]
         const route = guildId ? `/applications/${this.user.id}/guilds/${guildId}/commands` : `/applications/${this.user.id}/commands`
 
         const [data, err] = await this.restHandler.request('PUT', route, true, payload)
@@ -157,6 +150,57 @@ export class Client extends EventEmitter<ClientEvents> {
 
         if (shardId) this.shards.get(shardId.toString())?.send(payload)
         else this.broadcast(payload)
+    }
+
+    async sendMessage(channelId: string, content: MessageContent): Promise<Message> {
+        if (!channelId) throw new TypeError('No channel id provided.')
+        if (!content) throw new TypeError('No content provided.')
+
+        if (typeof content !== 'object') content = { content: `${content}` }
+        if (!content.content) throw new TypeError('No content provided.')
+
+        const [data, err] = await this.restHandler.request('POST', `/channels/${channelId}/messages`, true, content)
+
+        if (err) throw err
+        else if (data && data.code && data.message) throw new RestAPIError(data.code, data.message)
+
+        return new Message(data, this)
+    }
+
+    async editMessage(channelId: string, messageId: string, content: MessageContent): Promise<Message> {
+        if (!channelId) throw new TypeError('No channel id provided.')
+        if (!messageId) throw new TypeError('No message id provided.')
+        if (!content) throw new TypeError('No content provided.')
+
+        if (typeof content !== 'object') content = { content: `${content}` }
+        if (!content.content) throw new TypeError('No content provided.')
+
+        const [data, err] = await this.restHandler.request('PATCH', `/channels/${channelId}/messages/${messageId}`, true, content)
+
+        if (err) throw err
+        else if (data && data.code && data.message) throw new RestAPIError(data.code, data.message)
+
+        return new Message(data, this)
+    }
+
+    async deleteMessage(channelId: string, messageId: string) {
+        if (!channelId) throw new TypeError('No channel id provided.')
+        if (!messageId) throw new TypeError('No message id provided.')
+
+        const [data, err] = await this.restHandler.request('DELETE', `/channels/${channelId}/messages/${messageId}`, true)
+
+        if (err) throw err
+        else if (data && data.code && data.message) throw new RestAPIError(data.code, data.message)
+    }
+
+    async crosspostMessage(channelId: string, messageId: string) {
+        if (!channelId) throw new TypeError('No channel id provided.')
+        if (!messageId) throw new TypeError('No message id provided.')
+
+        const [data, err] = await this.restHandler.request('POST', `/channels/${channelId}/messages/${messageId}/crosspost`, true)
+
+        if (err) throw err
+        else if (data && data.code && data.message) throw new RestAPIError(data.code, data.message)
     }
 
     /** Tells all shards to connect. Your bot will be marked as working once last shard will connect to the network. Listen to "ready" event to acknowledge this moment. */

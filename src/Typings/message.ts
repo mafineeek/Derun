@@ -1,4 +1,7 @@
+import { User } from '..'
 import { ActionRow, Embed } from './rest'
+
+export type MessageContent = string | number | boolean | AdvancedMessageContent
 
 /**
  * You need to add specific catefoty to parse array to make it work. {@link https://discord.com/developers/docs/resources/channel#allowed-mentions-object See Discord Documentation.}
@@ -19,7 +22,7 @@ export interface AllowedMentions {
     roles?: string[]
 }
 
-export interface MessageReferenceReply {
+export interface MessageReference {
     channel_id?: string
     guild_id?: string
     message_id?: string
@@ -31,10 +34,8 @@ export interface AdvancedMessageContent {
     content?: string
     embeds?: Embed[]
     flags?: number
-    message_reference?: MessageReferenceReply
+    message_reference?: MessageReference
     tts?: boolean
     components?: ActionRow[]
     sticker_ids?: string[]
 }
-
-export type MessageContent = string | number | boolean | AdvancedMessageContent

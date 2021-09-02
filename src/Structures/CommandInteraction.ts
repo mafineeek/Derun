@@ -11,14 +11,14 @@ export class CommandInteraction extends Interaction {
         if (!raw.data.name || !client) throw new TypeError('Invalid params. Failed to construct new Command Interaction instance.')
 
         this.command = client.findCommand(raw.data.name)
-        this.#client = client
+        this.client = client
 
         for (const option of raw.data?.options ?? []) this.options[option.name] = option?.value
     }
 
     readonly command
     readonly options: { [key: string]: string | number } = {}
-    readonly #client
+    readonly client
 
     /**
      * Acknowledges the interaction with a message.
@@ -26,25 +26,15 @@ export class CommandInteraction extends Interaction {
      * Set second param to `true` to make message ephermal *(visible only for replied member)*.
      */
     async sendReply(content: MessageContent, ephemeral?: boolean) {
-        if (!content) throw new Error('No content provided.')
+        if (!content) throw new TypeError('No content provided.')
         if (this.acknowledged) throw new Error('You have already acknowledged this interaction.')
         if (this.invalid) throw new Error("This interaction has been invalided cause you didn't replied within 3 seconds.")
 
-        switch (typeof content) {
-            case 'string': {
-                content = { content: content }
-                break
-            }
-            case 'boolean':
-            case 'number': {
-                content = { content: String(content) }
-                break
-            }
-        }
-
+        if (typeof content !== 'object') content = { content: `${content}` }
+        if (!content.content) throw new TypeError('No content provided.')
         if (!content.flags && ephemeral) content.flags = 64
 
-        const [data, err] = await this.#client.restHandler.request('POST', `/interactions/${this.id}/${this.token}/callback`, true, {
+        const [data, err] = await this.client.restHandler.request('POST', `/interactions/${this.id}/${this.token}/callback`, true, {
             type: InteractionCallbackType.CHANNEL_MESSAGE_WITH_SOURCE,
             data: content
         })
@@ -55,64 +45,47 @@ export class CommandInteraction extends Interaction {
     }
 
     async editReply(content: MessageContent, ephemeral?: boolean) {
-        if (!content) throw new Error('No content provided.')
+        if (!content) throw new TypeError('No content provided.')
         if (!this.acknowledged) throw new Error('You have to first acknowledge interaction to edit it.')
         if (this.expired) throw new Error('This interaction has expired. Interaction token remain valid only for first 15 minutes after being created.')
 
-        switch (typeof content) {
-            case 'string': {
-                content = { content: content }
-                break
-            }
-            case 'boolean':
-            case 'number': {
-                content = { content: String(content) }
-                break
-            }
-        }
-
+        if (typeof content !== 'object') content = { content: `${content}` }
+        if (!content.content) throw new TypeError('No content provided.')
         if (!content.flags && ephemeral) content.flags = 64
 
-        const [data, err] = await this.#client.restHandler.request('PATCH', `/webhooks/${this.applicationId}/${this.token}/messages/@original`, true, content)
+        const [data, err] = await this.client.restHandler.request('PATCH', `/webhooks/${this.applicationId}/${this.token}/messages/@original`, true, content)
 
         if (err) throw err
         else if (data && data.code && data.message) throw new RestAPIError(data.code, data.message)
-        this.acknowledged = true
+    }
+
+    async deleteReply() {
+        if (!this.acknowledged) throw new Error('You have to first acknowledge interaction to delete it.')
+        if (this.expired) throw new Error('This interaction has expired. Interaction token remain valid only for first 15 minutes after being created.')
+
+        const [data, err] = await this.client.restHandler.request('DELETE', `/webhooks/${this.applicationId}/${this.token}/messages/@original`, true)
+
+        if (err) throw err
+        else if (data && data.code && data.message) throw new RestAPIError(data.code, data.message)
     }
 
     /**
      * Sends message without acknowledging callback. You have to defer or send reply first to acknowledge callback.
      * Set second param to `true` to make message ephermal *(visible only for replied member)*.
      */
-    async sendFollowUp(content: MessageContent, ephemeral?: boolean): Promise<string> {
-        if (!content) throw new Error('No content provided.')
+    async sendFollowUp(content: MessageContent, ephemeral?: boolean) {
+        if (!content) throw new TypeError('No content provided.')
         if (!this.acknowledged) throw new Error('Follow Up message cannot be used to acknowledge an interaction, please use reply to it or defer first.')
         if (this.expired) throw new Error('This interaction has expired. Interaction token remain valid only for first 15 minutes after being created.')
 
-        switch (typeof content) {
-            case 'string': {
-                content = { content: content }
-                break
-            }
-            case 'boolean':
-            case 'number': {
-                content = { content: String(content) }
-                break
-            }
-        }
-
+        if (typeof content !== 'object') content = { content: `${content}` }
+        if (!content.content) throw new TypeError('No content provided.')
         if (!content.flags && ephemeral) content.flags = 64
 
-        const [data, err] = await this.#client.restHandler.request('POST', `/webhooks/${this.applicationId}/${this.token}`, true, {
-            type: InteractionCallbackType.CHANNEL_MESSAGE_WITH_SOURCE,
-            data: content
-        })
+        const [data, err] = await this.client.restHandler.request('POST', `/webhooks/${this.applicationId}/${this.token}`, true, { ...content, wait: true })
 
         if (err) throw err
         else if (data && data.code && data.message) throw new RestAPIError(data.code, data.message)
-
-        this.acknowledged = true
-        return data.id
     }
 
     /**
@@ -127,7 +100,7 @@ export class CommandInteraction extends Interaction {
         if (this.acknowledged) throw new Error('You have already acknowledged this interaction.')
         if (this.invalid) throw new Error("This interaction has been invalided cause you didn't replied within 3 seconds.")
 
-        const [data, err] = await this.#client.restHandler.request('POST', `/interactions/${this.id}/${this.token}/callback`, true, {
+        const [data, err] = await this.client.restHandler.request('POST', `/interactions/${this.id}/${this.token}/callback`, true, {
             type: InteractionCallbackType.DEFERRED_CHANNEL_MESSAGE_WITH_SOURCE,
             data: { flags: ephemeral ? 64 : 0 }
         })
