@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>User | Derun</title>
+	<title>Message | Derun</title>
 	<meta name="description" content="Documentation for Derun">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -55,10 +55,10 @@
 					<a href="../modules.html">Derun</a>
 				</li>
 				<li>
-					<a href="User.html">User</a>
+					<a href="Message.html">Message</a>
 				</li>
 			</ul>
-			<h1>Class User</h1>
+			<h1>Class Message</h1>
 		</div>
 	</div>
 </header>
@@ -69,12 +69,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">User</span>
-						<ul class="tsd-hierarchy">
-							<li>
-								<a href="ResolvedMember.html" class="tsd-signature-type" data-tsd-kind="Class">ResolvedMember</a>
-							</li>
-						</ul>
+						<span class="target">Message</span>
 					</li>
 				</ul>
 			</section>
@@ -85,32 +80,32 @@
 						<section class="tsd-index-section ">
 							<h3>Constructors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="User.html#constructor" class="tsd-kind-icon">constructor</a></li>
+								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="Message.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="User.html#_avatarHash" class="tsd-kind-icon">#avatar<wbr>Hash</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="User.html#badges" class="tsd-kind-icon">badges</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="User.html#botAccount" class="tsd-kind-icon">bot<wbr>Account</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="User.html#discriminator" class="tsd-kind-icon">discriminator</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="User.html#id" class="tsd-kind-icon">id</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="User.html#username" class="tsd-kind-icon">username</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="Message.html#_client" class="tsd-kind-icon">#client</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="Message.html#channelId" class="tsd-kind-icon">channel<wbr>Id</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="Message.html#createdAt" class="tsd-kind-icon">created<wbr>At</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="Message.html#editedAt" class="tsd-kind-icon">edited<wbr>At</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="Message.html#flags" class="tsd-kind-icon">flags</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="Message.html#id" class="tsd-kind-icon">id</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Accessors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="User.html#avatarURL" class="tsd-kind-icon">avatarURL</a></li>
-								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="User.html#mention" class="tsd-kind-icon">mention</a></li>
-								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="User.html#tag" class="tsd-kind-icon">tag</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="Message.html#author" class="tsd-kind-icon">author</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="User.html#dynamicAvatarURL" class="tsd-kind-icon">dynamic<wbr>AvatarURL</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="Message.html#crosspost" class="tsd-kind-icon">crosspost</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="Message.html#delete" class="tsd-kind-icon">delete</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="Message.html#edit" class="tsd-kind-icon">edit</a></li>
 							</ul>
 						</section>
 					</div>
@@ -122,13 +117,13 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>User<span class="tsd-signature-symbol">(</span>raw<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="User.html" class="tsd-signature-type" data-tsd-kind="Class">User</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Message<span class="tsd-signature-symbol">(</span>raw<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, client<span class="tsd-signature-symbol">: </span><a href="Client.html" class="tsd-signature-type" data-tsd-kind="Class">Client</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="Message.html" class="tsd-signature-type" data-tsd-kind="Class">Message</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/51377fd/src/Structures/User.ts#L6">src/Structures/User.ts:6</a></li>
+									<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/51377fd/src/Structures/Message.ts#L8">src/Structures/Message.ts:8</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -143,8 +138,11 @@
 								<li>
 									<h5>raw: <span class="tsd-signature-type">any</span></h5>
 								</li>
+								<li>
+									<h5>client: <a href="Client.html" class="tsd-signature-type" data-tsd-kind="Class">Client</a></h5>
+								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="User.html" class="tsd-signature-type" data-tsd-kind="Class">User</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="Message.html" class="tsd-signature-type" data-tsd-kind="Class">Message</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -152,42 +150,52 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
-					<a name="_avatarHash" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> <span class="tsd-flag ts-flagOptional">Optional</span> <span class="tsd-flag ts-flagReadonly">Readonly</span> #avatar<wbr>Hash</h3>
-					<div class="tsd-signature tsd-kind-icon">#avatar<wbr>Hash<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="_client" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> <span class="tsd-flag ts-flagReadonly">Readonly</span> #client</h3>
+					<div class="tsd-signature tsd-kind-icon">#client<span class="tsd-signature-symbol">:</span> <a href="Client.html" class="tsd-signature-type" data-tsd-kind="Class">Client</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/51377fd/src/Structures/User.ts#L21">src/Structures/User.ts:21</a></li>
+							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/51377fd/src/Structures/Message.ts#L22">src/Structures/Message.ts:22</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="badges" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> badges</h3>
-					<div class="tsd-signature tsd-kind-icon">badges<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span><span class="tsd-signature-type">&quot;DISCORD_EMPLOYEE&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;PARTNERED_SERVER_OWNER&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;HYPESQUAD_EVENTS&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;BUG_HUNTER_LEVEL_1&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;HOUSE_BRAVERY&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;HOUSE_BRILLIANCE&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;HOUSE_BALANCE&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;EARLY_SUPPORTER&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;TEAM_USER&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;SYSTEM&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;BUG_HUNTER_LEVEL_2&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;VERIFIED_BOT&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;EARLY_VERIFIED_BOT_DEVELOPER&quot;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">[]</span></div>
+					<a name="channelId" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> channel<wbr>Id</h3>
+					<div class="tsd-signature tsd-kind-icon">channel<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/51377fd/src/Structures/User.ts#L19">src/Structures/User.ts:19</a></li>
+							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/51377fd/src/Structures/Message.ts#L19">src/Structures/Message.ts:19</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="botAccount" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> bot<wbr>Account</h3>
-					<div class="tsd-signature tsd-kind-icon">bot<wbr>Account<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<a name="createdAt" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> created<wbr>At</h3>
+					<div class="tsd-signature tsd-kind-icon">created<wbr>At<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/51377fd/src/Structures/User.ts#L22">src/Structures/User.ts:22</a></li>
+							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/51377fd/src/Structures/Message.ts#L20">src/Structures/Message.ts:20</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="discriminator" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> discriminator</h3>
-					<div class="tsd-signature tsd-kind-icon">discriminator<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="editedAt" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> edited<wbr>At</h3>
+					<div class="tsd-signature tsd-kind-icon">edited<wbr>At<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/51377fd/src/Structures/User.ts#L20">src/Structures/User.ts:20</a></li>
+							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/51377fd/src/Structures/Message.ts#L23">src/Structures/Message.ts:23</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="flags" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> flags</h3>
+					<div class="tsd-signature tsd-kind-icon">flags<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/51377fd/src/Structures/Message.ts#L21">src/Structures/Message.ts:21</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -197,17 +205,7 @@
 					<div class="tsd-signature tsd-kind-icon">id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/51377fd/src/Structures/User.ts#L17">src/Structures/User.ts:17</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="username" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> username</h3>
-					<div class="tsd-signature tsd-kind-icon">username<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/51377fd/src/Structures/User.ts#L18">src/Structures/User.ts:18</a></li>
+							<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/51377fd/src/Structures/Message.ts#L18">src/Structures/Message.ts:18</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -215,53 +213,24 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Accessors</h2>
 				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
-					<a name="avatarURL" class="tsd-anchor"></a>
-					<h3>avatarURL</h3>
+					<a name="author" class="tsd-anchor"></a>
+					<h3>author</h3>
 					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> avatarURL<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> author<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="User.html" class="tsd-signature-type" data-tsd-kind="Class">User</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/51377fd/src/Structures/User.ts#L24">src/Structures/User.ts:24</a></li>
+									<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/51377fd/src/Structures/Message.ts#L26">src/Structures/Message.ts:26</a></li>
 								</ul>
 							</aside>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
-					<a name="mention" class="tsd-anchor"></a>
-					<h3>mention</h3>
-					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> mention<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/51377fd/src/Structures/User.ts#L28">src/Structures/User.ts:28</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
-					<a name="tag" class="tsd-anchor"></a>
-					<h3>tag</h3>
-					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> tag<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/51377fd/src/Structures/User.ts#L32">src/Structures/User.ts:32</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>In Derun, only bot can send message so obviously <strong>Message#author</strong> will be always pointing to bot user.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <a href="User.html" class="tsd-signature-type" data-tsd-kind="Class">User</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -269,28 +238,59 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="dynamicAvatarURL" class="tsd-anchor"></a>
-					<h3>dynamic<wbr>AvatarURL</h3>
+					<a name="crosspost" class="tsd-anchor"></a>
+					<h3>crosspost</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">dynamic<wbr>AvatarURL<span class="tsd-signature-symbol">(</span>format<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">&quot;png&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;jpg&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;gif&quot;</span>, size<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">32</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">64</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">128</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">256</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">512</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">1024</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+						<li class="tsd-signature tsd-kind-icon">crosspost<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/51377fd/src/Structures/User.ts#L36">src/Structures/User.ts:36</a></li>
+									<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/51377fd/src/Structures/Message.ts#L48">src/Structures/Message.ts:48</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="delete" class="tsd-anchor"></a>
+					<h3>delete</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">delete<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/51377fd/src/Structures/Message.ts#L44">src/Structures/Message.ts:44</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="edit" class="tsd-anchor"></a>
+					<h3>edit</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">edit<span class="tsd-signature-symbol">(</span>content<span class="tsd-signature-symbol">: </span><a href="../modules.html#MessageContent" class="tsd-signature-type" data-tsd-kind="Type alias">MessageContent</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Amatsagu/Derun/blob/51377fd/src/Structures/Message.ts#L30">src/Structures/Message.ts:30</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>format: <span class="tsd-signature-type">&quot;png&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;jpg&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;gif&quot;</span></h5>
-								</li>
-								<li>
-									<h5>size: <span class="tsd-signature-type">32</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">64</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">128</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">256</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">512</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">1024</span></h5>
+									<h5>content: <a href="../modules.html#MessageContent" class="tsd-signature-type" data-tsd-kind="Type alias">MessageContent</a></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -333,9 +333,48 @@
 					<li class=" tsd-kind-class">
 						<a href="Interaction.html" class="tsd-kind-icon">Interaction</a>
 					</li>
-					<li class=" tsd-kind-class">
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-class">
 						<a href="Message.html" class="tsd-kind-icon">Message</a>
+						<ul>
+							<li class=" tsd-kind-constructor tsd-parent-kind-class">
+								<a href="Message.html#constructor" class="tsd-kind-icon">constructor</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="Message.html#_client" class="tsd-kind-icon">#client</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="Message.html#channelId" class="tsd-kind-icon">channel<wbr>Id</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="Message.html#createdAt" class="tsd-kind-icon">created<wbr>At</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="Message.html#editedAt" class="tsd-kind-icon">edited<wbr>At</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="Message.html#flags" class="tsd-kind-icon">flags</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="Message.html#id" class="tsd-kind-icon">id</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
+								<a href="Message.html#author" class="tsd-kind-icon">author</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="Message.html#crosspost" class="tsd-kind-icon">crosspost</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="Message.html#delete" class="tsd-kind-icon">delete</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="Message.html#edit" class="tsd-kind-icon">edit</a>
+							</li>
+						</ul>
 					</li>
+				</ul>
+				<ul class="after-current">
 					<li class=" tsd-kind-class">
 						<a href="Permission.html" class="tsd-kind-icon">Permission</a>
 					</li>
@@ -348,48 +387,9 @@
 					<li class=" tsd-kind-class">
 						<a href="Shard.html" class="tsd-kind-icon">Shard</a>
 					</li>
-				</ul>
-				<ul class="current">
-					<li class="current tsd-kind-class">
+					<li class=" tsd-kind-class">
 						<a href="User.html" class="tsd-kind-icon">User</a>
-						<ul>
-							<li class=" tsd-kind-constructor tsd-parent-kind-class">
-								<a href="User.html#constructor" class="tsd-kind-icon">constructor</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
-								<a href="User.html#_avatarHash" class="tsd-kind-icon">#avatar<wbr>Hash</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="User.html#badges" class="tsd-kind-icon">badges</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="User.html#botAccount" class="tsd-kind-icon">bot<wbr>Account</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="User.html#discriminator" class="tsd-kind-icon">discriminator</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="User.html#id" class="tsd-kind-icon">id</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="User.html#username" class="tsd-kind-icon">username</a>
-							</li>
-							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
-								<a href="User.html#avatarURL" class="tsd-kind-icon">avatarURL</a>
-							</li>
-							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
-								<a href="User.html#mention" class="tsd-kind-icon">mention</a>
-							</li>
-							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
-								<a href="User.html#tag" class="tsd-kind-icon">tag</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="User.html#dynamicAvatarURL" class="tsd-kind-icon">dynamic<wbr>AvatarURL</a>
-							</li>
-						</ul>
 					</li>
-				</ul>
-				<ul class="after-current">
 					<li class=" tsd-kind-class">
 						<a href="UserFlags.html" class="tsd-kind-icon">User<wbr>Flags</a>
 					</li>

@@ -5,6 +5,7 @@ import { MessageContent } from '../Typings/message'
 import { Interaction } from './Interaction'
 
 export class CommandInteraction extends Interaction {
+    /** @hideconstructor @hidden @private */
     constructor(raw: any, client: Client) {
         super(raw)
 

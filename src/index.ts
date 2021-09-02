@@ -11,6 +11,7 @@ export * from './Structures/ResolvedMember'
 export * from './Structures/User'
 export * from './Structures/Interaction'
 export * from './Structures/CommandInteraction'
+export * from './Structures/Message'
 
 // All mentioned to be visible Interfaces & Types
 export * from './Typings/events'

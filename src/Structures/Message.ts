@@ -4,6 +4,7 @@ import { RestAPIError } from '../Errors/RestAPIError'
 
 // It doesn't contain core fields like content or embeds because they won't be available from 2022 so we want to already get prepared.
 export class Message {
+    /** @hideconstructor @hidden @private */
     constructor(raw: any, client: Client) {
         if (!raw || !raw.id || !raw.channel_id || !raw.timestamp || !client) throw new TypeError('Invalid params. Failed to construct new Message instance.')
 

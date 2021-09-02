@@ -59,7 +59,7 @@
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
 				<p>Usage example:</p>
-				<pre><code class="language-ts"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">Client</span><span style="color: #000000">, </span><span style="color: #001080">SlashCommandType</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;derun&#039;</span>
+				<pre><code class="language-ts"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">Client</span><span style="color: #000000">, </span><span style="color: #001080">SlashCommandType</span><span style="color: #000000">, </span><span style="color: #001080">CommandInteraction</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;derun&#039;</span>
 
 <span style="color: #008000">// Showing all the options (+ their default values)</span>
 <span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">client</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">Client</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;&lt;BOT TOKEN&gt;&#039;</span><span style="color: #000000">, {</span>
@@ -84,26 +84,42 @@
 <span style="color: #000000">            {</span>
 <span style="color: #000000">                </span><span style="color: #001080">name:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;input&#039;</span><span style="color: #000000">,</span>
 <span style="color: #000000">                </span><span style="color: #001080">description:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;Put there whatever you want to process.&#039;</span><span style="color: #000000">,</span>
-<span style="color: #000000">                </span><span style="color: #001080">type:</span><span style="color: #000000"> </span><span style="color: #001080">SlashCommandType</span><span style="color: #000000">.</span><span style="color: #0070C1">STRING</span>
+<span style="color: #000000">                </span><span style="color: #001080">type:</span><span style="color: #000000"> </span><span style="color: #001080">SlashCommandType</span><span style="color: #000000">.</span><span style="color: #0070C1">STRING</span><span style="color: #000000">,</span>
+<span style="color: #000000">                </span><span style="color: #001080">required:</span><span style="color: #000000"> </span><span style="color: #0000FF">true</span>
 <span style="color: #000000">            }</span>
 <span style="color: #000000">        ],</span>
 <span style="color: #000000">        </span><span style="color: #001080">extended:</span><span style="color: #000000"> {</span>
-<span style="color: #000000">            </span><span style="color: #001080">adminOnly:</span><span style="color: #000000"> </span><span style="color: #0000FF">false</span>
+<span style="color: #000000">            </span><span style="color: #001080">safe:</span><span style="color: #000000"> </span><span style="color: #0000FF">false</span>
 <span style="color: #000000">        },</span>
-<span style="color: #000000">        </span><span style="color: #795E26">run</span><span style="color: #001080">:</span><span style="color: #000000"> (</span><span style="color: #001080">interaction</span><span style="color: #000000">, </span><span style="color: #001080">shardId</span><span style="color: #000000">) </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {}</span>
+<span style="color: #000000">        </span><span style="color: #795E26">run</span><span style="color: #001080">:</span><span style="color: #000000"> (</span><span style="color: #001080">interaction</span><span style="color: #000000">, </span><span style="color: #001080">shardId</span><span style="color: #000000">) </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
+<span style="color: #000000">            </span><span style="color: #AF00DB">if</span><span style="color: #000000"> (!</span><span style="color: #001080">interaction</span><span style="color: #000000">.</span><span style="color: #001080">extended</span><span style="color: #000000">[</span><span style="color: #A31515">&#039;safe&#039;</span><span style="color: #000000">]) {</span>
+<span style="color: #000000">                </span><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">task</span><span style="color: #000000"> = </span><span style="color: #001080">interaction</span><span style="color: #000000">.</span><span style="color: #001080">options</span><span style="color: #000000">[</span><span style="color: #A31515">&#039;input&#039;</span><span style="color: #000000">]</span>
+<span style="color: #000000">                </span><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">result</span><span style="color: #000000"> = </span><span style="color: #795E26">eval</span><span style="color: #000000">(</span><span style="color: #001080">task</span><span style="color: #000000">) </span><span style="color: #008000">// Of course you should never use eval() in such way, that&#039;s just an example!</span>
+
+<span style="color: #000000">                </span><span style="color: #AF00DB">return</span><span style="color: #000000"> </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">interaction</span><span style="color: #000000">.</span><span style="color: #795E26">sendReply</span><span style="color: #000000">(</span><span style="color: #A31515">`💡 Result = </span><span style="color: #0000FF">${</span><span style="color: #001080">result</span><span style="color: #0000FF">}</span><span style="color: #A31515">`</span><span style="color: #000000">)</span>
+<span style="color: #000000">            }</span>
+<span style="color: #000000">            </span><span style="color: #AF00DB">else</span><span style="color: #000000"> {</span>
+<span style="color: #000000">                </span><span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">interaction</span><span style="color: #000000">.</span><span style="color: #795E26">defer</span><span style="color: #000000">() </span><span style="color: #008000">// Send &quot;Bot is thinking...&quot;. Interaction needs to be &quot;acknowledged&quot; within 3s so you need to reply or defer as quickly as possible.</span>
+
+<span style="color: #000000">                </span><span style="color: #008000">// After 5s reply with message.</span>
+<span style="color: #000000">                </span><span style="color: #795E26">setTimeout</span><span style="color: #000000">(() </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> </span><span style="color: #001080">interaction</span><span style="color: #000000">.</span><span style="color: #795E26">sendFollowUp</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;❌ Failed to calculate because safe mode is active.&#039;</span><span style="color: #000000">), </span><span style="color: #098658">5000</span><span style="color: #000000">)</span>
+<span style="color: #000000">            }</span>
+<span style="color: #000000">        }</span>
 <span style="color: #000000">    })</span>
 
-<span style="color: #000000">    </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">updateCommands</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;853386288710156320&#039;</span><span style="color: #000000">) </span><span style="color: #008000">// Promise</span>
+<span style="color: #000000">    </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">updateCommands</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;853386288710156320&#039;</span><span style="color: #000000">) </span><span style="color: #008000">// Promise, update only on single guild</span>
 <span style="color: #000000">})</span>
 
 <span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">on</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;interaction&#039;</span><span style="color: #000000">, (</span><span style="color: #001080">interaction</span><span style="color: #000000">, </span><span style="color: #001080">shardId</span><span style="color: #000000">) </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
-<span style="color: #000000">    </span><span style="color: #AF00DB">if</span><span style="color: #000000"> (</span><span style="color: #001080">interaction</span><span style="color: #000000">.</span><span style="color: #001080">command</span><span style="color: #000000">) </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">interaction</span><span style="color: #000000">)</span>
+<span style="color: #000000">    </span><span style="color: #AF00DB">if</span><span style="color: #000000"> (</span><span style="color: #001080">interaction</span><span style="color: #000000"> </span><span style="color: #0000FF">instanceof</span><span style="color: #000000"> </span><span style="color: #267F99">CommandInteraction</span><span style="color: #000000">) </span><span style="color: #001080">interaction</span><span style="color: #000000">.</span><span style="color: #001080">command</span><span style="color: #000000">.</span><span style="color: #795E26">run</span><span style="color: #000000">(</span><span style="color: #001080">interaction</span><span style="color: #000000">, </span><span style="color: #001080">shardId</span><span style="color: #000000">)</span>
 <span style="color: #000000">})</span>
 
 
 <span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">info</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;[Init] Connecting...&#039;</span><span style="color: #000000">)</span>
 <span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">connect</span><span style="color: #000000">()</span>
 </code></pre>
+				<p>Experimental documentation: <a href="https://amatsagu.github.io/derun">https://amatsagu.github.io/derun</a></p>
+				<p><strong>v0.1</strong> - Early beta <em>(to not say alpha)</em></p>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
@@ -142,6 +158,9 @@
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="classes/Interaction.html" class="tsd-kind-icon">Interaction</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/Message.html" class="tsd-kind-icon">Message</a>
 					</li>
 					<li class=" tsd-kind-class">
 						<a href="classes/Permission.html" class="tsd-kind-icon">Permission</a>
