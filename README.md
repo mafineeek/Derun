@@ -60,6 +60,6 @@ console.info('[Init] Connecting...')
 client.connect()
 ```
 
-Experimental documentation: https://amatsagu.github.io/derun
+Experimental documentation: https://amatsagu.github.io/Derun
 
 **v0.1** - Early beta *(to not say alpha)*
