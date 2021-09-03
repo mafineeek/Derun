@@ -130,6 +130,7 @@ export class Client extends EventEmitter<ClientEvents> {
     /** Sends raw payload across all shards. */
     broadcast(payload: Payload) {
         for (const shard of this.shards.values()) shard.send(payload)
+        return payload; // should return payload after sending
     }
 
     /** Sets custom status for bot user. You can add shard id in second param to enable it only there. */
